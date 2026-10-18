@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RingSDK V2.0.35 技术分析报告</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d27;
+    --border: #2a2d3a;
+    --text: #e1e4eb;
+    --muted: #8b8fa3;
+    --accent: #6c8cff;
+    --green: #4ade80;
+    --yellow: #fbbf24;
+    --red: #f87171;
+    --cyan: #22d3ee;
+    --purple: #a78bfa;
+    --orange: #fb923c;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 2.2em; font-weight: 700; margin-bottom: 8px; background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { color: var(--muted); font-size: 1.05em; margin-bottom: 48px; }
+  h2 { font-size: 1.5em; font-weight: 600; color: var(--accent); margin: 48px 0 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 1.15em; font-weight: 600; color: var(--cyan); margin: 28px 0 12px; }
+  h4 { font-size: 1em; font-weight: 600; color: var(--purple); margin: 20px 0 8px; }
+  p { margin: 8px 0; color: var(--text); }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 16px 0; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 16px 0; }
+  .stat { text-align: center; padding: 20px; }
+  .stat-value { font-size: 2em; font-weight: 700; color: var(--accent); }
+  .stat-label { color: var(--muted); font-size: 0.9em; margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.95em; }
+  th { background: #242736; color: var(--accent); font-weight: 600; text-align: left; padding: 10px 14px; }
+  td { padding: 10px 14px; border-top: 1px solid var(--border); }
+  tr:hover td { background: #1e2130; }
+  code { background: #242736; color: var(--cyan); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono', 'Fira Code', monospace; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.8em; font-weight: 500; margin: 2px 4px 2px 0; }
+  .tag-green { background: rgba(74,222,128,0.15); color: var(--green); }
+  .tag-yellow { background: rgba(251,191,36,0.15); color: var(--yellow); }
+  .tag-red { background: rgba(248,113,113,0.15); color: var(--red); }
+  .tag-blue { background: rgba(108,140,255,0.15); color: var(--accent); }
+  .tag-purple { background: rgba(167,139,250,0.15); color: var(--purple); }
+  .tag-cyan { background: rgba(34,211,238,0.15); color: var(--cyan); }
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0; }
+  .flow-step { background: #242736; border: 1px solid var(--border); border-radius: 8px; padding: 8px 16px; font-size: 0.9em; }
+  .flow-arrow { color: var(--muted); font-size: 1.2em; }
+  .highlight { border-left: 3px solid var(--accent); padding-left: 16px; margin: 16px 0; }
+  .warn { border-left: 3px solid var(--yellow); padding-left: 16px; margin: 16px 0; background: rgba(251,191,36,0.05); padding: 12px 16px; border-radius: 0 8px 8px 0; }
+  .toc { list-style: none; }
+  .toc li { padding: 6px 0; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .arch-diagram { background: #242736; border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 16px 0; font-family: 'SF Mono', monospace; font-size: 0.85em; line-height: 1.5; white-space: pre; overflow-x: auto; color: var(--muted); }
+  .arch-diagram .hl { color: var(--accent); }
+  .arch-diagram .hl2 { color: var(--cyan); }
+  .arch-diagram .hl3 { color: var(--green); }
+  @media (max-width: 600px) {
+    .container { padding: 20px 16px; }
+    h1 { font-size: 1.6em; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>RingSDK V2.0.35 技术分析报告</h1>
+<p class="subtitle">智能戒指 SDK 工作方式、设备连接、数据采集与存储机制 &mdash; Vvewell 项目</p>
+
+<!-- TOC -->
+<div class="card">
+<h3 style="margin-top:0">目录</h3>
+<ol class="toc">
+  <li><a href="#overview">概览</a></li>
+  <li><a href="#connection">设备连接生命周期</a></li>
+  <li><a href="#data-arch">数据采集架构</a></li>
+  <li><a href="#measurements">测量功能详解</a></li>
+  <li><a href="#auto-monitor">后台自动监测</a></li>
+  <li><a href="#sleep">睡眠追踪</a></li>
+  <li><a href="#sport">运动追踪</a></li>
+  <li><a href="#ecg">ECG 心电图</a></li>
+  <li><a href="#glucose">血糖检测</a></li>
+  <li><a href="#emotion">情绪 / PPI</a></li>
+  <li><a href="#device-mgmt">设备管理</a></li>
+  <li><a href="#notifications">通知与交互</a></li>
+  <li><a href="#ota">OTA 固件升级</a></li>
+  <li><a href="#storage">数据存储与持久化</a></li>
+  <li><a href="#scoring">健康评分算法</a></li>
+</ol>
+</div>
+
+<!-- 1. Overview -->
+<h2 id="overview">1. 概览</h2>
+
+<div class="card-grid">
+  <div class="card stat"><div class="stat-value">V2.0.35</div><div class="stat-label">SDK 版本</div></div>
+  <div class="card stat"><div class="stat-value">10+</div><div class="stat-label">测量类型</div></div>
+  <div class="card stat"><div class="stat-value">77</div><div class="stat-label">公开头文件</div></div>
+  <div class="card stat"><div class="stat-value">3</div><div class="stat-label">Framework 模块</div></div>
+</div>
+
+<div class="card">
+<table>
+  <tr><th>Framework</th><th>大小</th><th>职责</th></tr>
+  <tr><td><code>RingSDK.framework</code></td><td>6.6 MB</td><td>核心 SDK：BLE 通信、测量、数据采集、ECG AI 模型</td></tr>
+  <tr><td><code>EiotGluSdk.framework</code></td><td>868 KB</td><td>血糖服务端分析（PPG 上传、报告获取）</td></tr>
+  <tr><td><code>AB_FOTA.framework</code></td><td>168 KB</td><td>Apollo 芯片 OTA 固件升级</td></tr>
+</table>
+</div>
+
+<!-- 2. Connection -->
+<h2 id="connection">2. 设备连接生命周期</h2>
+
+<h3>2.1 连接流程</h3>
+<div class="flow">
+  <div class="flow-step">初始化 SDK<br><small><code>setUniqueAppIDKey:</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">扫描设备<br><small><code>startScan</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">绑定设备<br><small><code>bindDevice:(mac)</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">BLE 连接<br><small>自动执行</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">鉴权认证<br><small><code>authorize:</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step"><span class="tag tag-green">已连接</span><br><small>AuthSuccess</small></div>
+</div>
+
+<h3>2.2 设备状态枚举</h3>
+<div class="card">
+<table>
+  <tr><th>状态码</th><th>枚举值</th><th>含义</th></tr>
+  <tr><td>0x01</td><td><code>AuthSuccess</code></td><td><span class="tag tag-green">鉴权成功，可正常使用</span></td></tr>
+  <tr><td>-2</td><td><code>Connected</code></td><td>BLE 已连接，等待鉴权</td></tr>
+  <tr><td>-3</td><td><code>Connecting</code></td><td>连接中</td></tr>
+  <tr><td>-7</td><td><code>Disconnected</code></td><td>已断开</td></tr>
+  <tr><td>0x00</td><td><code>AuthRefused</code></td><td><span class="tag tag-red">戒指拒绝配对</span></td></tr>
+  <tr><td>0x02</td><td><code>AuthBound</code></td><td><span class="tag tag-red">已被其他手机绑定</span></td></tr>
+  <tr><td>0x03</td><td><code>AuthIllegal</code></td><td><span class="tag tag-red">非法厂商 ID</span></td></tr>
+  <tr><td>0x13</td><td><code>BoundOtherCharging</code></td><td>绑定到其他设备（充电中，将重置擦除数据）</td></tr>
+  <tr><td>0x23</td><td><code>BoundOtherNotCharging</code></td><td>绑定到其他设备（未充电，不会重置）</td></tr>
+</table>
+</div>
+
+<h3>2.3 自动重连</h3>
+<div class="highlight">
+  <p>默认开启 <code>setAutoReconnectionEnabled(true)</code>。当 BLE 断开后，SDK 自动尝试重连已绑定的设备。通过 <code>getBindedDeviceObjectFromSystem</code> 可从系统已连接列表中查找已绑定设备。</p>
+</div>
+
+<!-- 3. Data Architecture -->
+<h2 id="data-arch">3. 数据采集架构</h2>
+
+<h3>3.1 三种数据采集模式</h3>
+<div class="card-grid">
+  <div class="card">
+    <h4>实时测量（On-demand）</h4>
+    <p>APP 主动触发单次测量。调用 <code>startMeasurement</code>，戒指执行一次测量后返回结果。</p>
+    <p><span class="tag tag-blue">APP → 戒指 → 结果</span></p>
+  </div>
+  <div class="card">
+    <h4>后台自动监测（Auto-monitoring）</h4>
+    <p>戒指按设定间隔自动采集数据（心率、血氧、体温等），数据存储在戒指本地。</p>
+    <p><span class="tag tag-green">戒指自动 → 本地存储</span></p>
+  </div>
+  <div class="card">
+    <h4>历史数据同步（Sync）</h4>
+    <p>APP 请求某一天的数据，戒指通过多包 BLE 传输返回。</p>
+    <p><span class="tag tag-purple">APP 请求 → 戒指回传</span></p>
+  </div>
+</div>
+
+<h3>3.2 单队列请求模型</h3>
+<div class="warn">
+  <strong>重要约束：</strong>SDK 采用单队列设计，不支持并发请求。每次调用返回 <code>BOOL</code>（YES=命令已发送，NO=队列忙或发送失败）。必须等待当前操作的回调完成后，才能发起下一次请求。
+</div>
+
+<h3>3.3 回调模式</h3>
+<div class="card">
+<table>
+  <tr><th>模式</th><th>说明</th><th>示例</th></tr>
+  <tr><td><strong>ACK + Result</strong></td><td>先确认戒指收到命令，再返回数据</td><td><code>startMeasurement(acked:resultReceived:)</code></td></tr>
+  <tr><td><strong>Completion Block</strong></td><td>单个回调返回成功/失败+数据</td><td><code>fetchConfig(completion:)</code></td></tr>
+  <tr><td><strong>Global Handler</strong></td><td>全局设置一次，持续触发</td><td><code>chargeHandler</code>, <code>rtPPIDateHandle</code></td></tr>
+</table>
+</div>
+
+<!-- 4. Measurements -->
+<h2 id="measurements">4. 测量功能详解</h2>
+
+<div class="card">
+<table>
+  <tr><th>类型</th><th>代码</th><th>状态</th><th>数据格式</th></tr>
+  <tr><td>心率 (HR)</td><td><code>0x01</code></td><td><span class="tag tag-green">支持</span></td><td>float (bpm)</td></tr>
+  <tr><td>血氧 (SpO2)</td><td><code>0x02</code></td><td><span class="tag tag-green">支持</span></td><td>float (%)</td></tr>
+  <tr><td>血压 (BP)</td><td><code>0x03</code></td><td><span class="tag tag-red">不支持</span></td><td>-</td></tr>
+  <tr><td>ECG 心电图</td><td><code>0x04</code></td><td><span class="tag tag-green">独立流程</span></td><td>实时波形 + 诊断报告</td></tr>
+  <tr><td>体温</td><td><code>0x06</code></td><td><span class="tag tag-green">支持</span></td><td>float (°C)</td></tr>
+  <tr><td>体成分 (BC)</td><td><code>0x07</code></td><td><span class="tag tag-green">支持</span></td><td>BMI/体脂率/肌肉量等 15 项</td></tr>
+  <tr><td>血糖</td><td><code>0x08</code></td><td><span class="tag tag-green">独立流程</span></td><td>PPG 数据 + 云端分析</td></tr>
+  <tr><td>压力 (Stress)</td><td><code>0x09</code></td><td><span class="tag tag-green">支持</span></td><td>float (1-100)</td></tr>
+  <tr><td>紫外线 (UV)</td><td><code>0x0A</code></td><td><span class="tag tag-green">v2.0.35 新增</span></td><td>float</td></tr>
+</table>
+</div>
+
+<h3>4.1 标准测量流程</h3>
+<div class="flow">
+  <div class="flow-step">检查功能支持<br><small><code>BTFeatureModel</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">开始测量<br><small><code>startMeasureWithType:</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">等待 ACK<br><small>戒指确认接收</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">接收结果<br><small><code>BTMeasureResult</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">停止测量<br><small><code>stopMeasurementWithType:</code></small></div>
+</div>
+
+<div class="highlight">
+  <p><strong>测量结果：</strong><code>BTMeasureResult</code> 包含 <code>measurementTime</code>（时间戳）、<code>measurementResult</code>（float 值，0 或 -1 表示失败）、<code>measureType</code>、<code>packet</code>（体成分数据）。</p>
+</div>
+
+<h3>4.2 体成分数据字段</h3>
+<div class="card">
+<table>
+  <tr><th>字段</th><th>说明</th></tr>
+  <tr><td><code>bmi</code></td><td>BMI 指数</td></tr>
+  <tr><td><code>bodyFatRate</code></td><td>体脂率</td></tr>
+  <tr><td><code>muscleMass</code></td><td>肌肉量</td></tr>
+  <tr><td><code>skeletalMuscleMass</code></td><td>骨骼肌质量</td></tr>
+  <tr><td><code>hydration / hydrationRate</code></td><td>水分含量 / 水分比例</td></tr>
+  <tr><td><code>proteinMass / proteinMassPercentage</code></td><td>蛋白质 / 蛋白质比例</td></tr>
+  <tr><td><code>boneSaltMass</code></td><td>骨盐量</td></tr>
+  <tr><td><code>basalMetabolicRate</code></td><td>基础代谢率</td></tr>
+  <tr><td><code>standardWeight</code></td><td>标准体重</td></tr>
+</table>
+</div>
+
+<!-- 5. Auto Monitor -->
+<h2 id="auto-monitor">5. 后台自动监测</h2>
+
+<div class="card">
+  <h4>自动监测配置</h4>
+  <p>通过 <code>setDeviceMeasureTime:</code> 设置间隔：</p>
+  <table>
+    <tr><th>值</th><th>含义</th></tr>
+    <tr><td><code>0</code></td><td>连续监测</td></tr>
+    <tr><td><code>1-120</code></td><td>间隔 N 分钟自动测一次</td></tr>
+    <tr><td><code>255</code></td><td>禁用自动监测</td></tr>
+  </table>
+  <p style="margin-top:12px"><strong>自动监测的指标：</strong>心率、HRV、血氧、压力、体温、步数、距离、卡路里。数据累积在戒指本地，通过 <code>fetchHealthData</code> 同步到手机。</p>
+</div>
+
+<!-- 6. Sleep -->
+<h2 id="sleep">6. 睡眠追踪</h2>
+
+<h3>6.1 睡眠模式</h3>
+<div class="card">
+<table>
+  <tr><th>代码</th><th>模式</th><th>颜色标记</th></tr>
+  <tr><td>0x01</td><td>浅睡 (Light)</td><td><span class="tag tag-blue">浅睡</span></td></tr>
+  <tr><td>0x02</td><td>深睡 (Deep)</td><td><span class="tag tag-purple">深睡</span></td></tr>
+  <tr><td>0x03</td><td>清醒 (Awake)</td><td><span class="tag tag-yellow">清醒</span></td></tr>
+  <tr><td>0x04</td><td>未佩戴 (Not Worn)</td><td><span class="tag tag-red">未戴</span></td></tr>
+  <tr><td>0x05</td><td>快速眼动 (REM)</td><td><span class="tag tag-cyan">REM</span></td></tr>
+  <tr><td>0x07</td><td>关机 (Shutdown)</td><td><span class="tag tag-red">关机</span></td></tr>
+</table>
+</div>
+
+<h3>6.2 数据获取流程</h3>
+<div class="flow">
+  <div class="flow-step">注册全局回调<br><small><code>handleSleepData:</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">请求指定日期<br><small><code>fetchSleep(with:)</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">接收数据<br><small>Summary + Details[]</small></div>
+</div>
+
+<h3>6.3 睡眠摘要字段</h3>
+<div class="highlight">
+  <p><code>BTSleepSummaryModel</code> 包含：总睡眠时长、深睡/浅睡/REM/清醒时长、清醒次数、开始/结束时间戳，以及 <code>napDetails</code>（午睡/零星小睡记录）。</p>
+  <p>SDK 提供 <code>calculateSleepSummaryFromDetails:</code> 方法，可从 Detail 数据客户端计算 Summary（不含小睡）。</p>
+</div>
+
+<!-- 7. Sport -->
+<h2 id="sport">7. 运动追踪</h2>
+
+<h3>7.1 运动类型</h3>
+<div class="card">
+  <span class="tag tag-green">室内步行 0x05</span>
+  <span class="tag tag-green">室内单车 0x07</span>
+  <span class="tag tag-green">室内跑步 0x08</span>
+  <span class="tag tag-blue">室外步行 0x09</span>
+  <span class="tag tag-blue">室外跑步 0x0A</span>
+  <span class="tag tag-blue">室外骑行 0x0B</span>
+</div>
+
+<h3>7.2 运动生命周期</h3>
+<div class="flow">
+  <div class="flow-step">生成 SportID<br><small><code>generateSportId()</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">开始<br><small><code>Start 0x9611</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">暂停/恢复<br><small><code>Pause/Resume</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">停止<br><small><code>Stop 0x9614</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">获取数据<br><small>Summary + Detail</small></div>
+</div>
+
+<div class="warn">
+  <strong>约束：</strong>若上一次运动数据未同步（<code>Unsynced</code>），必须先同步数据才能开始新运动。若数据正在上传（<code>UploadingData</code>），需等待完成。
+</div>
+
+<h3>7.3 运动数据</h3>
+<div class="card">
+<table>
+  <tr><th>数据类型</th><th>包含字段</th></tr>
+  <tr><td><strong>实时数据</strong></td><td>心率、卡路里、步数、距离、配速、步频、体温</td></tr>
+  <tr><td><strong>运动摘要</strong></td><td>总时长、卡路里、步数、距离 + 心率/配速/速度/步频的 avg/max/min</td></tr>
+  <tr><td><strong>运动详情</strong></td><td>每段时间的心率、卡路里、步数、距离、体温、配速、速度、步频</td></tr>
+</table>
+</div>
+
+<!-- 8. ECG -->
+<h2 id="ecg">8. ECG 心电图</h2>
+
+<h3>8.1 ECG 工作流程</h3>
+<div class="flow">
+  <div class="flow-step">检查硬件支持<br><small><code>BTFeatureModel.ecgMeasurement</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">开启 Booster 模式<br><small><code>sendECGLatencyMode(true)</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">开始 ECG 测量<br><small><code>startECG(handPreference:)</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">接收实时波形<br><small><code>data: callback</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">AI 诊断完成<br><small><code>dataEnd: callback</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">关闭 Booster<br><small><code>sendECGLatencyMode(false)</code></small></div>
+</div>
+
+<h3>8.2 关键参数</h3>
+<div class="card">
+<table>
+  <tr><th>参数</th><th>说明</th></tr>
+  <tr><td><strong>Booster 模式</strong></td><td>ECG 需要低延迟 BLE 连接。开启后非常耗电，10 秒超时自动关闭</td></tr>
+  <tr><td><strong>手偏好</strong></td><td><code>0x01</code> = 左手，<code>0x02</code> = 右手</td></tr>
+  <tr><td><strong>采样率</strong></td><td>250 Hz（每秒 250 个采样点）</td></tr>
+  <tr><td><strong>ECG 数据包</strong></td><td>每包含多个 <code>BTECGValue</code>（mV 值 + 时间偏移）</td></tr>
+  <tr><td><strong>AI 诊断</strong></td><td>内置 TFLite 模型：<code>beat_model.tflite</code>（心搏分类）+ <code>rhythm_model.tflite</code>（心律分类）</td></tr>
+</table>
+</div>
+
+<h3>8.3 诊断结果</h3>
+<div class="highlight">
+  <p><strong>心率信息：</strong>最低心率、平均心率、最高心率</p>
+  <p><strong>心律分类：</strong>窦性心律 (0)、房颤 (1)、其他异常... + 置信度 (0.0-1.0)</p>
+</div>
+
+<!-- 9. Glucose -->
+<h2 id="glucose">9. 血糖检测</h2>
+
+<h3>9.1 工作流程</h3>
+<div class="flow">
+  <div class="flow-step">初始化 EiotGluSdk<br><small><code>SNNetModel.sharedInstance</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">注册用户<br><small>年龄/性别/体重/身高</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">硬件 PPG 采集<br><small><code>startGluMeasure</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">接收数据包<br><small>20 秒超时</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">上传至云端<br><small><code>uploadPPG</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">获取分析报告<br><small><code>fetchPPGReport</code></small></div>
+</div>
+
+<h3>9.2 数据格式</h3>
+<div class="card">
+  <p><strong>硬件端：</strong>PPG 光电容积脉搏波数据，以 <code>BTGluPacket</code> 形式传输，每包含多个 <code>BTGluValue</code>（16/24 位 PPG 采样值 + hex 字符串）</p>
+  <p><strong>服务端报告：</strong>血糖值、风险等级（riskCode）、洞察文本（insights），支持空腹/餐后状态标记</p>
+</div>
+
+<div class="warn">
+  <strong>网络依赖：</strong>血糖分析必须联网，PPG 原始数据上传至 EiotGluSdk 云服务，由服务端算法计算血糖值。区域配置：<code>"1"</code>=国内，<code>"2"</code>=海外。
+</div>
+
+<!-- 10. Emotion -->
+<h2 id="emotion">10. 情绪 / PPI</h2>
+
+<h3>10.1 PPI 测量模式</h3>
+<div class="card">
+<table>
+  <tr><th>模式</th><th>代码</th><th>说明</th></tr>
+  <tr><td>APP 遥控</td><td><code>mode=1</code></td><td>APP 控制开始和停止</td></tr>
+  <tr><td>定时器</td><td><code>mode=2</code></td><td>设备到时间自动停止</td></tr>
+</table>
+<p style="margin-top:8px"><strong>时长范围：</strong>1 ~ 64800 秒（最长 18 小时）</p>
+</div>
+
+<h3>10.2 情绪分析结果</h3>
+<div class="card-grid">
+  <div class="card">
+    <h4>情绪类型（11 种）</h4>
+    <p>
+      <span class="tag tag-red">焦虑 (1)</span>
+      <span class="tag tag-red">悲伤 (2)</span>
+      <span class="tag tag-red">不愉快 (3)</span>
+      <span class="tag tag-yellow">紧张 (4)</span>
+      <span class="tag tag-yellow">挑战 (5)</span>
+      <span class="tag tag-yellow">困惑 (6)</span>
+      <span class="tag tag-blue">平静 (7)</span>
+      <span class="tag tag-blue">禅意 (8)</span>
+      <span class="tag tag-green">愉悦 (9)</span>
+      <span class="tag tag-green">快乐 (10)</span>
+      <span class="tag tag-green">兴奋 (11)</span>
+    </p>
+  </div>
+  <div class="card">
+    <h4>压力等级（5 级）</h4>
+    <p>
+      <span class="tag tag-green">放松 (1)</span>
+      <span class="tag tag-blue">正常 (2)</span>
+      <span class="tag tag-yellow">中等 (3)</span>
+      <span class="tag tag-orange">偏高 (4)</span>
+      <span class="tag tag-red">严重 (5)</span>
+    </p>
+    <p style="margin-top:8px"><strong>压力分数：</strong>1-99</p>
+  </div>
+</div>
+
+<h3>10.3 PPI 数据流</h3>
+<div class="highlight">
+  <p>实时 PPI 数据通过 <code>rtPPIDateHandle</code> 全局回调持续传入，包含 <code>BTRtPPIPoint</code>（脉搏间隔 ms + 时间戳）和 <code>BTRtLovingPoint</code>（心率、体温、三轴加速度）。PPI 数据发送到情绪服务端进行 Valence（情绪倾向）分析。</p>
+</div>
+
+<!-- 11. Device Management -->
+<h2 id="device-mgmt">11. 设备管理</h2>
+
+<div class="card">
+<table>
+  <tr><th>功能</th><th>API</th><th>说明</th></tr>
+  <tr><td>设备信息</td><td><code>fetchConfig(.information)</code></td><td>软件版本、硬件版本、序列号、蓝牙 MAC、存储容量等</td></tr>
+  <tr><td>功能列表</td><td><code>fetchConfig(.features)</code></td><td>查询支持的测量类型和功能标志</td></tr>
+  <tr><td>电池状态</td><td><code>chargeHandler</code></td><td>电量 0-100% + 充电状态（充电中/未充电/已充满）</td></tr>
+  <tr><td>用户参数</td><td><code>sendSettings(BTUserPrefs)</code></td><td>身高、体重、性别、年龄（影响算法精度）</td></tr>
+  <tr><td>监测间隔</td><td><code>setDeviceMeasureTime:</code></td><td>0=连续 / 1-120分钟 / 255=禁用</td></tr>
+  <tr><td>设备名称</td><td><code>setDeviceName:</code></td><td>最大 18 字节 UTF-8</td></tr>
+  <tr><td>重置/重启</td><td><code>execute(.reset/.restart)</code></td><td>工厂重置（擦除数据）或重启</td></tr>
+  <tr><td>解绑</td><td><code>unbindDevice</code></td><td>断开连接，清除本地绑定信息</td></tr>
+</table>
+</div>
+
+<!-- 12. Notifications -->
+<h2 id="notifications">12. 通知与交互</h2>
+
+<h3>12.1 振动提醒</h3>
+<div class="card">
+  <span class="tag tag-cyan">系统事件 0x01</span>
+  <span class="tag tag-red">健康预警 0x02</span>
+  <span class="tag tag-yellow">闹钟 0x03</span>
+  <span class="tag tag-green">来电 0x04</span>
+  <span class="tag tag-blue">消息 0x05</span>
+  <span class="tag tag-purple">关爱提醒 0x06</span>
+  <p style="margin-top:12px">每种类型可独立开关，支持 5 种振动模式（次数、时长、间隔、频率、音量可配）</p>
+</div>
+
+<h3>12.2 健康预警</h3>
+<div class="card">
+  <p>支持 4 种指标的高/低阈值预警：</p>
+  <span class="tag tag-red">心率</span>
+  <span class="tag tag-blue">血氧</span>
+  <span class="tag tag-yellow">体温</span>
+  <span class="tag tag-purple">压力</span>
+  <p style="margin-top:8px">每项可分别设置高阈值和低阈值，以及开关状态。</p>
+</div>
+
+<h3>12.3 触控模式</h3>
+<div class="card">
+  <span class="tag tag-blue">自由模式</span>
+  <span class="tag tag-green">音乐控制</span>
+  <span class="tag tag-purple">拍照</span>
+  <span class="tag tag-cyan">视频</span>
+  <span class="tag tag-yellow">翻页阅读</span>
+  <span class="tag tag-orange">幻灯片</span>
+  <span class="tag tag-blue">TV 遥控</span>
+  <span class="tag tag-green">网页浏览</span>
+  <span class="tag tag-purple">魔方</span>
+  <span class="tag tag-red">传情</span>
+  <span class="tag tag-cyan">自定义</span>
+  <p style="margin-top:12px"><strong>触控事件：</strong>长按 (0x0103)、上滑 (0x0104)、下滑 (0x0105)</p>
+</div>
+
+<h3>12.4 闹钟 &amp; SOS</h3>
+<div class="highlight">
+  <p><strong>闹钟：</strong>最多 5 个，每个可设小时/分钟、重复星期、持续时长、名称。</p>
+  <p><strong>SOS：</strong>可配置电源键按压次数触发 SOS 警报，触发记录通过健康数据同步。</p>
+</div>
+
+<!-- 13. OTA -->
+<h2 id="ota">13. OTA 固件升级</h2>
+
+<h3>13.1 三种芯片平台</h3>
+<div class="card">
+<table>
+  <tr><th>平台</th><th>upgradeType</th><th>升级 SDK</th></tr>
+  <tr><td>RTK (Realtek)</td><td>1</td><td><code>RTKOTAUpdater</code>（内置于 RingSDK）</td></tr>
+  <tr><td>ZK (中科蓝讯)</td><td>2</td><td><code>ABOTAModel</code>（AB_FOTA.framework）</td></tr>
+  <tr><td>APO (Apollo)</td><td>3</td><td><code>BLEOtaManager</code>（AB_FOTA.framework）</td></tr>
+</table>
+</div>
+
+<h3>13.2 升级流程</h3>
+<div class="flow">
+  <div class="flow-step">查询设备信息<br><small>获取 upgradeType</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">检查云端版本<br><small><code>checkOTAUpdate</code></small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">下载固件<br><small>Downloading</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">安装升级<br><small>Progress 0-100%</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">完成/失败<br><small>Success / Failed</small></div>
+</div>
+
+<div class="warn">
+  <strong>ZK 升级特殊处理：</strong>需先关闭自动重连，获取系统连接的 Peripheral，然后通过 AB_FOTA 的 OTA 通道进行升级。升级完成后重新开启自动重连。
+</div>
+
+<!-- 14. Storage -->
+<h2 id="storage">14. 数据存储与持久化</h2>
+
+<h3>14.1 数据序列化</h3>
+<div class="card">
+  <p>几乎所有数据模型都支持 JSON 序列化：</p>
+  <p><code>toJSONString</code> / <code>fromJSONString:</code></p>
+  <p>包括：<code>BTHealthModel</code>、<code>BTSleepDetailModel</code>、<code>BTSleepSummaryModel</code>、<code>BTSportSummaryModel</code>、<code>BTSportDetailModel</code>、<code>BodyCompostionPacket</code>、<code>BTMeasureResult</code>、<code>BTAboutModel</code>、<code>Ring</code> 等</p>
+</div>
+
+<h3>14.2 原始数据上传</h3>
+<div class="card">
+  <p><code>BTOriginalDataManager</code> 支持从戒指上传原始传感器数据：</p>
+  <table>
+    <tr><th>类型</th><th>代码</th></tr>
+    <tr><td>健康数据</td><td>1</td></tr>
+    <tr><td>睡眠数据</td><td>2</td></tr>
+    <tr><td>小睡数据</td><td>3</td></tr>
+    <tr><td>血糖数据</td><td>4</td></tr>
+    <tr><td>ECG 数据</td><td>5</td></tr>
+    <tr><td>PPI 数据</td><td>6</td></tr>
+    <tr><td>UV 数据</td><td>8</td></tr>
+  </table>
+  <p style="margin-top:8px">通过分包传输 + ACK 确认机制，每包最大 144 字节，可配置 ACK 频率和超时。</p>
+</div>
+
+<h3>14.3 日志管理</h3>
+<div class="highlight">
+  <p>BLE 通信日志存储在 <code>Caches/RingSDK/</code> 目录，按日期轮换。可通过 <code>setLogEnable:</code> 控制，<code>clearLogs</code> 清除。</p>
+</div>
+
+<!-- 15. Scoring -->
+<h2 id="scoring">15. 健康评分算法</h2>
+
+<h3>15.1 评分结构</h3>
+<div class="arch-diagram"><span class="hl">BTHealthScore</span> (综合评分)
+├── <span class="hl2">BTSleepScore</span> (睡眠评分)
+│   ├── sleepScore         总分
+│   ├── sleepDurationScore 时长得分
+│   ├── sleepEfficiencyScore 效率得分
+│   ├── deepSleepScore     深睡得分
+│   ├── remSleepScore      REM 得分
+│   ├── restfulnessScore   安稳度得分
+│   └── sleepBreathScore   呼吸得分
+├── <span class="hl3">BTActivityScore</span> (活动评分)
+│   ├── activityScore      总分
+│   ├── stayActivityScore  日常活动得分
+│   ├── meatDailyGoalScore 目标达成得分
+│   ├── exerciseFrequencyScore 锻炼频率得分
+│   └── exerciseVolumeScore    锻炼量得分
+└── <span class="hl">BTReadinessScore</span> (准备度评分)
+    ├── readinessScore     总分
+    ├── previousSleepScore 昨晚睡眠得分
+    ├── previousActivityScore 昨日活动得分
+    ├── recoveryIndexScore 恢复指数得分
+    ├── temperatureScore   体温变化得分
+    └── rhrScore           静息心率得分</div>
+
+<div class="warn">
+  <strong>计算要求：</strong>需要目标日期 + 前 7 天的睡眠摘要、健康数据、运动摘要、历史评分记录。数据不足时评分精度降低。
+</div>
+
+<h2 style="margin-top:64px; text-align:center; border:none; color:var(--muted)">— End of Report —</h2>
+<p style="text-align:center; color:var(--muted); margin-top:8px">Generated for Vvewell Project &bull; RingSDK V2.0.35 &bull; 2026-03-30</p>
+
+</div>
+</body>
+</html>
