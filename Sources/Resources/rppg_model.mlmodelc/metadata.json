@@ -1,0 +1,812 @@
+[
+  {
+    "metadataOutputVersion" : "3.0",
+    "storagePrecision" : "Float16",
+    "outputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1)",
+        "shortDescription" : "",
+        "shape" : "[1, 1]",
+        "name" : "var_1555",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 36 × 36 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 36, 36, 32]",
+        "name" : "second_13",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 36 × 36 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 36, 36, 32]",
+        "name" : "first_11",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "var_358",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_tensor_53",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 36 × 36 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 36, 36, 32]",
+        "name" : "second_75",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 36 × 36 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 36, 36, 32]",
+        "name" : "first_59",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "var_495",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_tensor_193",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 18 × 18 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 18, 18, 32]",
+        "name" : "second_139",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 18 × 18 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 18, 18, 32]",
+        "name" : "first_111",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "var_641",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_tensor_343",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 18 × 18 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 18, 18, 32]",
+        "name" : "second_201",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 18 × 18 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 18, 18, 32]",
+        "name" : "first_159",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "var_778",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_tensor_483",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 9 × 9 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 9, 9, 32]",
+        "name" : "second_265",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 9 × 9 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 9, 9, 32]",
+        "name" : "first_211",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "var_924",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_tensor_633",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 9 × 9 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 9, 9, 32]",
+        "name" : "second_327",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 9 × 9 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 9, 9, 32]",
+        "name" : "first_259",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "var_1061",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_tensor_773",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 5 × 5 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 5, 5, 32]",
+        "name" : "second_423",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 5 × 5 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 5, 5, 32]",
+        "name" : "first_337",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "var_1208",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_tensor_981",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 5 × 5 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 5, 5, 32]",
+        "name" : "second_485",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 5 × 5 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 5, 5, 32]",
+        "name" : "first_385",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "var_1345",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_tensor_1121",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 2 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 2, 32, 128]",
+        "name" : "var_1460",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 320)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 320]",
+        "name" : "input_tensor_1305",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 2 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 2, 32, 128]",
+        "name" : "var_1546",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 320)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 320]",
+        "name" : "input_tensor_1393",
+        "type" : "MultiArray"
+      }
+    ],
+    "modelParameters" : [
+
+    ],
+    "specificationVersion" : 8,
+    "mlProgramOperationTypeHistogram" : {
+      "Ios16.softplus" : 10,
+      "Ios17.reshape" : 50,
+      "Ios17.exp" : 11,
+      "Ios16.reduceMean" : 19,
+      "Ios17.matmul" : 14,
+      "Ios17.transpose" : 60,
+      "Split" : 20,
+      "Ios17.expandDims" : 116,
+      "Ios17.add" : 76,
+      "Ios17.sliceByIndex" : 41,
+      "Pad" : 2,
+      "Ios16.silu" : 20,
+      "Ios17.sub" : 17,
+      "Ios17.conv" : 30,
+      "Ios16.relu" : 16,
+      "Ios17.realDiv" : 18,
+      "Ios17.linear" : 38,
+      "Ios17.concat" : 10,
+      "Ios17.pow" : 26,
+      "Ios17.tanh" : 8,
+      "Ios17.sqrt" : 10,
+      "Ios17.mul" : 129
+    },
+    "computePrecision" : "Mixed (Float16, Int32)",
+    "isUpdatable" : "0",
+    "stateSchema" : [
+
+    ],
+    "availability" : {
+      "macOS" : "14.0",
+      "tvOS" : "17.0",
+      "visionOS" : "1.0",
+      "watchOS" : "10.0",
+      "iOS" : "17.0",
+      "macCatalyst" : "17.0"
+    },
+    "modelType" : {
+      "name" : "MLModelType_mlProgram"
+    },
+    "userDefinedMetadata" : {
+      "com.github.apple.coremltools.conversion_date" : "2026-04-01",
+      "com.github.apple.coremltools.source" : "torch==2.10.0",
+      "com.github.apple.coremltools.version" : "9.0",
+      "com.github.apple.coremltools.source_dialect" : "TorchScript"
+    },
+    "inputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 36 × 36 × 3)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 36, 36, 3]",
+        "name" : "input_1",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 36 × 36 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 36, 36, 32]",
+        "name" : "input_2",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 36 × 36 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 36, 36, 32]",
+        "name" : "input_3",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "input_4",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_5",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 36 × 36 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 36, 36, 32]",
+        "name" : "input_6",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 36 × 36 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 36, 36, 32]",
+        "name" : "input_7",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "input_8",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_9",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 18 × 18 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 18, 18, 32]",
+        "name" : "input_10",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 18 × 18 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 18, 18, 32]",
+        "name" : "input_11",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "input_12",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_13",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 18 × 18 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 18, 18, 32]",
+        "name" : "input_14",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 18 × 18 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 18, 18, 32]",
+        "name" : "input_15",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "input_16",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_17",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 9 × 9 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 9, 9, 32]",
+        "name" : "input_18",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 9 × 9 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 9, 9, 32]",
+        "name" : "input_19",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "input_20",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_21",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 9 × 9 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 9, 9, 32]",
+        "name" : "input_22",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 9 × 9 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 9, 9, 32]",
+        "name" : "input_23",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "input_24",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_25",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 5 × 5 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 5, 5, 32]",
+        "name" : "input_26",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 5 × 5 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 5, 5, 32]",
+        "name" : "input_27",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "input_28",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_29",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 5 × 5 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 5, 5, 32]",
+        "name" : "input_30",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 5 × 5 × 32)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 5, 5, 32]",
+        "name" : "input_31",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 4 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 4, 32, 128]",
+        "name" : "input_32",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 384)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 384]",
+        "name" : "input_33",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 2 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 2, 32, 128]",
+        "name" : "input_34",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 320)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 320]",
+        "name" : "input_35",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 2 × 32 × 128)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 2, 32, 128]",
+        "name" : "input_36",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 320)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 320]",
+        "name" : "input_37",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1)",
+        "shortDescription" : "",
+        "shape" : "[1]",
+        "name" : "input_38",
+        "type" : "MultiArray"
+      }
+    ],
+    "generatedClassName" : "rppg_model",
+    "method" : "predict"
+  }
+]

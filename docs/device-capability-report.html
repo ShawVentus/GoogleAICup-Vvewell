@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vvewell Ring 设备能力报告</title>
+<style>
+  :root{--bg:#0f1117;--card:#1a1d27;--border:#2a2d3a;--text:#e1e4eb;--muted:#8b8fa3;--accent:#6c8cff;--green:#4ade80;--yellow:#fbbf24;--red:#f87171;--cyan:#22d3ee;--purple:#a78bfa;--orange:#fb923c}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,'SF Pro Text',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+  .container{max-width:1100px;margin:0 auto;padding:40px 24px}
+  h1{font-size:2.2em;font-weight:700;margin-bottom:8px;background:linear-gradient(135deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .subtitle{color:var(--muted);font-size:1.05em;margin-bottom:48px}
+  h2{font-size:1.5em;font-weight:600;color:var(--accent);margin:48px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+  h3{font-size:1.15em;font-weight:600;color:var(--cyan);margin:28px 0 12px}
+  p{margin:8px 0}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:16px 0}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.92em}
+  th{background:#242736;color:var(--accent);font-weight:600;text-align:left;padding:10px 14px}
+  td{padding:10px 14px;border-top:1px solid var(--border)}
+  tr:hover td{background:#1e2130}
+  code{background:#242736;color:var(--cyan);padding:2px 8px;border-radius:4px;font-size:0.88em;font-family:'SF Mono',monospace}
+  .tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:0.78em;font-weight:600;margin:2px 2px}
+  .tag-on{background:rgba(74,222,128,0.15);color:var(--green)}
+  .tag-remote{background:rgba(34,211,238,0.15);color:var(--cyan)}
+  .tag-always{background:rgba(167,139,250,0.15);color:var(--purple)}
+  .tag-off{background:rgba(139,143,163,0.12);color:#666}
+  .stat{text-align:center;padding:20px}
+  .stat-value{font-size:2.2em;font-weight:700}
+  .stat-label{color:var(--muted);font-size:0.9em;margin-top:4px}
+  .ring{width:120px;height:120px;border-radius:50%;margin:0 auto 12px;position:relative;display:flex;align-items:center;justify-content:center}
+  .ring svg{position:absolute;top:0;left:0}
+  .highlight{border-left:3px solid var(--accent);padding-left:16px;margin:16px 0}
+  .warn{border-left:3px solid var(--yellow);padding:12px 16px;margin:16px 0;background:rgba(251,191,36,0.05);border-radius:0 8px 8px 0}
+  .plan-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin:12px 0}
+  .plan-card h4{color:var(--cyan);margin-bottom:8px}
+  .plan-card .priority{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.75em;font-weight:600;margin-right:8px}
+  .p-high{background:rgba(248,113,113,0.15);color:var(--red)}
+  .p-med{background:rgba(251,191,36,0.15);color:var(--yellow)}
+  .p-low{background:rgba(139,143,163,0.12);color:var(--muted)}
+  .feature-row{display:flex;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+  .feature-row:last-child{border-bottom:none}
+  .feature-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-right:12px;flex-shrink:0}
+  .feature-info{flex:1}
+  .feature-name{font-size:0.95em;font-weight:500}
+  .feature-desc{font-size:0.8em;color:var(--muted)}
+  .feature-status{flex-shrink:0;margin-left:8px}
+  @media(max-width:600px){.container{padding:20px 16px}h1{font-size:1.6em}.card-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Vvewell Ring 设备能力报告</h1>
+<p class="subtitle">基于真机 BTFeatureModel 查询 + 实际测量验证 &mdash; 15 of 28 features flagged + Stress 实测可用</p>
+
+<!-- Summary -->
+<div class="card-grid">
+  <div class="card stat">
+    <div class="ring">
+      <svg width="120" height="120" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="8"/>
+        <circle cx="60" cy="60" r="54" fill="none" stroke="#4ade80" stroke-width="8" stroke-linecap="round"
+          stroke-dasharray="339" stroke-dashoffset="157" transform="rotate(-90 60 60)"/>
+      </svg>
+      <div style="z-index:1;text-align:center">
+        <div class="stat-value" style="color:var(--green)">15</div>
+        <div style="color:var(--muted);font-size:0.8em">/ 28</div>
+      </div>
+    </div>
+    <div class="stat-label">Features Supported</div>
+  </div>
+  <div class="card stat">
+    <div class="stat-value" style="color:var(--cyan)">3</div>
+    <div class="stat-label">Remote Trigger<br><span style="font-size:0.85em">APP 可远程触发测量</span></div>
+  </div>
+  <div class="card stat">
+    <div class="stat-value" style="color:var(--purple)">2</div>
+    <div class="stat-label">Always On<br><span style="font-size:0.85em">常开功能</span></div>
+  </div>
+  <div class="card stat">
+    <div class="stat-value" style="color:var(--red)">13</div>
+    <div class="stat-label">Not Supported<br><span style="font-size:0.85em">硬件不支持</span></div>
+  </div>
+</div>
+
+<!-- Measurement -->
+<h2>1. 健康测量能力 (Measurement)</h2>
+
+<div class="card">
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(248,113,113,0.15)">❤️</div>
+    <div class="feature-info">
+      <div class="feature-name">Heart Rate 心率</div>
+      <div class="feature-desc">实时和持续心率监测，支持 APP 远程触发测量</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-remote">REMOTE = 3</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(96,165,250,0.15)">🫁</div>
+    <div class="feature-info">
+      <div class="feature-name">Blood Oxygen 血氧</div>
+      <div class="feature-desc">SpO2 血氧饱和度测量，支持 APP 远程触发</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-remote">REMOTE = 3</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(251,191,36,0.15)">🌡</div>
+    <div class="feature-info">
+      <div class="feature-name">Body Temperature 体温</div>
+      <div class="feature-desc">体表温度追踪，支持 APP 远程触发</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-remote">REMOTE = 3</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(139,143,163,0.08)">💜</div>
+    <div class="feature-info">
+      <div class="feature-name" style="color:#666">ECG 心电图</div>
+      <div class="feature-desc">心电图记录与 AI 心律分析 — 硬件不支持</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-off">OFF = 0</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(74,222,128,0.15)">🧠</div>
+    <div class="feature-info">
+      <div class="feature-name">Stress 压力</div>
+      <div class="feature-desc">基于 HRV 的压力水平评估 — <strong style="color:var(--yellow)">特性标记=0 但实测可用</strong></div>
+    </div>
+    <div class="feature-status"><span class="tag tag-on" style="background:rgba(251,191,36,0.15);color:var(--yellow)">FLAG=0 实测OK</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(139,143,163,0.08)">⚖️</div>
+    <div class="feature-info">
+      <div class="feature-name" style="color:#666">Body Composition 体成分</div>
+      <div class="feature-desc">BMI、体脂率、肌肉量等 — 硬件不支持</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-off">OFF = 0</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(139,143,163,0.08)">🩸</div>
+    <div class="feature-info">
+      <div class="feature-name" style="color:#666">Blood Glucose 血糖</div>
+      <div class="feature-desc">PPG 血糖估算 + 云端分析 — 硬件不支持</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-off">OFF = 0</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(139,143,163,0.08)">😊</div>
+    <div class="feature-info">
+      <div class="feature-name" style="color:#666">Emotion / PPI 情绪</div>
+      <div class="feature-desc">实时脉搏间隔的情绪与疲劳分析 — 硬件不支持</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-off">OFF = 0</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(139,143,163,0.08)">☀️</div>
+    <div class="feature-info">
+      <div class="feature-name" style="color:#666">UV Radiation 紫外线</div>
+      <div class="feature-desc">紫外线指数测量 — 硬件不支持</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-off">OFF = 0</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(167,139,250,0.15)">💤</div>
+    <div class="feature-info">
+      <div class="feature-name">Sleep 睡眠</div>
+      <div class="feature-desc">睡眠阶段追踪：深睡、浅睡、REM、清醒</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-on">ON = 1</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(248,113,113,0.15)">📅</div>
+    <div class="feature-info">
+      <div class="feature-name">Menstrual Cycle 生理周期</div>
+      <div class="feature-desc">女性生理周期追踪</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-on">ON = 1</span></div>
+  </div>
+</div>
+
+<div class="warn">
+  <strong>关键发现：</strong>11 项测量能力中 6 项可用（心率、血氧、体温、压力、睡眠、生理周期）。<br>
+  <strong style="color:var(--yellow)">⚠ 特性标记不可靠：</strong>Stress 的 feature flag=0（不支持），但实测能正常返回数值。说明 SDK 特性标记并不完全准确，不能仅凭 flag 决定是否隐藏功能，需要结合实际测量验证。<br>
+  ECG、体成分、血糖、情绪、UV 确认不支持。快速检测可执行 4 项（心率、血氧、体温、压力）。
+</div>
+
+<!-- Interaction -->
+<h2>2. 交互能力 (Interaction)</h2>
+
+<div class="card">
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(74,222,128,0.15)">👆</div>
+    <div class="feature-info">
+      <div class="feature-name">Touch Switch 触控开关</div>
+      <div class="feature-desc">开启/关闭戒指触控功能</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-on">ON = 1</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(74,222,128,0.15)">✋</div>
+    <div class="feature-info">
+      <div class="feature-name">Gesture Wakeup 手势唤醒</div>
+      <div class="feature-desc">无需触控即可通过手势唤醒戒指</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-on">ON = 1</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(74,222,128,0.15)">🎬</div>
+    <div class="feature-info">
+      <div class="feature-name">Touch Video Mode 视频触控</div>
+      <div class="feature-desc">通过触控手势控制视频播放</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-on">ON = 1</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(139,143,163,0.08)">🌐</div>
+    <div class="feature-info">
+      <div class="feature-name" style="color:#666">Touch Web Mode 网页触控</div>
+      <div class="feature-desc">通过触控手势滚动网页 — 不支持</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-off">OFF = 0</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(167,139,250,0.15)">😴</div>
+    <div class="feature-info">
+      <div class="feature-name">Touch Sleep Mode 触控休眠</div>
+      <div class="feature-desc">睡眠时自动关闭触控（常开）</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-always">ALWAYS = 2</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(139,143,163,0.08)">⏱</div>
+    <div class="feature-info">
+      <div class="feature-name" style="color:#666">Touch Sleep Delay 休眠延时</div>
+      <div class="feature-desc">触控自动休眠延时设置 — 不支持</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-off">OFF = 0</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(139,143,163,0.08)">🪄</div>
+    <div class="feature-info">
+      <div class="feature-name" style="color:#666">One-Key Magic 一键魔方</div>
+      <div class="feature-desc">单按快捷启动 — 不支持</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-off">OFF = 0</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(167,139,250,0.15)">📳</div>
+    <div class="feature-info">
+      <div class="feature-name">Vibration 振动</div>
+      <div class="feature-desc">通知和提醒的触觉反馈（常开）</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-always">ALWAYS = 2</span></div>
+  </div>
+</div>
+
+<!-- Safety -->
+<h2>3. 安全功能 (Safety)</h2>
+
+<div class="card">
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(248,113,113,0.15)">🆘</div>
+    <div class="feature-info">
+      <div class="feature-name">SOS 紧急求救</div>
+      <div class="feature-desc">按键触发紧急警报。触发模式：TP 触控 + 手势（both = 3）</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-on">ON = 1</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(248,113,113,0.15)">💕</div>
+    <div class="feature-info">
+      <div class="feature-name">Care Reminder 关爱提醒</div>
+      <div class="feature-desc">向家庭成员发送特殊关怀通知</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-on">ON = 1</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(96,165,250,0.15)">🔔</div>
+    <div class="feature-info">
+      <div class="feature-name">Message Notice 消息通知</div>
+      <div class="feature-desc">将手机通知推送到戒指</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-on">ON = 1</span></div>
+  </div>
+</div>
+
+<!-- Advanced -->
+<h2>4. 高级功能 (Advanced)</h2>
+
+<div class="card">
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(139,143,163,0.08)">🌙</div>
+    <div class="feature-info">
+      <div class="feature-name" style="color:#666">Philips Sleep 飞利浦睡眠算法</div>
+      <div class="feature-desc">增强型睡眠分析算法 — 不支持</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-off">OFF = 0</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(251,146,60,0.15)">🏃</div>
+    <div class="feature-info">
+      <div class="feature-name">Multi-Sport 多运动模式</div>
+      <div class="feature-desc">扩展运动模式（超过基础 6 种）</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-on">ON = 1</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(139,143,163,0.08)">🎤</div>
+    <div class="feature-info">
+      <div class="feature-name" style="color:#666">Recording 录音</div>
+      <div class="feature-desc">通过戒指麦克风录音 — 不支持</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-off">OFF = 0</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(139,143,163,0.08)">💡</div>
+    <div class="feature-info">
+      <div class="feature-name" style="color:#666">Color Light 彩灯</div>
+      <div class="feature-desc">RGB LED 指示灯 — 不支持</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-off">OFF = 0</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(167,139,250,0.15)">🔇</div>
+    <div class="feature-info">
+      <div class="feature-name">Do Not Disturb 免打扰</div>
+      <div class="feature-desc">睡眠时段静音通知</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-on">ON = 1</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(139,143,163,0.08)">🤚</div>
+    <div class="feature-info">
+      <div class="feature-name" style="color:#666">New Hand Mode 新手势</div>
+      <div class="feature-desc">增强手势识别 — 不支持</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-off">OFF = 0</span></div>
+  </div>
+  <div class="feature-row">
+    <div class="feature-icon" style="background:rgba(139,143,163,0.08)">📅</div>
+    <div class="feature-info">
+      <div class="feature-name" style="color:#666">Menstrual v2 生理周期 v2</div>
+      <div class="feature-desc">改进的周期预测算法 — 不支持</div>
+    </div>
+    <div class="feature-status"><span class="tag tag-off">OFF = 0</span></div>
+  </div>
+</div>
+
+<!-- Impact Analysis -->
+<h2>5. 影响分析</h2>
+
+<h3>当前可用的健康检测功能</h3>
+<div class="card">
+<table>
+  <tr><th>功能</th><th>方式</th><th>状态</th></tr>
+  <tr><td>❤️ Heart Rate</td><td>实时测量 (Remote Trigger)</td><td><span class="tag tag-on">可用</span></td></tr>
+  <tr><td>🫁 Blood Oxygen</td><td>实时测量 (Remote Trigger)</td><td><span class="tag tag-on">可用</span></td></tr>
+  <tr><td>🌡 Body Temperature</td><td>实时测量 (Remote Trigger)</td><td><span class="tag tag-on">可用</span></td></tr>
+  <tr><td>🧠 Stress</td><td>实时测量 <strong style="color:var(--yellow)">(flag=0 但实测可用)</strong></td><td><span class="tag tag-on">可用</span></td></tr>
+  <tr><td>💤 Sleep</td><td>自动追踪 + 数据同步</td><td><span class="tag tag-on">可用</span></td></tr>
+  <tr><td>📅 Menstrual Cycle</td><td>周期追踪</td><td><span class="tag tag-on">可用</span></td></tr>
+  <tr><td>🏃 Multi-Sport</td><td>运动模式追踪 <strong style="color:var(--yellow)">(仅心率+体温，无步数/卡路里/距离)</strong></td><td><span class="tag tag-on" style="background:rgba(251,191,36,0.15);color:var(--yellow)">部分可用</span></td></tr>
+  <tr><td>🆘 SOS</td><td>TP + 手势双触发</td><td><span class="tag tag-on">可用</span></td></tr>
+  <tr><td>📳 Vibration</td><td>通知/提醒振动（常开）</td><td><span class="tag tag-on">可用</span></td></tr>
+  <tr><td>🔔 Message Notice</td><td>手机消息推送到戒指</td><td><span class="tag tag-on">可用</span></td></tr>
+</table>
+</div>
+
+<h3>APP 代码需要调整的地方</h3>
+<div class="warn">
+  <strong>⚠ 重要经验：</strong>SDK 特性标记（BTFeatureModel）不完全可靠。Stress flag=0 但实测可正常返回数据。<strong>不能仅凭 feature flag 决定功能可用性</strong>，需结合实际测量结果验证。当前 Stress 保持在快速检测序列中，不做移除。
+</div>
+
+<div class="card">
+<table>
+  <tr><th>代码位置</th><th>当前行为</th><th>需要修改</th></tr>
+  <tr><td><code>SportViewController</code> 实时数据</td><td>显示心率/卡路里/步数/距离</td><td>卡路里/步数/距离在此设备返回 0，需优雅处理（显示 "--" 而非 0）</td></tr>
+  <tr><td><code>SportViewController</code> 运动摘要</td><td>显示全部字段</td><td>同上，零值字段显示 "--"</td></tr>
+  <tr><td>ECG / Glucose / Emotion 入口</td><td>始终可见</td><td>根据 feature flag 隐藏不支持的专项入口</td></tr>
+  <tr><td>Capabilities 标签</td><td>显示所有标签</td><td>隐藏不支持的标签（ECG/Glucose/Emotion/UV/BC）</td></tr>
+</table>
+</div>
+
+<!-- Next Steps -->
+<h2>6. 下一步功能计划</h2>
+
+<div class="plan-card">
+  <h4><span class="priority p-high">HIGH</span> 修复运动数据零值显示</h4>
+  <p style="color:var(--muted);font-size:0.9em">Sport 实时数据和摘要中，卡路里/步数/距离在此设备返回 0。需将 0 值显示为 "--" 而非 "0"，避免用户误解。同时只突出显示有数据返回的指标（心率、体温）。</p>
+</div>
+
+<div class="plan-card">
+  <h4><span class="priority p-high">HIGH</span> 隐藏不支持的专项入口</h4>
+  <p style="color:var(--muted);font-size:0.9em">ECG=0, Glucose=0, Emotion=0 — 对应的 Capabilities 标签和跳转入口应根据 feature flag 动态隐藏。</p>
+</div>
+
+<div class="plan-card">
+  <h4><span class="priority p-high">HIGH</span> 完善睡眠数据展示</h4>
+  <p style="color:var(--muted);font-size:0.9em">Sleep=1 支持。当前只有基础摘要卡片，应添加详细的睡眠阶段时间轴、7 天趋势、评分。</p>
+</div>
+
+<div class="plan-card">
+  <h4><span class="priority p-med">MED</span> 实现多运动模式</h4>
+  <p style="color:var(--muted);font-size:0.9em">multiSport=1 支持。SportViewController 已有基础框架，需完善运动类型选择和实时数据展示。</p>
+</div>
+
+<div class="plan-card">
+  <h4><span class="priority p-med">MED</span> 实现 SOS 配置</h4>
+  <p style="color:var(--muted);font-size:0.9em">SOS=1, triggerMode=3（TP+手势）。需在设备详情页添加 SOS 开关和触发模式说明。</p>
+</div>
+
+<div class="plan-card">
+  <h4><span class="priority p-med">MED</span> 实现消息通知推送</h4>
+  <p style="color:var(--muted);font-size:0.9em">messageNotice=1 支持。需实现来电/短信/APP 通知到戒指的推送配置页面。</p>
+</div>
+
+<div class="plan-card">
+  <h4><span class="priority p-med">MED</span> 实现振动设置</h4>
+  <p style="color:var(--muted);font-size:0.9em">vibration=2（常开）。需实现振动模式配置（通知类型、强度、时长）。</p>
+</div>
+
+<div class="plan-card">
+  <h4><span class="priority p-low">LOW</span> 实现触控模式管理</h4>
+  <p style="color:var(--muted);font-size:0.9em">touchSwitch=1, gestureWakeup=1, videoMode=1。需添加触控模式切换页面。</p>
+</div>
+
+<div class="plan-card">
+  <h4><span class="priority p-low">LOW</span> 生理周期追踪</h4>
+  <p style="color:var(--muted);font-size:0.9em">menstrualCycle=1 支持。需设计周期记录和预测 UI（仅女性用户显示）。</p>
+</div>
+
+<div class="plan-card">
+  <h4><span class="priority p-low">LOW</span> 免打扰模式配置</h4>
+  <p style="color:var(--muted);font-size:0.9em">doNotDisturb=1 支持。需在设备设置中添加免打扰时段配置。</p>
+</div>
+
+<h2 style="margin-top:64px;text-align:center;border:none;color:var(--muted)">— End of Report —</h2>
+<p style="text-align:center;color:var(--muted);margin-top:8px">Vvewell Ring Capability Report &bull; 2026-04-01</p>
+
+</div>
+</body>
+</html>

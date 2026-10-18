@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数据传输规范设计</title>
+<style>
+  :root{--bg:#0f1117;--card:#1a1d27;--border:#2a2d3a;--text:#e1e4eb;--muted:#8b8fa3;--accent:#6c8cff;--green:#4ade80;--yellow:#fbbf24;--red:#f87171;--cyan:#22d3ee;--purple:#a78bfa;--orange:#fb923c}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,'SF Pro Text',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+  .container{max-width:1100px;margin:0 auto;padding:40px 24px}
+  h1{font-size:2.2em;font-weight:700;margin-bottom:8px;background:linear-gradient(135deg,var(--orange),var(--red));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .subtitle{color:var(--muted);font-size:1.05em;margin-bottom:48px}
+  h2{font-size:1.5em;font-weight:600;color:var(--accent);margin:48px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+  h3{font-size:1.15em;font-weight:600;color:var(--cyan);margin:28px 0 12px}
+  p{margin:8px 0}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:16px 0}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.92em}
+  th{background:#242736;color:var(--accent);font-weight:600;text-align:left;padding:10px 14px}
+  td{padding:10px 14px;border-top:1px solid var(--border)}
+  tr:hover td{background:#1e2130}
+  code{background:#242736;color:var(--cyan);padding:2px 8px;border-radius:4px;font-size:0.88em;font-family:'SF Mono',monospace}
+  pre{background:#1e2130;border:1px solid var(--border);border-radius:8px;padding:16px;overflow-x:auto;font-size:0.82em;line-height:1.5;font-family:'SF Mono',monospace;color:var(--muted);margin:12px 0}
+  .arch{background:#242736;border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0;font-family:'SF Mono',monospace;font-size:0.85em;line-height:1.6;white-space:pre;overflow-x:auto;color:var(--muted)}
+  .arch .hl{color:var(--accent)} .arch .hl2{color:var(--cyan)} .arch .hl3{color:var(--green)} .arch .hl4{color:var(--purple)} .arch .cm{color:#555}
+  .tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:0.8em;font-weight:500;margin:2px 4px 2px 0}
+  .tag-green{background:rgba(74,222,128,0.15);color:var(--green)}
+  .tag-blue{background:rgba(108,140,255,0.15);color:var(--accent)}
+  .tag-purple{background:rgba(167,139,250,0.15);color:var(--purple)}
+  .tag-yellow{background:rgba(251,191,36,0.15);color:var(--yellow)}
+  .tag-red{background:rgba(248,113,113,0.15);color:var(--red)}
+  .tag-cyan{background:rgba(34,211,238,0.15);color:var(--cyan)}
+  .tag-orange{background:rgba(251,146,60,0.15);color:var(--orange)}
+  .warn{border-left:3px solid var(--yellow);padding:12px 16px;margin:16px 0;background:rgba(251,191,36,0.05);border-radius:0 8px 8px 0}
+  .highlight{border-left:3px solid var(--accent);padding-left:16px;margin:16px 0}
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0}
+  .flow-step{background:#242736;border:1px solid var(--border);border-radius:8px;padding:8px 16px;font-size:0.88em;text-align:center}
+  .flow-arrow{color:var(--muted);font-size:1.2em}
+  .stat{text-align:center;padding:20px}
+  .stat-value{font-size:2em;font-weight:700;color:var(--accent)}
+  .stat-label{color:var(--muted);font-size:0.9em;margin-top:4px}
+  @media(max-width:600px){.container{padding:20px 16px}h1{font-size:1.6em}.card-grid{grid-template-columns:1fr}.flow{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>数据传输规范设计</h1>
+<p class="subtitle">设备端 → APP 端 → 云端全链路传输规范 &mdash; Vvewell 项目</p>
+
+<!-- Overview -->
+<h2>1. 全链路概览</h2>
+
+<div class="flow">
+  <div class="flow-step" style="border-color:var(--purple);">
+    <div style="font-size:24px;">💍⌚📿</div>
+    <strong style="color:var(--purple);">设备端</strong><br>
+    <small>传感器采集<br>本地缓存</small>
+  </div>
+  <div class="flow-arrow">
+    <div style="text-align:center;font-size:0.7em;color:var(--cyan);">BLE 4.2+<br>单队列串行</div>
+    →
+  </div>
+  <div class="flow-step" style="border-color:var(--green);">
+    <div style="font-size:24px;">📱</div>
+    <strong style="color:var(--green);">APP 端</strong><br>
+    <small>接收 · 转换 · 融合<br>SQLite 持久化</small>
+  </div>
+  <div class="flow-arrow">
+    <div style="text-align:center;font-size:0.7em;color:var(--orange);">HTTPS + gzip<br>JWT · 批量同步</div>
+    →
+  </div>
+  <div class="flow-step" style="border-color:var(--accent);">
+    <div style="font-size:24px;">☁️</div>
+    <strong style="color:var(--accent);">云端</strong><br>
+    <small>API Gateway<br>时序存储 · 家庭共享</small>
+  </div>
+</div>
+
+<!-- Segment 1: Device → APP -->
+<h2>2. 第一段：设备 → APP（BLE）</h2>
+
+<div class="card">
+<table>
+  <tr><th>参数</th><th>值</th></tr>
+  <tr><td>协议</td><td>Bluetooth Low Energy 4.2+</td></tr>
+  <tr><td>MTU</td><td>默认 23 字节，协商后最大 512 字节</td></tr>
+  <tr><td>传输模式</td><td>单队列串行（SDK 限制，不可并发）</td></tr>
+  <tr><td>鉴权</td><td>Keychain 存储的 UniqueAppID</td></tr>
+  <tr><td>重连</td><td>自动重连（默认开启）</td></tr>
+</table>
+</div>
+
+<h3>实时测量时序</h3>
+<div class="arch">APP                            Ring
+ │                              │
+ │── <span class="hl2">startMeasurement(HR)</span> ───→│
+ │                              │  传感器采集中...
+ │←── <span class="hl3">ACK</span> (已收到命令) ────────│
+ │                              │  计算中...
+ │←── <span class="hl">Result</span> (HR=72 bpm) ──────│
+ │                              │
+ │── <span class="hl2">stopMeasurement</span> ──────────→│
+ │←── <span class="hl3">ACK</span> ─────────────────────│</div>
+
+<h3>历史数据同步时序</h3>
+<div class="arch">APP                                Ring
+ │                                  │
+ │── <span class="hl2">fetchHealthData(date)</span> ────────→│
+ │                                  │ 查询本地存储
+ │←── <span class="hl">Packet 1/N</span> ──────────────────│
+ │── <span class="hl3">ACK</span> ──────────────────────────→│
+ │←── <span class="hl">Packet 2/N</span> ──────────────────│
+ │── <span class="hl3">ACK</span> ──────────────────────────→│
+ │      ...                         │
+ │←── <span class="hl">Packet N/N (END)</span> ────────────│
+ │── <span class="hl3">ACK</span> ──────────────────────────→│</div>
+
+<h3>超时配置</h3>
+<div class="card">
+<table>
+  <tr><th>测量类型</th><th>超时</th><th>超时处理</th></tr>
+  <tr><td>HR / SpO2 / Temp / Stress / UV</td><td>30 秒</td><td>停止测量，返回超时错误</td></tr>
+  <tr><td>ECG 心电</td><td>90 秒</td><td>关闭 Booster 模式</td></tr>
+  <tr><td>血糖（硬件阶段）</td><td>20 秒</td><td>停止 PPG 采集</td></tr>
+  <tr><td>情绪 / PPI</td><td>用户设定</td><td>正常到时结束</td></tr>
+  <tr><td>体成分</td><td>30 秒</td><td>停止测量</td></tr>
+  <tr><td>历史数据包</td><td>5 秒/包</td><td>视为传输失败</td></tr>
+</table>
+</div>
+
+<h3>分包传输规则</h3>
+<div class="card-grid">
+  <div class="card stat"><div class="stat-value">144 B</div><div class="stat-label">每包最大字节</div></div>
+  <div class="card stat"><div class="stat-value">5</div><div class="stat-label">包 / ACK 频率</div></div>
+  <div class="card stat"><div class="stat-value">5 秒</div><div class="stat-label">包间超时</div></div>
+  <div class="card stat"><div class="stat-value">3 次</div><div class="stat-label">发送失败重试</div></div>
+</div>
+
+<h3>数据完整性保证</h3>
+<div class="highlight">
+  <p><strong>BLE 层：</strong>3 次重试 + ACK 确认 + 校验和验证</p>
+  <p><strong>APP 层：</strong>按 id + timestamp 去重 + 按时间排序写入 + SQLite 写入成功后才 ACK 设备</p>
+</div>
+
+<!-- Segment 2: APP Local -->
+<h2>3. 第二段：APP 本地处理</h2>
+
+<div class="flow">
+  <div class="flow-step">BLE 回调<br><small>ObjC 对象</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Service 转换<br><small>→ RawReading</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">去重检查<br><small>id 唯一性</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">SQLite INSERT<br><small>串行队列</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">标记待同步<br><small>sync = pending</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">融合 + 缓存<br><small>通知 UI</small></div>
+</div>
+
+<h3>同步状态机</h3>
+<div class="arch">              ┌──────────────────────────────────────┐
+              │                                      │
+              ▼                                      │
+        ┌──────────┐     写入后     ┌──────────┐     │
+        │  <span class="hl4">local</span>   │ ──────────→ │ <span class="hl2">pending</span>  │     │
+        └──────────┘              └──────────┘     │
+                                       │            │
+                                  开始上传          │
+                                       ▼            │
+                                 ┌──────────┐       │
+                                 │<span class="hl">uploading</span>│       │
+                                 └──────────┘       │
+                                    │    │          │
+                               成功 │    │ 失败     │
+                                    ▼    ▼          │
+                              ┌────────┐ ┌────────┐ │
+                              │ <span class="hl3">synced</span> │ │ <span class="hl4">failed</span> │─┘
+                              └────────┘ └────────┘  重试</div>
+
+<!-- Segment 3: APP → Cloud -->
+<h2>4. 第三段：APP → 云端（HTTPS）</h2>
+
+<div class="card">
+<table>
+  <tr><th>参数</th><th>值</th></tr>
+  <tr><td>协议</td><td>HTTPS（TLS 1.3）</td></tr>
+  <tr><td>认证</td><td>Bearer Token（JWT）</td></tr>
+  <tr><td>数据格式</td><td>JSON + gzip 压缩</td></tr>
+  <tr><td>超时</td><td>30 秒</td></tr>
+  <tr><td>重试</td><td>3 次，指数退避（2s → 4s → 8s）</td></tr>
+  <tr><td>批量大小</td><td>每批最多 50 条 / 500 KB</td></tr>
+</table>
+</div>
+
+<h3>同步策略</h3>
+<div class="card-grid">
+  <div class="card">
+    <span class="tag tag-green">realtime</span>
+    <p style="color:var(--muted);font-size:0.9em;margin-top:8px;">写入后立即同步<br>WiFi 环境下使用</p>
+  </div>
+  <div class="card">
+    <span class="tag tag-blue">batch</span> <span class="tag tag-cyan">默认</span>
+    <p style="color:var(--muted);font-size:0.9em;margin-top:8px;">每 5 分钟批量同步<br>平衡功耗与及时性</p>
+  </div>
+  <div class="card">
+    <span class="tag tag-yellow">wifiOnly</span>
+    <p style="color:var(--muted);font-size:0.9em;margin-top:8px;">仅 WiFi 下同步<br>节省蜂窝流量</p>
+  </div>
+  <div class="card">
+    <span class="tag tag-purple">manual</span>
+    <p style="color:var(--muted);font-size:0.9em;margin-top:8px;">用户手动触发<br>完全控制</p>
+  </div>
+</div>
+
+<h3>批量上传 API</h3>
+<pre>POST /api/v1/health/readings/batch
+Authorization: Bearer &lt;jwt_token&gt;
+Content-Type: application/json
+Content-Encoding: gzip
+
+{
+  "device_id": "iPhone-UUID",
+  "batch_id": "uuid-batch-001",
+  "readings": [
+    {
+      "id": "uuid-001",
+      "schema_version": 1,
+      "profile_id": "uuid-lichao",
+      "metric_type": "heartRate",
+      "source": "ring",
+      "timestamp": 1711872000.0,
+      "value": 72.0,
+      "unit": "bpm",
+      "accuracy": 2,
+      "payload_type": null,
+      "payload": null
+    }
+  ]
+}</pre>
+
+<h3>响应格式</h3>
+<pre>// 成功
+{ "status": "ok", "accepted": 50, "rejected": 0 }
+
+// 部分失败
+{ "status": "partial", "accepted": 48, "rejected": 2,
+  "results": [
+    {"id": "xxx", "status": "rejected", "reason": "invalid_payload"}
+  ]
+}</pre>
+
+<h3>离线处理</h3>
+<div class="warn">
+  <strong>网络不可用时：</strong>数据正常写入 SQLite（sync_status = pending）。UI 正常显示本地数据。网络恢复后自动按 received_at 顺序批量同步积压数据。超过 1000 条时分批上传（每批 50 条）。
+</div>
+
+<h3>冲突解决</h3>
+<div class="card">
+<table>
+  <tr><th>场景</th><th>策略</th></tr>
+  <tr><td>相同 reading.id 重复上传</td><td>幂等去重，以先到为准</td></tr>
+  <tr><td>同一时间段不同设备的值</td><td>全部保留，云端也做融合</td></tr>
+  <tr><td>家庭成员信息冲突</td><td>Last Write Wins（updated_at 最新的为准）</td></tr>
+</table>
+</div>
+
+<!-- Security -->
+<h2>5. 数据安全</h2>
+
+<div class="card">
+<table>
+  <tr><th>链路</th><th>加密</th><th>认证</th></tr>
+  <tr><td>设备 → APP (BLE)</td><td>BLE 配对加密</td><td>UniqueAppID 鉴权</td></tr>
+  <tr><td>APP → 云端 (HTTPS)</td><td>TLS 1.3</td><td>JWT Bearer Token</td></tr>
+  <tr><td>APP 本地存储</td><td>iOS 沙盒保护</td><td>—</td></tr>
+  <tr><td>云端存储</td><td>AES-256（ECG/血糖等高敏感数据）</td><td>访问控制</td></tr>
+</table>
+</div>
+
+<h3>数据敏感度分级</h3>
+<div class="card-grid">
+  <div class="card">
+    <span class="tag tag-red">高敏感</span>
+    <p style="color:var(--muted);font-size:0.9em;margin-top:8px;">ECG 波形 · 血糖值 · 血压<br>传输时额外加密 payload<br>云端 AES-256 加密存储</p>
+  </div>
+  <div class="card">
+    <span class="tag tag-yellow">中敏感</span>
+    <p style="color:var(--muted);font-size:0.9em;margin-top:8px;">心率 · 血氧 · 睡眠 · 情绪<br>标准 HTTPS 传输</p>
+  </div>
+  <div class="card">
+    <span class="tag tag-green">低敏感</span>
+    <p style="color:var(--muted);font-size:0.9em;margin-top:8px;">步数 · 卡路里 · 距离<br>标准传输</p>
+  </div>
+</div>
+
+<div class="highlight">
+  <p><strong>脱敏规则：</strong>profileId 用 UUID（不用手机号）· 云端不存 MAC 地址明文（哈希）· 日志不打印原始健康数据值</p>
+</div>
+
+<!-- Monitoring -->
+<h2>6. 监控与可观测性</h2>
+
+<div class="card-grid">
+  <div class="card">
+    <h3 style="margin-top:0;color:var(--purple);">BLE 指标</h3>
+    <div style="color:var(--muted);font-size:0.9em;">
+      <div>收到包数 <span style="color:var(--green);">●</span></div>
+      <div>丢包数 <span style="color:var(--red);">●</span></div>
+      <div>重连次数 <span style="color:var(--yellow);">●</span></div>
+      <div>平均延迟 (ms) <span style="color:var(--cyan);">●</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0;color:var(--orange);">同步指标</h3>
+    <div style="color:var(--muted);font-size:0.9em;">
+      <div>批次数 <span style="color:var(--green);">●</span></div>
+      <div>成功/失败数 <span style="color:var(--green);">●</span><span style="color:var(--red);">●</span></div>
+      <div>待同步积压 <span style="color:var(--yellow);">●</span></div>
+      <div>最旧待同步数据 <span style="color:var(--yellow);">●</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0;color:var(--green);">APP 内同步状态</h3>
+    <div style="color:var(--muted);font-size:0.9em;">
+      <div>最后同步：2 分钟前</div>
+      <div>待同步：3 条</div>
+      <div>今日上传：245 条</div>
+      <div>网络：WiFi</div>
+    </div>
+  </div>
+</div>
+
+<!-- File Structure -->
+<h2>7. 新增文件结构</h2>
+
+<div class="arch">Sources/
+├── Metrics/
+│   ├── Storage/        <span class="cm"># 已有</span>
+│   └── <span class="hl">Sync/</span>
+│       ├── SyncEngine.swift            <span class="cm"># 同步引擎</span>
+│       ├── SyncPolicy.swift            <span class="cm"># 同步策略配置</span>
+│       ├── BatchUploadRequest.swift    <span class="cm"># 批量上传请求</span>
+│       ├── SyncStatus.swift            <span class="cm"># 同步状态枚举</span>
+│       └── TransportMetrics.swift      <span class="cm"># 传输指标</span>
+├── <span class="hl2">Network/</span>
+│   ├── APIClient.swift                 <span class="cm"># HTTPS 客户端</span>
+│   ├── APIEndpoints.swift              <span class="cm"># API 路由</span>
+│   ├── AuthTokenManager.swift          <span class="cm"># JWT 管理</span>
+│   └── NetworkMonitor.swift            <span class="cm"># 网络状态监听</span></div>
+
+<h2 style="margin-top:64px;text-align:center;border:none;color:var(--muted)">— End of Report —</h2>
+<p style="text-align:center;color:var(--muted);margin-top:8px">Vvewell Project &bull; Data Transport Design &bull; 2026-03-31</p>
+
+</div>
+</body>
+</html>
