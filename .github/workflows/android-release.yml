@@ -35,7 +35,7 @@ jobs:
           packages: platform-tools
           log-accepted-android-sdk-licenses: false
       - name: Install Android build tools
-        run: sdkmanager 'platforms;android-36' 'build-tools;36.1.0'
+        run: sdkmanager 'platforms;android-36' 'build-tools;36.1.0' 'cmake;3.22.1'
       - name: Resolve dependencies
         run: flutter pub get
       - name: Check English interface and doctor integration
