@@ -113,8 +113,8 @@ class _MedicalHubPageState extends State<MedicalHubPage> {
       p50: '¥1,800',
       p90: '¥5,000',
       p95: '¥8,000',
-      deductible: '无',
-      waiting: '180 天',
+      deductible: "None",
+      waiting: "180 days",
       fit: '补充重大疾病一次性给付，降低家庭收入责任缺口',
       limit: '不替代医疗险；健康告知需由持牌机构正式审核',
     ),
@@ -182,7 +182,7 @@ class _MedicalHubPageState extends State<MedicalHubPage> {
     );
     if (result == null || !mounted) return;
     _notice(
-      '${result.name} 的回访申请已提交，顾问将按“${result.preferredTime}”通过${result.contactChannel}联系',
+      '${result.name}: callback requested. Preferred time: ${result.preferredTime.tr}; contact method: ${result.contactChannel.tr}',
     );
   }
 
@@ -219,7 +219,7 @@ class _MedicalHubPageState extends State<MedicalHubPage> {
     );
   }
 
-  Future<void> _startReferral({String initialChannel = '线下门诊'}) async {
+  Future<void> _startReferral({String initialChannel = "In-person visit"}) async {
     final result = await showReferralIntakeSheet(
       context,
       memberName: widget.familyProfileController.activeMember.name.tr,
@@ -230,7 +230,7 @@ class _MedicalHubPageState extends State<MedicalHubPage> {
       _referral = result;
       _quoteConfirmed = false;
     });
-    _notice('送诊资料已提交，将在 1 个工作日内完成初审');
+    _notice("Referral submitted. Initial review is expected within one business day");
   }
 
   Future<void> _confirmQuote() async {
@@ -242,7 +242,7 @@ class _MedicalHubPageState extends State<MedicalHubPage> {
     );
     if (confirmed != true || !mounted) return;
     setState(() => _quoteConfirmed = true);
-    _notice('费用边界已确认，下一步为协议签署；当前未发起真实支付');
+    _notice("Costs confirmed. Agreement signing is next. No payment has been initiated");
   }
 
   Future<void> _planInsurance() async {
@@ -252,7 +252,7 @@ class _MedicalHubPageState extends State<MedicalHubPage> {
     );
     if (result == null || !mounted) return;
     setState(() => _insuranceNeeds = result);
-    _notice('保障需求已更新，候选方案将交由持牌顾问复核');
+    _notice("Coverage needs updated. A licensed advisor will review the shortlisted plans");
   }
 
   Future<void> _createClaim() async {
@@ -262,7 +262,7 @@ class _MedicalHubPageState extends State<MedicalHubPage> {
     );
     if (result == null || !mounted) return;
     setState(() => _claimDraft = result);
-    _notice('理赔草稿已保存，提交前请继续核对材料与抽取字段');
+    _notice("Claim draft saved. Review the documents and extracted fields before submitting");
   }
 
   Future<void> _createPost() async {
@@ -357,7 +357,7 @@ class _MedicalHubPageState extends State<MedicalHubPage> {
         children: [
           _ActionGrid(
             onEmergency: () => _showEmergencyDialog(context),
-            onSupport: () => _notice('专属顾问将在服务时段内联系你'),
+            onSupport: () => _notice("Your advisor will contact you during service hours"),
             onReferral: _startReferral,
             onGlobal: () => _startReferral(initialChannel: '跨境医疗'),
           ),
@@ -386,7 +386,7 @@ class _MedicalHubPageState extends State<MedicalHubPage> {
                 selected: _selectedService == index,
                 onSelected: () => setState(() => _selectedService = index),
                 onStart: () => _startReferral(
-                  initialChannel: index == 2 ? '跨境医疗' : '线下门诊',
+                  initialChannel: index == 2 ? '跨境医疗' : "In-person visit",
                 ),
               ),
             ),
@@ -500,7 +500,7 @@ class _MedicalHubPageState extends State<MedicalHubPage> {
                   memberName:
                       widget.familyProfileController.activeMember.name.tr,
                   onSubmitted: (result) => _notice(
-                    '${result.name} 的回访申请已提交，顾问将通过${result.contactChannel}联系',
+                    '${result.name}: callback requested. Contact method: ${result.contactChannel.tr}',
                   ),
                 ),
                 onAdvisor: () => _requestAdvisor(plan.name),
@@ -1151,7 +1151,7 @@ class _ReferralJourneyCard extends StatelessWidget {
                   ),
                 ),
                 _StatusLabel(
-                  label: quoteConfirmed ? '待签协议' : '资料初审',
+                  label: quoteConfirmed ? "Agreement pending" : "Initial review",
                   color: VvewellColors.primary,
                 ),
               ],
@@ -1166,32 +1166,32 @@ class _ReferralJourneyCard extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               quoteConfirmed
-                  ? '费用边界已确认 · 等待协议签署'
-                  : '${referral!.urgency} · ${referral!.channel} · 顾问将在 1 个工作日内初审',
+                  ? "Costs confirmed · Awaiting agreement"
+                  : '${referral!.urgency.tr} · ${referral!.channel.tr} · Advisor review expected within one business day',
               style: const TextStyle(color: VvewellColors.muted, fontSize: 12),
             ),
             const SizedBox(height: 16),
             _TaskRow(
               icon: Icons.assignment_outlined,
-              title: '资料待办',
-              detail: referral!.hasRecords ? '上传病历资料包' : '补充既往诊疗资料（如有）',
-              status: '待完成',
+              title: "Medical documents",
+              detail: referral!.hasRecords ? "Upload medical records" : "Add prior medical records, if available",
+              status: "To do",
             ),
             const Divider(height: 24),
             _TaskRow(
               icon: Icons.support_agent_outlined,
-              title: '平台服务待办',
+              title: "Service tasks",
               detail: quoteConfirmed
-                  ? '专属顾问：林顾问 · 预计今天 18:00 前'
-                  : '确认 ${service.title} 服务方案与单笔报价',
-              status: quoteConfirmed ? '处理中' : '待确认',
+                  ? "Advisor Lin · Expected before 18:00 today"
+                  : 'Confirm ${service.title.tr} service plan and single quote',
+              status: quoteConfirmed ? "In progress" : "To confirm",
             ),
             const Divider(height: 24),
             const _TaskRow(
               icon: Icons.account_balance_outlined,
-              title: '医院直付待办',
-              detail: '医院尚未回传预算或正式付款指引',
-              status: '暂无预算',
+              title: "Hospital payment tasks",
+              detail: "Hospital estimate and official payment instructions are not available yet",
+              status: "No estimate yet",
             ),
             const SizedBox(height: 16),
             Row(
@@ -1199,14 +1199,14 @@ class _ReferralJourneyCard extends StatelessWidget {
                 Expanded(
                   child: OutlinedButton(
                     onPressed: onHospitalCosts,
-                    child: const Text('医院费用中心'),
+                    child: const Text("Hospital costs"),
                   ),
                 ),
                 const SizedBox(width: 8),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: quoteConfirmed ? null : onQuote,
-                    child: Text(quoteConfirmed ? '已确认费用边界' : '查看服务方案'),
+                    child: Text(quoteConfirmed ? "Costs confirmed" : "View service plan"),
                   ),
                 ),
               ],
@@ -2452,19 +2452,19 @@ Future<void> _showEmergencyDialog(BuildContext context) {
         color: VvewellColors.error,
         size: 34,
       ),
-      title: const Text('紧急情况请立即求助'),
+      title: const Text("Get help immediately in an emergency"),
       content: const Text(
-        '如有持续胸痛、严重呼吸困难、意识改变、大出血或其他危及生命的情况，请立即联系当地急救服务或前往最近的适当急诊。',
+        "For persistent chest pain, severe breathing difficulty, altered consciousness, heavy bleeding or any life-threatening condition, contact local emergency services or go to the nearest suitable emergency department immediately.",
       ),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(dialogContext),
-          child: const Text('我知道了'),
+          child: const Text("Understood"),
         ),
         ElevatedButton.icon(
           onPressed: () => Navigator.pop(dialogContext),
           icon: const Icon(Icons.call_outlined),
-          label: const Text('联系当地急救'),
+          label: const Text("Contact local emergency services"),
         ),
       ],
     ),
@@ -2484,22 +2484,22 @@ Future<void> _showHospitalCostSheet(BuildContext context) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '医院费用中心',
+              "Hospital costs",
               style: Theme.of(
                 context,
               ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
             ),
             const SizedBox(height: 6),
             const Text(
-              '医院预算、正式账单和直付凭证与平台服务订单完全分开。',
+              "Hospital estimates, official bills and payment receipts are kept separate from platform service orders.",
               style: TextStyle(color: VvewellColors.muted),
             ),
             const SizedBox(height: 16),
             const _TaskRow(
               icon: Icons.account_balance_outlined,
-              title: '接收医院待确认',
-              detail: '暂无医院预算 · 正式付款指引待回传',
-              status: '暂无预算',
+              title: "Receiving hospital not confirmed",
+              detail: "No hospital estimate · Awaiting official payment instructions",
+              status: "No estimate yet",
             ),
             const SizedBox(height: 16),
             Container(
@@ -2509,7 +2509,7 @@ Future<void> _showHospitalCostSheet(BuildContext context) {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: const Text(
-                '医院费用由医院收取，退款请按医院政策办理。平台不提供“立即支付医院费”按钮；官方外链会进行域名白名单校验。',
+                "Hospital charges are paid to the hospital. Refunds follow its policy. The platform does not collect hospital fees. Official payment links are checked against an approved domain list.",
                 style: TextStyle(height: 1.45),
               ),
             ),
@@ -2519,7 +2519,7 @@ Future<void> _showHospitalCostSheet(BuildContext context) {
               child: OutlinedButton.icon(
                 onPressed: () => Navigator.pop(sheetContext),
                 icon: const Icon(Icons.upload_file_outlined),
-                label: const Text('上传医院付款凭证'),
+                label: const Text("Upload hospital payment receipt"),
               ),
             ),
           ],
@@ -2548,14 +2548,14 @@ Future<void> _showProviderDetails(BuildContext context, String name) {
               ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
             ),
             const SizedBox(height: 16),
-            const _DetailLine(label: '最早可约', value: '6-12 天，号源更新于 15 分钟前'),
-            const _DetailLine(label: '适配理由', value: '专科能力、适用人群、设备和连续性符合当前需求'),
-            const _DetailLine(label: '费用与权益', value: '网络状态待核验；预计自付区间将在预评估后更新'),
+            const _DetailLine(label: "Earliest appointment", value: "6–12 days; availability updated 15 minutes ago"),
+            const _DetailLine(label: "Why this provider fits", value: "Specialty, patient eligibility, equipment and continuity match your needs"),
+            const _DetailLine(label: "Costs and coverage", value: "Network status needs verification. Estimated out-of-pocket costs will be updated after assessment"),
             const _DetailLine(
-              label: '质量证据',
-              value: '显示风险调整结果、样本量与区间；证据不足时不会隐藏',
+              label: "Quality evidence",
+              value: "Includes risk-adjusted outcomes, sample sizes and intervals, with evidence gaps disclosed",
             ),
-            const _DetailLine(label: '替代方案', value: '可优先更近、更快或更低预计自付的合格候选'),
+            const _DetailLine(label: "Alternatives", value: "Consider eligible providers that are closer, available sooner or have lower estimated costs"),
             const SizedBox(height: 12),
             const _MedicalSafetyFooter(),
           ],

@@ -175,7 +175,7 @@ class _AlloopAppState extends State<AlloopApp> {
             debugShowCheckedModeBanner: false,
             translations: VvewellTranslations(),
             locale: Get.find<AppLanguageController>().currentLocale.value,
-            fallbackLocale: const Locale('zh', 'CN'),
+            fallbackLocale: const Locale('en', 'US'),
 
             // Theme configuration
             theme: vvewellTheme(),

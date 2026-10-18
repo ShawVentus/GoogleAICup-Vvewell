@@ -15,11 +15,11 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: Text(device.name.isEmpty ? '健康小助手' : device.name),
+      title: Text(device.name.isEmpty ? "Health Assistant" : device.name),
       actions: [
         Obx(
           () => IconButton(
-            tooltip: controller.isConnected ? '断开连接' : '重新连接',
+            tooltip: controller.isConnected ? "Disconnect" : "Reconnect",
             icon: Icon(
               controller.isConnected
                   ? Icons.bluetooth_disabled
@@ -87,7 +87,7 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      device.name.isEmpty ? '健康小助手' : device.name,
+                      device.name.isEmpty ? "Health Assistant" : device.name,
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w800,
@@ -95,7 +95,7 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      connected ? '设备已连接，可使用控制服务' : '发现于附近，可安全连接',
+                      connected ? "Connected. Device controls are ready" : "Nearby and available to connect",
                       style: const TextStyle(color: VvewellColors.muted),
                     ),
                   ],
@@ -111,8 +111,8 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
             ],
           ),
           const SizedBox(height: 15),
-          _row('设备地址', device.id),
-          _row('蓝牙信号', '${device.rssi} dBm'),
+          _row("Device address", device.id),
+          _row("Bluetooth signal", '${device.rssi} dBm'),
           if (controller.isConnecting || controller.isBusy.value) ...[
             const SizedBox(height: 12),
             const LinearProgressIndicator(),
@@ -124,7 +124,7 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
               child: ElevatedButton.icon(
                 onPressed: controller.isBusy.value ? null : controller.connect,
                 icon: const Icon(Icons.bluetooth_connected),
-                label: const Text('连接健康小助手'),
+                label: const Text("Connect health assistant"),
               ),
             ),
           ],
@@ -139,17 +139,17 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
       children: [
         Row(
           children: [
-            const Expanded(child: VvewellSectionTitle('设备状态与系统信息')),
+            const Expanded(child: VvewellSectionTitle("Device status and system information")),
             IconButton(
               onPressed: controller.isBusy.value ? null : controller.refreshAll,
-              tooltip: '刷新',
+              tooltip: "Refresh",
               icon: const Icon(Icons.refresh),
             ),
           ],
         ),
-        _jsonBlock('设备状态', controller.deviceStatus.value),
-        _jsonBlock('系统信息', controller.systemInfo.value),
-        _jsonBlock('Wi-Fi 状态', controller.wifiStatus.value),
+        _jsonBlock("Device status", controller.deviceStatus.value),
+        _jsonBlock("System information", controller.systemInfo.value),
+        _jsonBlock("Wi-Fi status", controller.wifiStatus.value),
       ],
     ),
   );
@@ -159,10 +159,10 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const VvewellSectionTitle('Wi-Fi 配网'),
+        const VvewellSectionTitle("Wi-Fi setup"),
         const SizedBox(height: 5),
         const Text(
-          '扫描附近网络或将网络凭据安全发送到设备。',
+          "Scan nearby networks or securely send network credentials to the device.",
           style: TextStyle(color: VvewellColors.muted, fontSize: 13),
         ),
         const SizedBox(height: 13),
@@ -173,14 +173,14 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
             OutlinedButton.icon(
               onPressed: controller.isBusy.value ? null : controller.scanWifi,
               icon: const Icon(Icons.wifi_find),
-              label: const Text('扫描 Wi-Fi'),
+              label: const Text("Scan Wi-Fi"),
             ),
             ElevatedButton.icon(
               onPressed: controller.isBusy.value
                   ? null
                   : () => _showWifiDialog(context),
               icon: const Icon(Icons.wifi),
-              label: const Text('配置网络'),
+              label: const Text("Set up network"),
             ),
           ],
         ),
@@ -192,16 +192,16 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const VvewellSectionTitle('快捷控制'),
+        const VvewellSectionTitle("Quick controls"),
         const SizedBox(height: 6),
         _slider(
-          '音量',
+          "Volume",
           controller.volume.value,
           (value) => controller.volume.value = value,
           controller.setVolume,
         ),
         _slider(
-          '亮度',
+          "Brightness",
           controller.brightness.value,
           (value) => controller.brightness.value = value,
           controller.setBrightness,
@@ -216,18 +216,18 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
                   ? null
                   : controller.startListening,
               icon: const Icon(Icons.mic_none),
-              label: const Text('开始聆听'),
+              label: const Text("Start listening"),
             ),
             OutlinedButton.icon(
               onPressed: controller.isBusy.value
                   ? null
                   : controller.stopListening,
               icon: const Icon(Icons.mic_off_outlined),
-              label: const Text('停止聆听'),
+              label: const Text("Stop listening"),
             ),
           ],
         ),
-        _jsonBlock('最近命令响应', controller.latestResponse.value),
+        _jsonBlock("Latest command response", controller.latestResponse.value),
       ],
     ),
   );
@@ -246,7 +246,7 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
           Row(
             children: [
               const Expanded(
-                child: VvewellSectionTitle('主动语音关怀'),
+                child: VvewellSectionTitle("Proactive voice care"),
               ),
               Switch.adaptive(
                 value: config.enabled,
@@ -260,14 +260,14 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
           ),
           const SizedBox(height: 5),
           Text(
-            '心率或血氧异常时，小智会通过 BLE 发起对话并语音提醒；普通问候会避开夜间免打扰。',
+            "XiaoZhi starts a BLE conversation for heart rate or oxygen alerts. Routine greetings respect nighttime quiet hours.",
             style: const TextStyle(color: VvewellColors.muted, fontSize: 13),
           ),
           const SizedBox(height: 10),
           SwitchListTile.adaptive(
             contentPadding: EdgeInsets.zero,
-            title: const Text('每个整点主动问候'),
-            subtitle: const Text('默认开启；不替代异常健康提醒'),
+            title: const Text("Greet at the start of each hour"),
+            subtitle: const Text("On by default. Does not replace health alerts"),
             value: config.hourlyGreetingEnabled,
             onChanged: config.enabled
                 ? (enabled) => controller.updateProactiveVoiceConfig(
@@ -276,7 +276,7 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
                 : null,
           ),
           Text(
-            schedule.isEmpty ? '定时问候：未设置' : '定时问候：$schedule',
+            schedule.isEmpty ? "Scheduled greetings: not set" : 'Scheduled greetings: $schedule',
             style: const TextStyle(color: VvewellColors.muted, fontSize: 13),
           ),
           const SizedBox(height: 10),
@@ -291,20 +291,20 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
                     ? null
                     : controller.speakNow,
                 icon: const Icon(Icons.record_voice_over_outlined),
-                label: const Text('现在问候'),
+                label: const Text("Greet now"),
               ),
               OutlinedButton.icon(
                 onPressed: () => _showProactiveVoiceDialog(context, config),
                 icon: const Icon(Icons.tune),
-                label: const Text('提醒设置'),
+                label: const Text("Reminder settings"),
               ),
             ],
           ),
           const SizedBox(height: 8),
           Text(
             status.isXiaoZhiConnected
-                ? '已连接 · 待完成对话 ${status.pendingConversationCount}/4'
-                : '小智未连接，连接成功后会自动开始主动语音',
+                ? 'Connected · Pending conversations ${status.pendingConversationCount}/4'
+                : "XiaoZhi is disconnected. Proactive voice starts when connected",
             style: const TextStyle(color: VvewellColors.muted, fontSize: 12),
           ),
           if (status.lastError != null) ...[
@@ -329,10 +329,10 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('兼容命令', style: TextStyle(fontWeight: FontWeight.w800)),
+              Text("Firmware commands", style: TextStyle(fontWeight: FontWeight.w800)),
               SizedBox(height: 3),
               Text(
-                '发送固件支持的命令与 JSON 参数。',
+                "Send commands and JSON arguments supported by the firmware.",
                 style: TextStyle(color: VvewellColors.muted, fontSize: 13),
               ),
             ],
@@ -340,7 +340,7 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
         ),
         IconButton(
           onPressed: () => _showCommandDialog(context),
-          tooltip: '发送命令',
+          tooltip: "Send command",
           icon: const Icon(Icons.chevron_right),
         ),
       ],
@@ -351,10 +351,10 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const VvewellSectionTitle('MCP 工具'),
+        const VvewellSectionTitle("MCP tools"),
         const SizedBox(height: 5),
         const Text(
-          '先初始化并获取设备实际支持的工具，再调用对应能力。',
+          "Initialize MCP and fetch supported tools before calling a device capability.",
           style: TextStyle(color: VvewellColors.muted, fontSize: 13),
         ),
         const SizedBox(height: 12),
@@ -366,25 +366,25 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
               onPressed: controller.isBusy.value
                   ? null
                   : controller.initializeMcp,
-              child: const Text('初始化 MCP'),
+              child: const Text("Initialize MCP"),
             ),
             ElevatedButton(
               onPressed: controller.isBusy.value
                   ? null
                   : controller.listMcpTools,
-              child: const Text('获取工具列表'),
+              child: const Text("Get tools"),
             ),
             OutlinedButton(
               onPressed: () => _showMcpDialog(context, raw: false),
-              child: const Text('调用 MCP 工具'),
+              child: const Text("Call MCP tool"),
             ),
             TextButton(
               onPressed: () => _showMcpDialog(context, raw: true),
-              child: const Text('原始请求'),
+              child: const Text("Raw request"),
             ),
           ],
         ),
-        _jsonBlock('最近 MCP 响应', controller.latestMcpResponse.value),
+        _jsonBlock("Latest MCP response", controller.latestMcpResponse.value),
       ],
     ),
   );
@@ -444,7 +444,7 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
             borderRadius: BorderRadius.circular(12),
           ),
           child: SelectableText(
-            value.isEmpty ? '暂无数据' : value,
+            value.isEmpty ? "No data yet" : value,
             style: const TextStyle(fontSize: 12, color: VvewellColors.muted),
           ),
         ),
@@ -460,7 +460,7 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
         SizedBox(width: 12),
         Expanded(
           child: Text(
-            '连接过程中请在系统弹窗中确认蓝牙配对。首次连接会完成配对、服务发现和通知订阅。',
+            "Confirm Bluetooth pairing in the system dialog. The first connection pairs the device, discovers services and subscribes to notifications.",
             style: TextStyle(color: VvewellColors.muted, height: 1.4),
           ),
         ),
@@ -494,11 +494,11 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
 
   String _stateText(String state) =>
       {
-        'ready': '已连接',
-        'connecting': '连接中',
-        'pairing': '配对中',
-        'failed': '连接失败',
-        'disconnected': '未连接',
+        'ready': "Connected",
+        'connecting': "Connecting",
+        'pairing': "Pairing",
+        'failed': "Connection failed",
+        'disconnected': "Disconnected",
       }[state] ??
       state;
 
@@ -520,7 +520,7 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
     try {
       await Get.dialog(
         AlertDialog(
-          title: const Text('主动语音提醒设置'),
+          title: const Text("Proactive voice settings"),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -528,35 +528,35 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
                 TextField(
                   controller: heartRateLow,
                   keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(labelText: '心率偏低阈值（bpm）'),
+                  decoration: const InputDecoration(labelText: "Low heart rate threshold (bpm)"),
                 ),
                 TextField(
                   controller: heartRateHigh,
                   keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(labelText: '心率偏高阈值（bpm）'),
+                  decoration: const InputDecoration(labelText: "High heart rate threshold (bpm)"),
                 ),
                 TextField(
                   controller: spo2Low,
                   keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(labelText: '血氧偏低阈值（%）'),
+                  decoration: const InputDecoration(labelText: "Low oxygen threshold (%)"),
                 ),
                 TextField(
                   controller: cooldown,
                   keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(labelText: '同类健康提醒间隔（分钟）'),
+                  decoration: const InputDecoration(labelText: "Repeat alert interval (minutes)"),
                 ),
                 TextField(
                   controller: schedule,
                   decoration: const InputDecoration(
-                    labelText: '额外定时问候（如 08:30, 12:00）',
-                    helperText: '24 小时制，留空则只按整点问候',
+                    labelText: "Additional greetings (e.g. 08:30, 12:00)",
+                    helperText: "24-hour time. Leave blank for hourly greetings only",
                   ),
                 ),
               ],
             ),
           ),
           actions: [
-            TextButton(onPressed: Get.back, child: const Text('取消')),
+            TextButton(onPressed: Get.back, child: const Text("Cancel")),
             ElevatedButton(
               onPressed: () {
                 final low = int.tryParse(heartRateLow.text.trim());
@@ -573,7 +573,7 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
                     oxygen < 70 ||
                     oxygen > 100 ||
                     minutes <= 0) {
-                  Get.snackbar('设置无效', '请检查心率、血氧阈值和提醒间隔');
+                  Get.snackbar("Invalid settings", "Check heart rate and oxygen thresholds and the reminder interval");
                   return;
                 }
                 controller.updateProactiveVoiceConfig(
@@ -590,7 +590,7 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
                 );
                 Get.back();
               },
-              child: const Text('保存'),
+              child: const Text("Save"),
             ),
           ],
         ),
@@ -609,29 +609,29 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
     final password = TextEditingController();
     await Get.dialog(
       AlertDialog(
-        title: const Text('配置 Wi-Fi'),
+        title: const Text("Configure Wi-Fi"),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: ssid,
-              decoration: const InputDecoration(labelText: '网络名称 (SSID)'),
+              decoration: const InputDecoration(labelText: "Network name (SSID)"),
             ),
             TextField(
               controller: password,
               obscureText: true,
-              decoration: const InputDecoration(labelText: '密码'),
+              decoration: const InputDecoration(labelText: "Password"),
             ),
           ],
         ),
         actions: [
-          TextButton(onPressed: Get.back, child: const Text('取消')),
+          TextButton(onPressed: Get.back, child: const Text("Cancel")),
           ElevatedButton(
             onPressed: () {
               Get.back();
               controller.configureWifi(ssid.text, password.text);
             },
-            child: const Text('发送'),
+            child: const Text("Send"),
           ),
         ],
       ),
@@ -645,30 +645,30 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
     final params = TextEditingController(text: '{}');
     await Get.dialog(
       AlertDialog(
-        title: const Text('发送兼容命令'),
+        title: const Text("Send firmware command"),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: command,
-              decoration: const InputDecoration(labelText: '命令'),
+              decoration: const InputDecoration(labelText: "Command"),
             ),
             TextField(
               controller: params,
               minLines: 2,
               maxLines: 4,
-              decoration: const InputDecoration(labelText: 'JSON 参数'),
+              decoration: const InputDecoration(labelText: "JSON arguments"),
             ),
           ],
         ),
         actions: [
-          TextButton(onPressed: Get.back, child: const Text('取消')),
+          TextButton(onPressed: Get.back, child: const Text("Cancel")),
           ElevatedButton(
             onPressed: () {
               Get.back();
               controller.sendCustomCommand(command.text, params.text);
             },
-            child: const Text('发送'),
+            child: const Text("Send"),
           ),
         ],
       ),
@@ -686,27 +686,27 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
     );
     await Get.dialog(
       AlertDialog(
-        title: Text(raw ? '发送原始 MCP 请求' : '调用 MCP 工具'),
+        title: Text(raw ? "Send raw MCP request" : "Call MCP tool"),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             if (!raw)
               TextField(
                 controller: name,
-                decoration: const InputDecoration(labelText: '工具名称'),
+                decoration: const InputDecoration(labelText: "Tool name"),
               ),
             TextField(
               controller: body,
               minLines: 3,
               maxLines: 6,
               decoration: InputDecoration(
-                labelText: raw ? 'JSON-RPC 请求' : '工具参数 JSON',
+                labelText: raw ? "JSON-RPC request" : "Tool arguments (JSON)",
               ),
             ),
           ],
         ),
         actions: [
-          TextButton(onPressed: Get.back, child: const Text('取消')),
+          TextButton(onPressed: Get.back, child: const Text("Cancel")),
           ElevatedButton(
             onPressed: () {
               Get.back();
@@ -714,7 +714,7 @@ class XiaoZhiDeviceDetailPage extends GetView<XiaoZhiDeviceController> {
                   ? controller.sendRawMcpRequest(body.text)
                   : controller.callMcpTool(name.text, body.text);
             },
-            child: const Text('发送'),
+            child: const Text("Send"),
           ),
         ],
       ),

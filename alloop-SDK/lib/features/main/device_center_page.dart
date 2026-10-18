@@ -371,7 +371,7 @@ class _DeviceCenterPageState extends State<DeviceCenterPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'USB 红外摄像头',
+                      "USB thermal camera",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w800,
@@ -379,7 +379,7 @@ class _DeviceCenterPageState extends State<DeviceCenterPage> {
                     ),
                     SizedBox(height: 4),
                     Text(
-                      '通过 USB 直连读取热成像，不经过蓝牙或网络登录。',
+                      "Read thermal images directly over USB, without Bluetooth or a network login.",
                       style: TextStyle(color: VvewellColors.muted, height: 1.4),
                     ),
                   ],
@@ -393,7 +393,7 @@ class _DeviceCenterPageState extends State<DeviceCenterPage> {
             child: ElevatedButton.icon(
               onPressed: _openThermalCamera,
               icon: const Icon(Icons.videocam_outlined),
-              label: const Text('直接读取摄像头'),
+              label: const Text("Read camera"),
             ),
           ),
         ],
@@ -429,7 +429,7 @@ class _DeviceCenterPageState extends State<DeviceCenterPage> {
     _SupportedDevice(
       icon: Icons.smart_toy_outlined,
       title: 'vvewell Robot',
-      subtitle: '表情面板与 SG90 舵机角度控制',
+      subtitle: "Expression display and SG90 servo control",
       color: VvewellColors.softViolet,
       onTap: _openScanner,
     ),
@@ -444,8 +444,8 @@ class _DeviceCenterPageState extends State<DeviceCenterPage> {
     const SizedBox(height: 10),
     _SupportedDevice(
       icon: Icons.visibility_outlined,
-      title: 'Rokid AI 智能眼镜',
-      subtitle: '配套应用授权、CXRLink 状态与设备信息',
+      title: "Rokid AI glasses",
+      subtitle: "Companion app authorization, CXRLink status and device information",
       color: VvewellColors.softBlue,
       onTap: _openGlasses,
     ),

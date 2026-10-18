@@ -22,7 +22,7 @@ class AizoringDeviceDetailPage extends GetView<AizoringDeviceDetailController> {
           Obx(
             () => controller.isConnected.value
                 ? IconButton(
-                    tooltip: '断开连接',
+                    tooltip: "Disconnect",
                     onPressed: controller.disconnect,
                     icon: const Icon(Icons.bluetooth_disabled),
                   )
@@ -41,12 +41,12 @@ class AizoringDeviceDetailPage extends GetView<AizoringDeviceDetailController> {
               const SizedBox(height: 16),
               _capabilitiesCard(),
               const SizedBox(height: 20),
-              const VvewellSectionTitle('测量与数据'),
+              const VvewellSectionTitle("Measurements and data"),
               const SizedBox(height: 10),
               _featureEntry(
                 icon: Icons.monitor_heart_outlined,
-                title: '即时测量',
-                subtitle: '心率、血氧、体温、压力与紫外线',
+                title: "Measure now",
+                subtitle: "Heart rate, oxygen, temperature, stress and UV",
                 color: VvewellColors.softTeal,
                 onTap: () => Get.toNamed(
                   AlRoutes.aizoringMeasurement,
@@ -56,8 +56,8 @@ class AizoringDeviceDetailPage extends GetView<AizoringDeviceDetailController> {
               const SizedBox(height: 10),
               _featureEntry(
                 icon: Icons.multiline_chart_outlined,
-                title: '连续数据',
-                subtitle: '实时 PPI 与原始传感器数据',
+                title: "Continuous data",
+                subtitle: "Live PPI and raw sensor data",
                 color: VvewellColors.softBlue,
                 onTap: () => Get.toNamed(
                   AlRoutes.aizoringMeasurement,
@@ -67,8 +67,8 @@ class AizoringDeviceDetailPage extends GetView<AizoringDeviceDetailController> {
               const SizedBox(height: 10),
               _featureEntry(
                 icon: Icons.health_and_safety_outlined,
-                title: '健康历史',
-                subtitle: '每日心率、血氧、步数与体温',
+                title: "Health history",
+                subtitle: "Daily heart rate, oxygen, steps and temperature",
                 color: VvewellColors.softMint,
                 onTap: () => Get.toNamed(
                   AlRoutes.aizoringHealthData,
@@ -78,8 +78,8 @@ class AizoringDeviceDetailPage extends GetView<AizoringDeviceDetailController> {
               const SizedBox(height: 10),
               _featureEntry(
                 icon: Icons.bedtime_outlined,
-                title: '睡眠数据',
-                subtitle: '睡眠阶段与持续时长',
+                title: "Sleep data",
+                subtitle: "Sleep stages and duration",
                 color: VvewellColors.softViolet,
                 onTap: () =>
                     Get.toNamed(AlRoutes.aizoringSleep, arguments: device.id),
@@ -95,7 +95,7 @@ class AizoringDeviceDetailPage extends GetView<AizoringDeviceDetailController> {
                     SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        '请先连接设备，再访问测量、连续数据与睡眠记录。',
+                        "Connect your device to view measurements, live data and sleep records.",
                         style: TextStyle(
                           color: VvewellColors.muted,
                           height: 1.4,
@@ -140,7 +140,7 @@ class AizoringDeviceDetailPage extends GetView<AizoringDeviceDetailController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      device.name.isEmpty ? 'AIZORING 智能戒指' : device.name,
+                      device.name.isEmpty ? "AIZORING smart ring" : device.name,
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w800,
@@ -148,14 +148,14 @@ class AizoringDeviceDetailPage extends GetView<AizoringDeviceDetailController> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      connected ? '设备已连接，正在同步数据' : '发现于附近，可安全连接',
+                      connected ? "Connected; syncing data" : "Nearby and available to connect",
                       style: const TextStyle(color: VvewellColors.muted),
                     ),
                   ],
                 ),
               ),
               VvewellStatusPill(
-                label: connected ? '已连接' : '未连接',
+                label: connected ? "Connected" : "Disconnected",
                 color: connected ? VvewellColors.success : VvewellColors.muted,
                 icon: connected
                     ? Icons.bluetooth_connected
@@ -164,11 +164,11 @@ class AizoringDeviceDetailPage extends GetView<AizoringDeviceDetailController> {
             ],
           ),
           const SizedBox(height: 16),
-          _infoRow('设备地址', device.id),
-          _infoRow('蓝牙信号', '${device.rssi} dBm'),
+          _infoRow("Device address", device.id),
+          _infoRow("Bluetooth signal", '${device.rssi} dBm'),
           if (controller.deviceInfo.value != null) ...[
-            _infoRow('固件版本', controller.deviceInfo.value!.firmwareVersion),
-            _infoRow('设备型号', controller.deviceInfo.value!.modelName),
+            _infoRow("Firmware version", controller.deviceInfo.value!.firmwareVersion),
+            _infoRow("Device model", controller.deviceInfo.value!.modelName),
           ],
         ],
       ),
@@ -212,7 +212,7 @@ class AizoringDeviceDetailPage extends GetView<AizoringDeviceDetailController> {
                   ),
                 ),
                 Text(
-                  controller.isCharging.value ? '正在充电' : '设备电量',
+                  controller.isCharging.value ? "Charging" : "Battery level",
                   style: const TextStyle(color: VvewellColors.muted),
                 ),
               ],
@@ -220,10 +220,10 @@ class AizoringDeviceDetailPage extends GetView<AizoringDeviceDetailController> {
           ),
           Text(
             percent >= 60
-                ? '电量充足'
+                ? "Battery level is good"
                 : percent >= 30
-                ? '建议充电'
-                : '电量偏低',
+                ? "Charging recommended"
+                : "Low battery",
             style: TextStyle(
               color: color,
               fontSize: 12,
@@ -242,16 +242,16 @@ class AizoringDeviceDetailPage extends GetView<AizoringDeviceDetailController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const VvewellSectionTitle('设备能力'),
+          const VvewellSectionTitle("Device features"),
           const SizedBox(height: 12),
           Wrap(
             spacing: 8,
             runSpacing: 8,
             children: [
-              _capability('心率', config.supportsHeartRate),
-              _capability('血氧', config.supportsBloodOxygen),
-              _capability('体温', config.supportsTemperature),
-              _capability('睡眠', config.supportsSleep),
+              _capability("Heart rate", config.supportsHeartRate),
+              _capability("Blood oxygen", config.supportsBloodOxygen),
+              _capability("Temperature", config.supportsTemperature),
+              _capability("Sleep", config.supportsSleep),
             ],
           ),
         ],
@@ -332,14 +332,14 @@ class AizoringDeviceDetailPage extends GetView<AizoringDeviceDetailController> {
             Icon(Icons.bluetooth_outlined, color: VvewellColors.primaryDark),
             SizedBox(width: 8),
             Text(
-              '连接设备',
+              "Connect device",
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
             ),
           ],
         ),
         const SizedBox(height: 8),
         const Text(
-          '首次连接时，请在系统弹窗中确认蓝牙配对请求。',
+          "Confirm the Bluetooth pairing request in the system dialog when connecting for the first time.",
           style: TextStyle(color: VvewellColors.muted),
         ),
         const SizedBox(height: 16),
@@ -360,7 +360,7 @@ class AizoringDeviceDetailPage extends GetView<AizoringDeviceDetailController> {
                   )
                 : const Icon(Icons.bluetooth_connected),
             label: Text(
-              controller.isConnecting.value ? '正在连接…' : '连接 AIZORING',
+              controller.isConnecting.value ? "Connecting…" : "Connect AIZORING",
             ),
           ),
         ),

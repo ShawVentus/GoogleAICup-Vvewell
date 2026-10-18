@@ -192,7 +192,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     return Column(
       children: [
         Text(
-          '健康管理平台',
+          "Health management platform",
           style: TextStyle(
             fontSize: 14.sp,
             color: VvewellColors.muted,

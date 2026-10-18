@@ -170,8 +170,8 @@ class AvatarCoachController extends GetxController {
       next,
       _currentScenario,
       visibleDeltas: deltas,
-      coachMessage: 'Mock 人工复测结果正常，风险提示已解除。请继续关注身体感受。',
-      coachSeverityLabel: '复测完成',
+      coachMessage: "The demo manual recheck is normal and the alert has cleared. Continue to pay attention to how you feel.",
+      coachSeverityLabel: "Recheck complete",
       taskStatus: MockTaskStatus.completed,
     );
     isCoachExpanded.value = true;
@@ -232,7 +232,7 @@ class AvatarCoachController extends GetxController {
       _currentScenario,
       visibleDeltas: _currentScenario.completedDelta,
       coachMessage: _currentScenario.completionFeedback,
-      coachSeverityLabel: '完成反馈',
+      coachSeverityLabel: "Feedback complete",
       taskStatus: MockTaskStatus.completed,
     );
     isCoachExpanded.value = true;
@@ -262,10 +262,10 @@ class AvatarCoachController extends GetxController {
       _currentScenario,
       visibleDeltas: deltas,
       coachMessage: _currentScenario.warning
-          ? '已收起 Coach。体温信号提示仍会保留，建议按需进行人工测量。'
+          ? "Coach dismissed. Temperature alerts remain visible. Take a manual reading when needed."
           : deltas.nonZeroMetrics.isEmpty
-          ? '已记录，这次不调整状态值。需要时可以再打开 Coach。'
-          : '已记录本次未完成。Mock 后续状态已更新，需要时可以再查看建议。',
+          ? "Recorded. Status values are unchanged. Open Coach again whenever you need it."
+          : "Recorded as not completed. Demo status updated. Review the advice whenever you need it.",
       taskStatus: taskStatus,
     );
     _record(terminalEvent, affectedMetrics: deltas.nonZeroMetrics);

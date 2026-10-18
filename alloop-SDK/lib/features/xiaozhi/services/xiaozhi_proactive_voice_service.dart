@@ -88,7 +88,7 @@ class XiaoZhiProactiveVoiceService {
     _bleEventSubscription = _repository.events.listen(
       _handleBleEvent,
       onError: (Object error, StackTrace stackTrace) {
-        _lastError = '小智事件通道不可用：$error';
+        _lastError = 'XiaoZhi event channel unavailable: $error';
         AlLogger.warning(
           'XiaoZhi event stream failed',
           tag: _logTag,
@@ -113,7 +113,7 @@ class XiaoZhiProactiveVoiceService {
   Future<bool> speakNow() => _sendText(
         reason: 'manual',
         text:
-            '请现在主动用温暖、简短的中文向用户问候，关心一下他此刻的状态，并邀请他需要时和你聊聊。',
+            "Greet the user briefly and warmly in English, ask how they feel, and invite them to chat if needed.",
       );
 
   Future<void> dispose() async {
@@ -137,7 +137,7 @@ class XiaoZhiProactiveVoiceService {
           unawaited(
             _sendText(
               reason: 'connected',
-              text: '请主动用温暖、简短的中文欢迎用户回来，并告诉他你会在需要时提供健康关怀和陪伴。',
+              text: "Welcome the user back briefly and warmly in English. Let them know you can offer health support and companionship when needed.",
             ),
           );
         }
@@ -226,7 +226,7 @@ class XiaoZhiProactiveVoiceService {
   Future<bool> _sendText({required String reason, required String text}) async {
     if (!_config.enabled || !_isXiaoZhiConnected) return false;
     if (_pendingRequestIds.length >= _maxOutstandingConversations) {
-      _lastError = '小智仍在处理多条对话，稍后再发起新的主动提醒';
+      _lastError = "XiaoZhi is handling several conversations. Try the reminder again later.";
       _emitStatus();
       return false;
     }
@@ -245,7 +245,7 @@ class XiaoZhiProactiveVoiceService {
       return true;
     } catch (error, stackTrace) {
       _pendingRequestIds.remove(requestId);
-      _lastError = '发送小智主动对话失败：$error';
+      _lastError = 'Could not start XiaoZhi conversation: $error';
       AlLogger.warning(
         'Failed to send proactive XiaoZhi dialog: reason=$reason',
         tag: _logTag,
@@ -266,23 +266,23 @@ class XiaoZhiProactiveVoiceService {
     final details = alerts.map((alert) {
       switch (alert.type) {
         case ProactiveVitalAlertType.heartRateLow:
-          return '心率 ${alert.value.toStringAsFixed(0)} 次/分钟，低于提醒阈值';
+          return 'Heart rate ${alert.value.toStringAsFixed(0)} bpm, below the alert threshold';
         case ProactiveVitalAlertType.heartRateHigh:
-          return '心率 ${alert.value.toStringAsFixed(0)} 次/分钟，高于提醒阈值';
+          return 'Heart rate ${alert.value.toStringAsFixed(0)} bpm, above the alert threshold';
         case ProactiveVitalAlertType.spo2Low:
-          return '血氧饱和度 ${alert.value.toStringAsFixed(0)}%，低于提醒阈值';
+          return 'Oxygen saturation ${alert.value.toStringAsFixed(0)}%, below the alert threshold';
       }
     }).join('；');
-    return '请立刻主动用中文语音温和提醒用户：刚刚测得$details。'
-        '提醒其先停下活动、稍作休息后复测；不要作出诊断，也不要制造恐慌。'
-        '如果感到明显不适或数值持续异常，建议尽快向专业医疗人员咨询。';
+    return 'Gently alert the user now in spoken English. The latest reading is $details。'
+        "Ask them to pause activity, rest briefly and check again. Do not diagnose or cause alarm. "
+        "Recommend prompt professional medical advice if the user feels unwell or readings remain unusual.";
   }
 
   String _greetingPrompt(DateTime now) {
     final hour = now.hour.toString().padLeft(2, '0');
     final minute = now.minute.toString().padLeft(2, '0');
-    return '现在是 $hour:$minute。请主动用自然、简短、温暖的中文问候用户，'
-        '结合这个时段提醒喝水、活动一下或休息，并邀请用户随时和你聊天。';
+    return 'The time is $hour:$minute. Greet the user briefly and warmly in English. '
+        "Suggest water, movement or rest as appropriate for this time of day, and invite them to chat.";
   }
 
   void _trimScheduleSlots(DateTime now) {

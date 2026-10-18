@@ -17,9 +17,9 @@ extension AlloopMeasurementPhaseX on AlloopMeasurementPhase {
 }
 
 enum AlloopTrendRange {
-  day('日', Duration(days: 1)),
-  week('周', Duration(days: 7)),
-  month('月', Duration(days: 30));
+  day("Day", Duration(days: 1)),
+  week("Week", Duration(days: 7)),
+  month("Month", Duration(days: 30));
 
   const AlloopTrendRange(this.label, this.duration);
 

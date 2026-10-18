@@ -104,7 +104,7 @@ class NutritionIntakeRecord {
   final String advice;
 
   String get summary =>
-      '${totals.kcal.round()} kcal · 蛋白 ${totals.protein.toStringAsFixed(1)} g';
+      '${totals.kcal.round()} kcal · Protein ${totals.protein.toStringAsFixed(1)} g';
 
   Map<String, dynamic> toAnalysisJson() => <String, dynamic>{
     'meal': mealType,

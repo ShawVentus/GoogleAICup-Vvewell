@@ -1,4 +1,4 @@
-import 'package:alloop/features/common/presentation/controllers/connected_device_registry.dart';
+import 'package:alloop/features/scan/data/connected_device_registry.dart';
 import 'package:alloop/features/main/device_center_page.dart';
 import 'package:alloop/foundations/localization/app_localization.dart';
 import 'package:alloop/foundations/ui/vvewell_theme.dart';
@@ -11,11 +11,11 @@ void main() {
   setUp(() {
     Get.testMode = true;
     Get.put(AppLanguageController());
-    ConnectedDeviceRegistry.instance.clear();
+    ConnectedDeviceRegistry.instance.resetForTest();
   });
 
   tearDown(() {
-    ConnectedDeviceRegistry.instance.clear();
+    ConnectedDeviceRegistry.instance.resetForTest();
     Get.reset();
   });
 

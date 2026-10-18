@@ -44,7 +44,7 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
   }
 
   String get _fallbackDeviceName =>
-      device.name.isEmpty ? 'Alloop 智能戒指' : device.name;
+      device.name.isEmpty ? "Alloop Smart Ring" : device.name;
 
   Widget _connectedContent(BuildContext context) {
     return Column(
@@ -54,16 +54,16 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
         const SizedBox(height: 12),
         Obx(_measurementPanel),
         const SizedBox(height: 20),
-        const VvewellSectionTitle('本次检测结果'),
+        const VvewellSectionTitle("Current results"),
         const SizedBox(height: 10),
         Obx(_metricOverview),
         const SizedBox(height: 20),
         VvewellSectionTitle(
-          '实时波形',
+          "Live waveforms",
           action: Obx(
             () => IconButton(
               key: const Key('export-alloop-waveforms'),
-              tooltip: '导出当前波形',
+              tooltip: "Export waveforms",
               onPressed: controller.isExporting.value
                   ? null
                   : controller.exportWaveData,
@@ -79,17 +79,17 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
         const SizedBox(height: 10),
         Obx(_waveforms),
         const SizedBox(height: 20),
-        const VvewellSectionTitle('健康趋势'),
+        const VvewellSectionTitle("Health trends"),
         const SizedBox(height: 10),
         Obx(_trendRangeControl),
         const SizedBox(height: 10),
         Obx(_trendCharts),
         const SizedBox(height: 20),
-        const VvewellSectionTitle('数据操作'),
+        const VvewellSectionTitle("Data actions"),
         const SizedBox(height: 10),
         Obx(_dataActions),
         const SizedBox(height: 20),
-        const VvewellSectionTitle('设备管理'),
+        const VvewellSectionTitle("Device management"),
         const SizedBox(height: 10),
         _deviceManagement(context),
       ],
@@ -134,7 +134,7 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      connected ? '设备已连接，SDK 数据通道已就绪' : '设备当前未连接',
+                      connected ? "Connected. SDK data channels are ready" : "Device is disconnected",
                       style: const TextStyle(
                         color: VvewellColors.muted,
                         fontSize: 13,
@@ -144,7 +144,7 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
                 ),
               ),
               VvewellStatusPill(
-                label: connected ? '已连接' : '未连接',
+                label: connected ? "Connected" : "Disconnected",
                 color: connected ? VvewellColors.success : VvewellColors.muted,
                 icon: connected
                     ? Icons.bluetooth_connected
@@ -153,8 +153,8 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
             ],
           ),
           const SizedBox(height: 14),
-          _infoRow('设备地址', device.id),
-          if (device.rssi != 0) _infoRow('蓝牙信号', '${device.rssi} dBm'),
+          _infoRow("Device address", device.id),
+          if (device.rssi != 0) _infoRow("Bluetooth signal", '${device.rssi} dBm'),
         ],
       ),
     );
@@ -169,7 +169,7 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
           Expanded(
             child: _overviewMetric(
               Icons.battery_std_rounded,
-              '电量',
+              "Battery",
               battery == null ? '--' : '$battery%',
               _batteryColor(battery),
             ),
@@ -178,7 +178,7 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
           Expanded(
             child: _overviewMetric(
               Icons.memory_outlined,
-              '固件',
+              "Firmware",
               info?.firmwareVersion.isNotEmpty == true
                   ? info!.firmwareVersion
                   : '--',
@@ -189,8 +189,8 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
           Expanded(
             child: _overviewMetric(
               Icons.sensors_outlined,
-              '数据通道',
-              '7 路',
+              "Data channels",
+              "7 channels",
               VvewellColors.success,
             ),
           ),
@@ -225,13 +225,13 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  '最近体温',
+                  "Latest temperature",
                   style: TextStyle(color: VvewellColors.muted, fontSize: 12),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   loading
-                      ? '读取中…'
+                      ? "Reading…"
                       : temperature == null
                       ? '--'
                       : '${temperature.toStringAsFixed(1)} °C',
@@ -243,8 +243,8 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
                 const SizedBox(height: 2),
                 Text(
                   recordedAt == null
-                      ? '同步历史活动数据后显示'
-                      : '历史活动数据 · ${_formatDateTime(recordedAt)}',
+                      ? "Available after syncing activity history"
+                      : 'Activity history · ${_formatDateTime(recordedAt)}',
                   style: const TextStyle(
                     color: VvewellColors.muted,
                     fontSize: 11,
@@ -254,7 +254,7 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
             ),
           ),
           IconButton(
-            tooltip: '刷新体温',
+            tooltip: "Refresh temperature",
             onPressed: loading ? null : controller.refreshLatestTemperature,
             icon: const Icon(Icons.refresh_rounded),
             color: VvewellColors.primaryDark,
@@ -341,12 +341,12 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
               icon: Icon(
                 measuring ? Icons.stop_circle_outlined : Icons.play_arrow,
               ),
-              label: Text(measuring ? '结束检测并生成结果' : '开始一键测量'),
+              label: Text(measuring ? "Finish and view results" : "Start health check"),
             ),
           ),
           const SizedBox(height: 10),
           const Text(
-            '实时读取血氧、心率、4 路 PPG 与 3 轴运动波形；结束后同步 SDK 历史体温。检测结果不替代医疗诊断。',
+            "Read oxygen, heart rate, four PPG channels and three-axis motion signals. Temperature history syncs when finished. Results do not replace a medical diagnosis.",
             style: TextStyle(
               color: VvewellColors.muted,
               fontSize: 12,
@@ -364,10 +364,10 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
         Expanded(
           child: _metricCard(
             icon: Icons.water_drop_outlined,
-            label: '血氧',
+            label: "Blood oxygen",
             value: controller.displaySpo2.value?.toString() ?? '--',
             unit: '%',
-            source: '实时 SDK',
+            source: "Live SDK",
             color: const Color(0xFF2878C8),
           ),
         ),
@@ -375,10 +375,10 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
         Expanded(
           child: _metricCard(
             icon: Icons.favorite_outline,
-            label: '心率',
+            label: "Heart rate",
             value: controller.displayHeartRate.value?.toString() ?? '--',
             unit: 'bpm',
-            source: '实时 SDK',
+            source: "Live SDK",
             color: VvewellColors.error,
           ),
         ),
@@ -386,11 +386,11 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
         Expanded(
           child: _metricCard(
             icon: Icons.thermostat_outlined,
-            label: '体温',
+            label: "Temperature",
             value:
                 controller.displayTemperature.value?.toStringAsFixed(1) ?? '--',
             unit: '°C',
-            source: '历史同步',
+            source: "History sync",
             color: VvewellColors.warning,
           ),
         ),
@@ -406,8 +406,8 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
         color: VvewellColors.softBlue,
         child: _EmptyData(
           icon: Icons.show_chart,
-          title: '等待波形数据',
-          subtitle: '开始测量后，所有 SDK 可生成的波形会在这里实时显示。',
+          title: "Waiting for waveforms",
+          subtitle: "Start measuring to see all available SDK waveforms here.",
         ),
       );
     }
@@ -417,29 +417,29 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
           VvewellCard(
             key: const Key('alloop-ppg-waveform-card'),
             child: RealTimeLineChart(
-              title: 'PPG · 4 路光学信号',
+              title: "PPG · 4 optical channels",
               height: 190,
               windowSeconds: DeviceDetailController.chartWindowSeconds,
               series: [
                 ChartDataSeries(
                   data: controller.ppgLedG.toList(),
                   color: VvewellColors.success,
-                  name: '绿光',
+                  name: "Green",
                 ),
                 ChartDataSeries(
                   data: controller.ppgLedGAmb.toList(),
                   color: VvewellColors.warning,
-                  name: '绿光环境',
+                  name: "Green ambient",
                 ),
                 ChartDataSeries(
                   data: controller.ppgLedRedAmb.toList(),
                   color: VvewellColors.error,
-                  name: '红光环境',
+                  name: "Red ambient",
                 ),
                 ChartDataSeries(
                   data: controller.ppgLedIr.toList(),
                   color: const Color(0xFF2878C8),
-                  name: '红外',
+                  name: "Infrared",
                 ),
               ],
             ),
@@ -449,7 +449,7 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
           VvewellCard(
             key: const Key('alloop-acc-waveform-card'),
             child: RealTimeLineChart(
-              title: 'ACC · 3 轴运动信号',
+              title: "ACC · 3-axis motion",
               height: 170,
               windowSeconds: DeviceDetailController.chartWindowSeconds,
               series: [
@@ -528,7 +528,7 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
     return Column(
       children: [
         _trendCard(
-          '血氧趋势',
+          "Oxygen trend",
           '%',
           const Color(0xFF2878C8),
           points,
@@ -536,7 +536,7 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
         ),
         const SizedBox(height: 10),
         _trendCard(
-          '心率趋势',
+          "Heart rate trend",
           'bpm',
           VvewellColors.error,
           points,
@@ -544,12 +544,12 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
         ),
         const SizedBox(height: 10),
         _trendCard(
-          '体温趋势',
+          "Temperature trend",
           '°C',
           VvewellColors.warning,
           points,
           (point) => point.temperature,
-          sourceLabel: '来自 SDK 活动历史温度序列',
+          sourceLabel: "From SDK activity temperature history",
         ),
       ],
     );
@@ -561,8 +561,8 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
         children: [
           _actionRow(
             icon: Icons.sync,
-            title: '立即同步戒指历史',
-            subtitle: '更新测量、活动、运动和体温记录',
+            title: "Sync ring history",
+            subtitle: "Update measurements, activity, exercise and temperature records",
             onTap: controller.measurementPhase.value.isBusy
                 ? null
                 : controller.syncHistoryNow,
@@ -570,8 +570,8 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
           const Divider(height: 24),
           _actionRow(
             icon: Icons.download_outlined,
-            title: '导出当前波形',
-            subtitle: '将本次 PPG 与 ACC 保存为 CSV',
+            title: "Export waveforms",
+            subtitle: "Save current PPG and ACC data as CSV",
             onTap: controller.isExporting.value
                 ? null
                 : controller.exportWaveData,
@@ -588,13 +588,13 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
           _actionRow(
             key: const Key('disconnect-alloop-ring'),
             icon: Icons.bluetooth_disabled,
-            title: '断开蓝牙连接',
-            subtitle: '保留设备绑定与本机健康数据',
+            title: "Disconnect Bluetooth",
+            subtitle: "Keep the device link and local health data",
             onTap: () => _confirm(
               context,
-              title: '断开 Alloop Ring？',
-              message: '当前蓝牙连接将结束，历史数据不会被删除。',
-              confirmLabel: '断开',
+              title: "Disconnect Alloop Ring?",
+              message: "This ends the Bluetooth connection. Saved history will be kept.",
+              confirmLabel: "Disconnect",
               action: controller.disconnect,
             ),
           ),
@@ -602,14 +602,14 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
           _actionRow(
             key: const Key('clear-alloop-ring-data'),
             icon: Icons.delete_sweep_outlined,
-            title: '清除本机戒指数据',
-            subtitle: '删除该戒指的本机测量、趋势与活动记录',
+            title: "Clear local ring data",
+            subtitle: "Delete this ring's local measurements, trends and activity records",
             color: VvewellColors.warning,
             onTap: () => _confirm(
               context,
-              title: '清除本机数据？',
-              message: '此操作会删除该戒指保存在本机的测量与活动记录，无法撤销；不会删除云端数据。',
-              confirmLabel: '清除数据',
+              title: "Clear local data?",
+              message: "This permanently deletes this ring's measurements and activity records from this device. Cloud data is kept.",
+              confirmLabel: "Clear data",
               destructive: true,
               action: controller.clearLocalData,
             ),
@@ -618,14 +618,14 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
           _actionRow(
             key: const Key('unbind-alloop-ring'),
             icon: Icons.link_off,
-            title: '解绑戒指',
-            subtitle: '断开连接并移除应用内设备绑定，保留历史健康数据',
+            title: "Unlink ring",
+            subtitle: "Disconnect and unlink the device from this app. Keep saved health history",
             color: VvewellColors.error,
             onTap: () => _confirm(
               context,
-              title: '解绑 Alloop Ring？',
-              message: '将断开蓝牙并移除应用内绑定。已保存的历史健康数据仍会保留。',
-              confirmLabel: '确认解绑',
+              title: "Unlink Alloop Ring?",
+              message: "This disconnects Bluetooth and unlinks the ring from the app. Saved health history is kept.",
+              confirmLabel: "Confirm unlink",
               destructive: true,
               action: controller.unbindRing,
             ),
@@ -644,12 +644,12 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                '重新连接设备',
+                "Reconnect device",
                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
               ),
               const SizedBox(height: 6),
               const Text(
-                '连接后将直接回到一键检测、波形和趋势页面，无需重新扫描或筛选。',
+                "Reconnect to return to measurements, waveforms and trends without scanning again.",
                 style: TextStyle(color: VvewellColors.muted, height: 1.4),
               ),
               const SizedBox(height: 16),
@@ -670,7 +670,7 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
                         )
                       : const Icon(Icons.bluetooth_connected),
                   label: Text(
-                    controller.isConnecting.value ? '正在连接…' : '连接 Alloop Ring',
+                    controller.isConnecting.value ? "Connecting…" : "Connect Alloop Ring",
                   ),
                 ),
               ),
@@ -678,7 +678,7 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
           ),
         ),
         const SizedBox(height: 20),
-        const VvewellSectionTitle('设备管理'),
+        const VvewellSectionTitle("Device management"),
         const SizedBox(height: 10),
         _deviceManagement(context),
       ],
@@ -826,8 +826,8 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
             child: values.isEmpty
                 ? const _EmptyData(
                     icon: Icons.timeline,
-                    title: '暂无趋势数据',
-                    subtitle: '完成检测或同步历史后生成',
+                    title: "No trend data yet",
+                    subtitle: "Complete a check or sync history to see trends",
                     compact: true,
                   )
                 : CustomPaint(
@@ -927,7 +927,7 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext, false),
-            child: const Text('取消'),
+            child: const Text("Cancel"),
           ),
           FilledButton(
             style: destructive
@@ -968,12 +968,12 @@ class DeviceDetailPage extends GetView<DeviceDetailController> {
   }
 
   String _phaseTitle(AlloopMeasurementPhase phase) => switch (phase) {
-    AlloopMeasurementPhase.idle => '一键健康检测',
-    AlloopMeasurementPhase.measuring => '正在采集实时数据',
-    AlloopMeasurementPhase.stopping => '正在结束检测',
-    AlloopMeasurementPhase.syncingHistory => '正在同步历史数据',
-    AlloopMeasurementPhase.completed => '检测已完成',
-    AlloopMeasurementPhase.error => '检测未完成',
+    AlloopMeasurementPhase.idle => "Health check",
+    AlloopMeasurementPhase.measuring => "Collecting live data",
+    AlloopMeasurementPhase.stopping => "Finishing health check",
+    AlloopMeasurementPhase.syncingHistory => "Syncing history",
+    AlloopMeasurementPhase.completed => "Check complete",
+    AlloopMeasurementPhase.error => "Check incomplete",
   };
 
   Color _batteryColor(int? battery) {

@@ -34,17 +34,17 @@
 		<true/>
 	</dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>需要蓝牙权限以连接和控制 Alloop 设备</string>
+	<string>Bluetooth access is used to connect to and control your Alloop devices.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>需要蓝牙权限以连接和控制 Alloop 设备</string>
+	<string>Bluetooth access is used to connect to and control your Alloop devices.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>需要相机权限以扫描二维码</string>
+	<string>Camera access is used to scan QR codes.</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>We will sync your data with the Apple Health app to give you better insights</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>We will sync your data with the Apple Health app to give you better insights</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>需要相册权限以从相册获取二维码</string>
+	<string>Photo library access is used to select QR code images.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

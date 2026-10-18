@@ -90,7 +90,7 @@ class ThermalCameraBridge(private val activity: Activity) : LifecycleOwner {
                 CAMERA_PERMISSION_REQUEST_CODE,
             )
             state = STATE_ERROR
-            lastError = "请授予相机权限后重新连接 USB 红外摄像头"
+            lastError = "Grant camera permission, then reconnect the USB thermal camera"
             emitState()
             return stateMap()
         }
@@ -174,9 +174,9 @@ class ThermalCameraBridge(private val activity: Activity) : LifecycleOwner {
 
     private fun previewFailureMessage(error: Throwable): String =
         if (!hasExternalCamera()) {
-            "未检测到可用的 USB/UVC 红外摄像头，请确认 OTG 连接和设备兼容性"
+            "No compatible USB/UVC thermal camera found. Check the OTG connection and device compatibility"
         } else {
-            "USB 红外摄像头预览启动失败：${error.message ?: "未知错误"}"
+            "Could not start the USB thermal camera preview: ${error.message ?: "Unknown error"}"
         }
 
     private fun stateMap(): Map<String, Any?> = mapOf(

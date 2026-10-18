@@ -159,7 +159,7 @@ class XiaoZhiDeviceController extends GetxController {
     final sent = await _proactiveVoice.speakNow();
     if (!sent) {
       latestResponse.value =
-          _proactiveVoice.status.lastError ?? '小智未连接或主动语音已关闭';
+          _proactiveVoice.status.lastError ?? "XiaoZhi is disconnected or proactive voice is off";
     }
   });
 

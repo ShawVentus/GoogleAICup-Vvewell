@@ -14,11 +14,11 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: Text(device.name.isEmpty ? 'JDY-23 雷达' : device.name),
+      title: Text(device.name.isEmpty ? "JDY-23 radar" : device.name),
       actions: [
         Obx(
           () => IconButton(
-            tooltip: controller.isConnected ? '断开连接' : '重新连接',
+            tooltip: controller.isConnected ? "Disconnect" : "Reconnect",
             icon: Icon(
               controller.isConnected
                   ? Icons.bluetooth_disabled
@@ -84,7 +84,7 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      device.name.isEmpty ? 'JDY-23 毫米波雷达' : device.name,
+                      device.name.isEmpty ? "JDY-23 mmWave radar" : device.name,
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w800,
@@ -92,7 +92,7 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      connected ? '雷达已连接，可开始采集' : '发现于附近，可安全连接',
+                      connected ? "Radar connected. Ready to capture" : "Nearby and available to connect",
                       style: const TextStyle(color: VvewellColors.muted),
                     ),
                   ],
@@ -108,9 +108,9 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
             ],
           ),
           const SizedBox(height: 15),
-          _row('设备类型', 'JDY-23 / MRS6130'),
-          _row('设备地址', device.id),
-          _row('蓝牙信号', '${device.rssi} dBm'),
+          _row("Device type", 'JDY-23 / MRS6130'),
+          _row("Device address", device.id),
+          _row("Bluetooth signal", '${device.rssi} dBm'),
           if (controller.isConnecting || controller.isBusy.value) ...[
             const SizedBox(height: 12),
             const LinearProgressIndicator(),
@@ -124,7 +124,7 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
               child: ElevatedButton.icon(
                 onPressed: controller.isBusy.value ? null : controller.connect,
                 icon: const Icon(Icons.bluetooth_connected),
-                label: const Text('连接 JDY-23 雷达'),
+                label: const Text("Connect JDY-23 radar"),
               ),
             ),
           ],
@@ -137,10 +137,10 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const VvewellSectionTitle('采集控制'),
+        const VvewellSectionTitle("Capture controls"),
         const SizedBox(height: 5),
         Text(
-          controller.isRunning.value ? '正在接收点云与生命体征工程数据。' : '连接后请显式启动雷达采集。',
+          controller.isRunning.value ? "Receiving point cloud and experimental vital signs data." : "Start radar capture after connecting.",
           style: const TextStyle(color: VvewellColors.muted, fontSize: 13),
         ),
         const SizedBox(height: 13),
@@ -151,21 +151,21 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
             OutlinedButton.icon(
               onPressed: controller.isBusy.value ? null : controller.wakeup,
               icon: const Icon(Icons.wb_twilight_outlined),
-              label: const Text('唤醒'),
+              label: const Text("Wake"),
             ),
             ElevatedButton.icon(
               onPressed: controller.isBusy.value || controller.isRunning.value
                   ? null
                   : controller.start,
               icon: const Icon(Icons.play_arrow),
-              label: const Text('启动雷达'),
+              label: const Text("Start radar"),
             ),
             OutlinedButton.icon(
               onPressed: controller.isBusy.value || !controller.isRunning.value
                   ? null
                   : controller.stop,
               icon: const Icon(Icons.stop_circle_outlined),
-              label: const Text('停止雷达'),
+              label: const Text("Stop radar"),
             ),
             OutlinedButton.icon(
               onPressed: controller.isBusy.value ||
@@ -177,8 +177,8 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
               icon: const Icon(Icons.file_download_outlined),
               label: Text(
                 controller.isExportingPointCloud.value
-                    ? '正在导出…'
-                    : '导出本次原始点云 CSV',
+                    ? "Exporting…"
+                    : "Export point cloud CSV",
               ),
             ),
             OutlinedButton.icon(
@@ -189,7 +189,7 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
                   ? null
                   : controller.sharePointCloudCsv,
               icon: const Icon(Icons.ios_share_outlined),
-              label: const Text('分享原始点云 CSV'),
+              label: const Text("Share point cloud CSV"),
             ),
             OutlinedButton.icon(
               onPressed: controller.isBusy.value ||
@@ -201,8 +201,8 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
               icon: const Icon(Icons.monitor_heart_outlined),
               label: Text(
                 controller.isExportingVitalMetrics.value
-                    ? '正在导出…'
-                    : '导出本次生命体征 CSV',
+                    ? "Exporting…"
+                    : "Export vital signs CSV",
               ),
             ),
             OutlinedButton.icon(
@@ -213,7 +213,7 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
                   ? null
                   : controller.shareVitalMetricsCsv,
               icon: const Icon(Icons.ios_share_outlined),
-              label: const Text('分享生命体征 CSV'),
+              label: const Text("Share vital signs CSV"),
             ),
           ],
         ),
@@ -231,7 +231,7 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
             const SizedBox(width: 8),
             const Expanded(
               child: Text(
-                '实时点云',
+                "Live point cloud",
                 style: TextStyle(fontWeight: FontWeight.w800, fontSize: 17),
               ),
             ),
@@ -243,14 +243,14 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
         ),
         const SizedBox(height: 5),
         Text(
-          '共 ${controller.pointCount.value} 个目标点 · 当前显示 ${controller.points.length} 个',
+          'Total: ${controller.pointCount.value} targets · Showing ${controller.points.length}',
           style: const TextStyle(color: VvewellColors.muted, fontSize: 12),
         ),
         if (controller.pointCloudCaptureState.value != 'idle') ...[
           const SizedBox(height: 4),
           Text(
-            '本次原始采集：${controller.capturedPointCloudFrames.value} 帧、'
-            '${controller.capturedPointCloudPoints.value} 点'
+            'Current capture: ${controller.capturedPointCloudFrames.value} frames, '
+            '${controller.capturedPointCloudPoints.value} points'
             '（${controller.pointCloudCaptureState.value}）',
             style: const TextStyle(color: VvewellColors.muted, fontSize: 12),
           ),
@@ -285,17 +285,17 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const VvewellSectionTitle('人体生命体征（工程数据）'),
+          const VvewellSectionTitle("Vital signs (experimental)"),
           const SizedBox(height: 12),
           Row(
             children: [
               Expanded(
-                child: _metric('呼吸率', _bpm(metrics['breathingBpm']), Icons.air),
+                child: _metric("Respiratory rate", _bpm(metrics['breathingBpm']), Icons.air),
               ),
               const SizedBox(width: 8),
               Expanded(
                 child: _metric(
-                  '心率',
+                  "Heart rate",
                   _bpm(metrics['heartBpm']),
                   Icons.favorite_border,
                 ),
@@ -303,7 +303,7 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
               const SizedBox(width: 8),
               Expanded(
                 child: _metric(
-                  '距离',
+                  "Distance",
                   _meters(metrics['distanceMeters']),
                   Icons.straighten,
                 ),
@@ -312,13 +312,13 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
           ),
           const SizedBox(height: 12),
           Text(
-            '呼吸置信度 ${_percent(metrics['breathingConfidence'])} · 心率置信度 ${_percent(metrics['heartConfidence'])}',
+            'Breathing confidence ${_percent(metrics['breathingConfidence'])} · Heart rate confidence ${_percent(metrics['heartConfidence'])}',
             style: const TextStyle(color: VvewellColors.muted, fontSize: 12),
           ),
           if (controller.vitalMetricsCaptureState.value != 'idle') ...[
             const SizedBox(height: 4),
             Text(
-              '本次指标采集：${controller.capturedVitalMetricRows.value} 条记录'
+              'Current measurements: ${controller.capturedVitalMetricRows.value} records'
               '（${controller.vitalMetricsCaptureState.value}）',
               style: const TextStyle(color: VvewellColors.muted, fontSize: 12),
             ),
@@ -332,12 +332,12 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
           ],
           const SizedBox(height: 4),
           Text(
-            'I/Q bin: ${sample['rangeBin'] ?? '-'} · 分辨率: ${sample['rangeResolutionMm'] ?? '-'} mm · 帧号: ${sample['frameIndex'] ?? '-'}',
+            'I/Q bin: ${sample['rangeBin'] ?? '-'} · Resolution: ${sample['rangeResolutionMm'] ?? '-'} mm · Frame: ${sample['frameIndex'] ?? '-'}',
             style: const TextStyle(color: VvewellColors.muted, fontSize: 12),
           ),
           const SizedBox(height: 11),
           const Text(
-            '该结果仅用于交互、研究与工程验证，不可用于诊断或监护。',
+            "For interaction, research and engineering validation only. Not for diagnosis or patient monitoring.",
             style: TextStyle(
               color: VvewellColors.error,
               fontSize: 12,
@@ -378,10 +378,10 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const VvewellSectionTitle('VitalBridge 输出配置'),
+        const VvewellSectionTitle("VitalBridge output settings"),
         SwitchListTile(
           contentPadding: EdgeInsets.zero,
-          title: const Text('I/Q 生命体征数据'),
+          title: const Text("I/Q vital signs data"),
           value: controller.phaseEnabled.value,
           onChanged: controller.isBusy.value
               ? null
@@ -389,7 +389,7 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
         ),
         SwitchListTile(
           contentPadding: EdgeInsets.zero,
-          title: const Text('点云数据'),
+          title: const Text("Point cloud data"),
           value: controller.pointCloudEnabled.value,
           onChanged: controller.isBusy.value
               ? null
@@ -397,7 +397,7 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
         ),
         SwitchListTile(
           contentPadding: EdgeInsets.zero,
-          title: const Text('手动选择距离 bin'),
+          title: const Text("Select distance bin manually"),
           value: controller.manualBin.value,
           onChanged: controller.isBusy.value
               ? null
@@ -431,25 +431,25 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
               onPressed: controller.isBusy.value
                   ? null
                   : controller.applyVitalConfig,
-              child: const Text('应用配置'),
+              child: const Text("Apply settings"),
             ),
             OutlinedButton(
               onPressed: controller.isBusy.value
                   ? null
                   : controller.selectAutomaticBin,
-              child: const Text('自动选择 bin'),
+              child: const Text("Select bin automatically"),
             ),
             OutlinedButton(
               onPressed: controller.isBusy.value
                   ? null
                   : controller.lockNearestPointBin,
-              child: const Text('按最近点锁定'),
+              child: const Text("Lock to nearest point"),
             ),
             TextButton(
               onPressed: controller.isBusy.value
                   ? null
                   : controller.queryVitalConfig,
-              child: const Text('查询配置'),
+              child: const Text("Read settings"),
             ),
           ],
         ),
@@ -468,10 +468,10 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('高级 HIF 命令', style: TextStyle(fontWeight: FontWeight.w800)),
+              Text("Advanced HIF commands", style: TextStyle(fontWeight: FontWeight.w800)),
               SizedBox(height: 3),
               Text(
-                '发送未来固件支持的 HIF 消息。',
+                "Send HIF messages supported by future firmware.",
                 style: TextStyle(color: VvewellColors.muted, fontSize: 13),
               ),
             ],
@@ -490,7 +490,7 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
         SizedBox(width: 12),
         Expanded(
           child: Text(
-            '连接后将订阅 UART 通知，并显示实时点云和生命体征工程数据。',
+            "Connect to subscribe to UART notifications and view live point cloud and experimental vital signs data.",
             style: TextStyle(color: VvewellColors.muted, height: 1.4),
           ),
         ),
@@ -540,12 +540,12 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
 
   String _stateText(String state) =>
       {
-        'ready': '已连接',
-        'connecting': '连接中',
-        'discovering': '发现服务',
-        'enabling_notifications': '订阅通知',
-        'error': '连接错误',
-        'disconnected': '未连接',
+        'ready': "Connected",
+        'connecting': "Connecting",
+        'discovering': "Discovering services",
+        'enabling_notifications': "Subscribing to notifications",
+        'error': "Connection error",
+        'disconnected': "Disconnected",
       }[state] ??
       state;
 
@@ -561,22 +561,22 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
     final payload = TextEditingController();
     await Get.dialog(
       AlertDialog(
-        title: const Text('HIF 命令'),
+        title: const Text("HIF command"),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: id,
-              decoration: const InputDecoration(labelText: '消息 ID（十六进制）'),
+              decoration: const InputDecoration(labelText: "Message ID (hex)"),
             ),
             TextField(
               controller: payload,
-              decoration: const InputDecoration(labelText: 'Payload Hex（可留空）'),
+              decoration: const InputDecoration(labelText: "Payload hex (optional)"),
             ),
           ],
         ),
         actions: [
-          TextButton(onPressed: Get.back, child: const Text('取消')),
+          TextButton(onPressed: Get.back, child: const Text("Cancel")),
           ElevatedButton(
             onPressed: () {
               final value = int.tryParse(id.text.trim(), radix: 16);
@@ -585,7 +585,7 @@ class RadarDevicePage extends GetView<RadarDeviceController> {
                 controller.sendHif(value, payload.text);
               }
             },
-            child: const Text('发送'),
+            child: const Text("Send"),
           ),
         ],
       ),

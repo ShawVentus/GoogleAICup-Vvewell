@@ -23,7 +23,7 @@ data class RppgMeasurementState(
     val heartRateEstimate: MetricEstimate? = null,
     val respirationEstimate: MetricEstimate? = null,
     val syntheticVitals: SyntheticVitals? = null,
-    val message: String = "准备测量",
+    val message: String = "Ready to measure",
 ) {
     val result: RppgResult?
         get() = heartRateEstimate?.toHeartRateResult()
@@ -88,7 +88,7 @@ class RppgMeasurementSession internal constructor(
         return update(
             RppgMeasurementState(
                 phase = RppgPhase.PreviewPreparing,
-                message = "正在准备检测…",
+                message = "Preparing measurement…",
             ),
         )
     }
@@ -98,13 +98,13 @@ class RppgMeasurementSession internal constructor(
         RppgPhase.PreviewPreparing -> transition(
             state.copy(
                 phase = RppgPhase.StartPending,
-                message = "正在准备检测，准备完成后将自动开始",
+                message = "Preparing measurement. It will start automatically when ready.",
             ),
         )
         RppgPhase.PreviewReady -> transition(
             state.copy(
                 phase = RppgPhase.StartPending,
-                message = "正在建立正式测量…",
+                message = "Starting measurement…",
             ),
             beginOfficialMeasurement = true,
         )
@@ -114,7 +114,7 @@ class RppgMeasurementSession internal constructor(
     @Synchronized
     internal fun onPrerollReady(): RppgSessionTransition = when (state.phase) {
         RppgPhase.PreviewPreparing -> transition(
-            state.copy(phase = RppgPhase.PreviewReady, message = "准备完成"),
+            state.copy(phase = RppgPhase.PreviewReady, message = "Ready"),
         )
         RppgPhase.StartPending -> transition(
             state,
@@ -126,7 +126,7 @@ class RppgMeasurementSession internal constructor(
     @Synchronized
     internal fun deferOfficialStartUntilReady(): RppgMeasurementState =
         if (state.phase == RppgPhase.StartPending) {
-            update(state.copy(message = "正在准备检测，准备完成后将自动开始"))
+            update(state.copy(message = "Preparing measurement. It will start automatically when ready."))
         } else {
             state
         }
@@ -137,7 +137,7 @@ class RppgMeasurementSession internal constructor(
             update(
                 RppgMeasurementState(
                     phase = RppgPhase.Aligning,
-                    message = "请将脸放入椭圆并保持稳定",
+                    message = "Position your face inside the oval and hold still",
                 ),
             )
         } else {
@@ -146,7 +146,7 @@ class RppgMeasurementSession internal constructor(
 
     @Synchronized
     fun onPrerollUnready(): RppgMeasurementState = if (state.phase == RppgPhase.PreviewReady) {
-        update(state.copy(phase = RppgPhase.PreviewPreparing, message = "正在准备检测…"))
+        update(state.copy(phase = RppgPhase.PreviewPreparing, message = "Preparing measurement…"))
     } else {
         state
     }
@@ -154,10 +154,10 @@ class RppgMeasurementSession internal constructor(
     @Synchronized
     fun markPreparationSlow(): RppgMeasurementState = when (state.phase) {
         RppgPhase.PreviewPreparing -> update(
-            state.copy(message = "准备时间较长，请保持正脸、稳定手机并改善光线"),
+            state.copy(message = "Preparation is taking longer. Face forward, steady your phone, and improve the lighting."),
         )
         RppgPhase.StartPending -> update(
-            state.copy(message = "准备时间较长，请保持正脸、稳定手机并改善光线；准备完成后将自动开始"),
+            state.copy(message = "Preparation is taking longer. Face forward, steady your phone, and improve the lighting. Measurement will start automatically when ready."),
         )
         else -> state
     }
@@ -165,7 +165,7 @@ class RppgMeasurementSession internal constructor(
     @Synchronized
     fun onFirstSample(): RppgMeasurementState {
         if (state.phase != RppgPhase.Aligning) return state
-        return update(state.copy(phase = RppgPhase.Collecting, message = "正在采集信号，请保持稳定"))
+        return update(state.copy(phase = RppgPhase.Collecting, message = "Collecting signal. Hold still."))
     }
 
     @Synchronized
@@ -179,9 +179,9 @@ class RppgMeasurementSession internal constructor(
             else -> RppgPhase.Collecting
         }
         val message = when (phase) {
-            RppgPhase.Aligning -> "请将脸放入椭圆并保持稳定"
-            RppgPhase.Collecting -> "正在采集信号，请保持稳定"
-            else -> if (state.result == null && state.respiration == null) "估计中…" else "初步估计，持续更新中"
+            RppgPhase.Aligning -> "Position your face inside the oval and hold still"
+            RppgPhase.Collecting -> "Collecting signal. Hold still."
+            else -> if (state.result == null && state.respiration == null) "Estimating…" else "Preliminary estimates are updating"
         }
         return update(state.copy(phase = phase, elapsedMillis = boundedElapsedMillis, message = message))
     }
@@ -194,7 +194,7 @@ class RppgMeasurementSession internal constructor(
             heartRateEstimate = null,
             respirationEstimate = null,
             syntheticVitals = null,
-            message = "人脸信号中断，请保持稳定并重新采集",
+            message = "Face signal interrupted. Hold still while the signal is collected again.",
         ),
     )
 
@@ -207,9 +207,9 @@ class RppgMeasurementSession internal constructor(
             heartRateEstimate = heartRate,
             respirationEstimate = respiration,
             message = if (!heartRate.available && !respiration.available) {
-                "信号质量不足，继续保持稳定"
+                "Insufficient signal quality. Keep holding still."
             } else {
-                "初步估计，持续更新中"
+                "Preliminary estimates are updating"
             },
         ),
     )
@@ -231,7 +231,7 @@ class RppgMeasurementSession internal constructor(
                 } else {
                     null
                 },
-                message = if (accepted) "测量完成" else "信号质量不足，请改善光线后重试",
+                message = if (accepted) "Measurement complete" else "Insufficient signal quality. Improve the lighting and try again.",
             ),
         )
     }
@@ -240,7 +240,7 @@ class RppgMeasurementSession internal constructor(
     fun permissionDenied(): RppgMeasurementState = update(
         RppgMeasurementState(
             phase = RppgPhase.PermissionDenied,
-            message = "需要摄像头权限才能测量",
+            message = "Camera permission is required to measure",
         ),
     )
 
@@ -251,7 +251,7 @@ class RppgMeasurementSession internal constructor(
             heartRateEstimate = null,
             respirationEstimate = null,
             syntheticVitals = null,
-            message = "测量失败：$message",
+            message = "Measurement failed: $message",
         ),
     )
 
@@ -260,7 +260,7 @@ class RppgMeasurementSession internal constructor(
         state.copy(
             phase = RppgPhase.Cancelled,
             syntheticVitals = null,
-            message = "测量已取消",
+            message = "Measurement cancelled",
         ),
     )
 

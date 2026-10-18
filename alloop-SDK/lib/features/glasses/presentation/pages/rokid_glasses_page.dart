@@ -11,10 +11,10 @@ class RokidGlassesPage extends GetView<RokidGlassesController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AI 智能眼镜'),
+        title: const Text("AI glasses"),
         actions: [
           IconButton(
-            tooltip: '刷新状态',
+            tooltip: "Refresh status",
             onPressed: controller.refreshStatus,
             icon: const Icon(Icons.refresh),
           ),
@@ -42,7 +42,7 @@ class RokidGlassesPage extends GetView<RokidGlassesController> {
                       children: [
                         Text(
                           controller.deviceInfo['deviceName']?.toString() ??
-                              'Rokid AI 眼镜',
+                              "Rokid AI glasses",
                           style: const TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.w800,
@@ -51,10 +51,10 @@ class RokidGlassesPage extends GetView<RokidGlassesController> {
                         const SizedBox(height: 7),
                         VvewellStatusPill(
                           label: controller.ready.value
-                              ? 'CXRLink 已就绪'
+                              ? "CXRLink ready"
                               : controller.companionConnected.value
-                              ? '眼镜已连接，等待授权'
-                              : '尚未连接',
+                              ? "Glasses connected; authorization required"
+                              : "Not connected",
                           color: controller.ready.value
                               ? VvewellColors.success
                               : VvewellColors.muted,
@@ -70,21 +70,21 @@ class RokidGlassesPage extends GetView<RokidGlassesController> {
               child: Column(
                 children: [
                   _StatusRow(
-                    label: 'Rokid 配套应用',
+                    label: "Rokid companion app",
                     ok: controller.companionInstalled.value,
                   ),
                   const Divider(height: 24),
                   _StatusRow(
-                    label: '眼镜蓝牙',
+                    label: "Glasses Bluetooth",
                     ok:
                         controller.bluetoothConnected.value ||
                         controller.companionConnected.value,
                   ),
                   const Divider(height: 24),
-                  _StatusRow(label: '应用授权', ok: controller.authorized.value),
+                  _StatusRow(label: "App authorization", ok: controller.authorized.value),
                   const Divider(height: 24),
                   _StatusRow(
-                    label: 'CXRLink 会话',
+                    label: "CXRLink session",
                     ok: controller.cxrlConnected.value,
                   ),
                 ],
@@ -97,18 +97,18 @@ class RokidGlassesPage extends GetView<RokidGlassesController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      '设备信息',
+                      "Device information",
                       style: TextStyle(fontWeight: FontWeight.w800),
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      '序列号：${controller.deviceInfo['serialNumber'] ?? '--'}',
+                      'Serial number: ${controller.deviceInfo['serialNumber'] ?? '--'}',
                     ),
                     Text(
-                      '系统版本：${controller.deviceInfo['systemVersion'] ?? '--'}',
+                      'System version: ${controller.deviceInfo['systemVersion'] ?? '--'}',
                     ),
                     Text(
-                      '电量：${controller.deviceInfo['batteryLevel'] ?? '--'}%',
+                      'Battery: ${controller.deviceInfo['batteryLevel'] ?? '--'}%',
                     ),
                   ],
                 ),
@@ -128,7 +128,7 @@ class RokidGlassesPage extends GetView<RokidGlassesController> {
                     ? null
                     : controller.openCompanionMarket,
                 icon: const Icon(Icons.download_outlined),
-                label: const Text('安装 Rokid 配套应用'),
+                label: const Text("Install Rokid companion app"),
               )
             else if (!controller.ready.value)
               ElevatedButton.icon(
@@ -136,7 +136,7 @@ class RokidGlassesPage extends GetView<RokidGlassesController> {
                     ? null
                     : controller.authorizeAndConnect,
                 icon: const Icon(Icons.link),
-                label: Text(controller.isBusy.value ? '连接中…' : '授权并连接眼镜'),
+                label: Text(controller.isBusy.value ? "Connecting…" : "Authorize and connect glasses"),
               )
             else
               OutlinedButton.icon(
@@ -144,7 +144,7 @@ class RokidGlassesPage extends GetView<RokidGlassesController> {
                     ? null
                     : controller.disconnect,
                 icon: const Icon(Icons.link_off),
-                label: const Text('断开 CXRLink 会话'),
+                label: const Text("Disconnect CXRLink"),
               ),
           ],
         ),
@@ -169,7 +169,7 @@ class _StatusRow extends StatelessWidget {
       const SizedBox(width: 10),
       Expanded(child: Text(label)),
       Text(
-        ok ? '已就绪' : '未就绪',
+        ok ? "Ready" : "Not ready",
         style: TextStyle(
           color: ok ? VvewellColors.success : VvewellColors.muted,
           fontWeight: FontWeight.w700,

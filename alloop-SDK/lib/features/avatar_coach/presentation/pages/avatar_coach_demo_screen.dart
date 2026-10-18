@@ -42,7 +42,7 @@ class _AvatarCoachDemoScreenState extends State<AvatarCoachDemoScreen> {
             DropdownButtonFormField<MockScenarioId>(
               key: const Key('mock-scenario-switcher'),
               initialValue: _controller.currentScenario.id,
-              decoration: const InputDecoration(labelText: 'Mock 场景'),
+              decoration: const InputDecoration(labelText: "Demo scenario"),
               items: [
                 for (final scenario in MockScenarioId.values)
                   DropdownMenuItem(
@@ -94,7 +94,7 @@ class _AvatarCoachDemoScreenState extends State<AvatarCoachDemoScreen> {
                 key: const Key('demo-warning-retest'),
                 onPressed: _controller.submitNormalManualRetest,
                 icon: const Icon(Icons.fact_check_outlined),
-                label: const Text('Mock 人工复测正常'),
+                label: Text('Mock 人工复测正常'.tr),
               ),
             ],
           ],

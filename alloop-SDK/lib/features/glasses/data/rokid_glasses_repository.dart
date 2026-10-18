@@ -72,7 +72,7 @@ class RokidGlassesRepository {
     ConnectedDeviceRegistry.instance.markConnected(
       SmartRingDevice(
         id: serial?.isNotEmpty == true ? serial! : 'rokid-glasses',
-        name: deviceName?.isNotEmpty == true ? deviceName! : 'Rokid AI 眼镜',
+        name: deviceName?.isNotEmpty == true ? deviceName! : "Rokid AI glasses",
         rssi: 0,
         type: SmartRingType.glasses,
       ),

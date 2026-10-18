@@ -10,12 +10,12 @@ class RobotDevicePage extends GetView<RobotDeviceController> {
   final SmartRingDevice device;
 
   static const _expressions = [
-    ('blue_upper', '蓝色 · 上弦', Icons.sentiment_satisfied_alt),
-    ('blue_middle', '蓝色 · 平视', Icons.sentiment_neutral),
-    ('blue_lower', '蓝色 · 低头', Icons.sentiment_dissatisfied),
-    ('yellow_upper', '黄色 · 上弦', Icons.wb_sunny_outlined),
-    ('yellow_middle', '黄色 · 平视', Icons.light_mode_outlined),
-    ('yellow_lower', '黄色 · 低头', Icons.nightlight_outlined),
+    ('blue_upper', "Blue · Look up", Icons.sentiment_satisfied_alt),
+    ('blue_middle', "Blue · Look ahead", Icons.sentiment_neutral),
+    ('blue_lower', "Blue · Look down", Icons.sentiment_dissatisfied),
+    ('yellow_upper', "Yellow · Look up", Icons.wb_sunny_outlined),
+    ('yellow_middle', "Yellow · Look ahead", Icons.light_mode_outlined),
+    ('yellow_lower', "Yellow · Look down", Icons.nightlight_outlined),
   ];
 
   @override
@@ -24,7 +24,7 @@ class RobotDevicePage extends GetView<RobotDeviceController> {
           title: Text(device.name.isEmpty ? 'vvewell Robot' : device.name),
           actions: [
             Obx(() => IconButton(
-                  tooltip: controller.isConnected ? '断开连接' : '重新连接',
+                  tooltip: controller.isConnected ? "Disconnect" : "Reconnect",
                   onPressed: controller.isBusy.value
                       ? null
                       : (controller.isConnected ? controller.disconnect : controller.connect),
@@ -65,23 +65,23 @@ class RobotDevicePage extends GetView<RobotDeviceController> {
             Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               const Text('vvewell Robot', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
               const SizedBox(height: 4),
-              Text(controller.isConnected ? '已连接，可控制表情与 SG90 舵机。' : '正在建立 GATT 控制连接。',
+              Text(controller.isConnected ? "Connected. Expressions and the SG90 servo are ready." : "Establishing GATT control connection.",
                   style: const TextStyle(color: VvewellColors.muted)),
             ])),
             VvewellStatusPill(
-              label: controller.isConnected ? '已连接' : '未连接',
+              label: controller.isConnected ? "Connected" : "Disconnected",
               color: controller.isConnected ? VvewellColors.success : VvewellColors.muted,
               icon: controller.isConnected ? Icons.bluetooth_connected : Icons.bluetooth_disabled,
             ),
           ]),
           const SizedBox(height: 14),
-          Text('设备地址  ${device.id}', style: const TextStyle(color: VvewellColors.muted, fontSize: 13)),
+          Text('Device address: ${device.id}', style: const TextStyle(color: VvewellColors.muted, fontSize: 13)),
           if (controller.isBusy.value) ...[const SizedBox(height: 12), const LinearProgressIndicator()],
           if (!controller.isConnected) ...[
             const SizedBox(height: 15),
             SizedBox(width: double.infinity, child: ElevatedButton.icon(
               onPressed: controller.isBusy.value ? null : controller.connect,
-              icon: const Icon(Icons.bluetooth_connected), label: const Text('连接 Robot'),
+              icon: const Icon(Icons.bluetooth_connected), label: const Text("Connect Robot"),
             )),
           ],
         ]),
@@ -90,9 +90,9 @@ class RobotDevicePage extends GetView<RobotDeviceController> {
   Widget _expressionCard() => VvewellCard(
         color: VvewellColors.softBlue,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const VvewellSectionTitle('表情控制'),
+          const VvewellSectionTitle("Expressions"),
           const SizedBox(height: 5),
-          const Text('选择显示表情；“关闭表情”会让面板熄灭。', style: TextStyle(color: VvewellColors.muted, fontSize: 13)),
+          const Text("Choose an expression. Turn expressions off to switch off the display.", style: TextStyle(color: VvewellColors.muted, fontSize: 13)),
           const SizedBox(height: 12),
           GridView.count(
             crossAxisCount: 2, shrinkWrap: true, physics: const NeverScrollableScrollPhysics(),
@@ -102,7 +102,7 @@ class RobotDevicePage extends GetView<RobotDeviceController> {
           const SizedBox(height: 8),
           OutlinedButton.icon(
             onPressed: controller.isBusy.value ? null : () => controller.setExpression('off'),
-            icon: const Icon(Icons.visibility_off_outlined), label: const Text('关闭表情'),
+            icon: const Icon(Icons.visibility_off_outlined), label: const Text("Turn expressions off"),
           ),
         ]),
       );
@@ -119,7 +119,7 @@ class RobotDevicePage extends GetView<RobotDeviceController> {
   Widget _servoCard() => VvewellCard(
         color: VvewellColors.softOrange,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const VvewellSectionTitle('SG90 舵机角度'),
+          const VvewellSectionTitle("SG90 servo angle"),
           const SizedBox(height: 5),
           Text('${controller.angle.value.round()}°', style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w800, color: VvewellColors.primaryDark)),
           Slider(
@@ -131,24 +131,24 @@ class RobotDevicePage extends GetView<RobotDeviceController> {
           Row(children: [
             Expanded(child: ElevatedButton.icon(
               onPressed: controller.isBusy.value ? null : () => controller.setServoAngle(controller.angle.value),
-              icon: const Icon(Icons.rotate_right), label: const Text('设置角度'),
+              icon: const Icon(Icons.rotate_right), label: const Text("Set angle"),
             )),
             const SizedBox(width: 9),
             OutlinedButton.icon(
               onPressed: controller.isBusy.value ? null : controller.turnServoOff,
-              icon: const Icon(Icons.power_settings_new), label: const Text('舵机断电'),
+              icon: const Icon(Icons.power_settings_new), label: const Text("Power off servo"),
             ),
           ]),
         ]),
       );
 
   Widget _responseCard() => VvewellCard(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Row(children: [const Expanded(child: VvewellSectionTitle('设备响应')), IconButton(onPressed: controller.isBusy.value ? null : controller.requestStatus, icon: const Icon(Icons.refresh), tooltip: '读取状态')]),
-        Text(controller.latestResponse.value.isEmpty ? '尚未收到设备响应。' : controller.latestResponse.value,
+        Row(children: [const Expanded(child: VvewellSectionTitle("Device response")), IconButton(onPressed: controller.isBusy.value ? null : controller.requestStatus, icon: const Icon(Icons.refresh), tooltip: "Read status")]),
+        Text(controller.latestResponse.value.isEmpty ? "No response received yet." : controller.latestResponse.value,
             style: const TextStyle(color: VvewellColors.muted, fontFamily: 'monospace', fontSize: 12)),
       ]));
 
   Widget _connectHint() => const VvewellCard(
-        child: Text('请保持 robot 开机并处于广播状态。连接成功后即可发送表情和舵机控制命令。', style: TextStyle(color: VvewellColors.muted)),
+        child: Text("Keep Robot powered on and advertising. Connect to control expressions and the servo.", style: TextStyle(color: VvewellColors.muted)),
       );
 }

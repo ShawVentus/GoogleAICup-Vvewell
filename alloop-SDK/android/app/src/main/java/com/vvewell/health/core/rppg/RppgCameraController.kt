@@ -945,7 +945,7 @@ class RppgCameraController(
         metricAnalysisExecutor.invalidate()
         signalProcessor.clearMetricHistory()
         closeCsvSession("error")
-        onState(session.fail(error.message ?: "未知错误"))
+        onState(session.fail(error.message ?: "Unknown error"))
     }
 
     private fun postState(token: Long, state: RppgMeasurementState) {

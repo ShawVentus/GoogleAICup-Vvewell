@@ -54,8 +54,8 @@ void main() {
       ],
     });
 
-    expect(result.summary, contains('共识别1项指标'));
-    expect(result.summary, contains('异常项目：白细胞计数'));
+    expect(result.summary, contains('Identified 1 measurements'));
+    expect(result.summary, contains('Abnormal findings: 白细胞计数'));
     expect(
       result.toConsultationContext()['labItems'].toString(),
       contains('白细胞计数'),

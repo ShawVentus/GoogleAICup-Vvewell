@@ -14,7 +14,7 @@ void main() {
 
   setUp(() {
     Get.testMode = true;
-    Get.put(AppLanguageController());
+    Get.put(AppLanguageController()..setEnglish(false));
     nutritionController = NutritionDemoController();
     familyController = FamilyProfileController();
   });

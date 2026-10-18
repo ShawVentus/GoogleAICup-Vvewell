@@ -102,13 +102,13 @@ class RokidGlassesBridge(private val activity: Activity) {
         if (!isCompanionInstalled()) {
             result.error(
                 "ROKID_COMPANION_MISSING",
-                "请先安装并登录 Rokid AI 或 Hi Rokid 配套应用",
+                "Install and sign in to the Rokid AI or Hi Rokid companion app first",
                 null,
             )
             return
         }
         if (pendingAuthorizationResult != null) {
-            result.error("ROKID_AUTH_RUNNING", "眼镜授权正在进行", null)
+            result.error("ROKID_AUTH_RUNNING", "Glasses authorization is in progress", null)
             return
         }
         pendingAuthorizationResult = result
@@ -140,12 +140,12 @@ class RokidGlassesBridge(private val activity: Activity) {
             }
             is AuthResult.AuthCancel -> pending.error(
                 "ROKID_AUTH_CANCELLED",
-                "用户取消了眼镜授权",
+                "Glasses authorization was canceled",
                 null,
             )
             is AuthResult.AuthFail -> pending.error(
                 "ROKID_AUTH_FAILED",
-                "眼镜授权失败",
+                "Glasses authorization failed",
                 null,
             )
         }

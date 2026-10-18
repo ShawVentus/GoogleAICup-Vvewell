@@ -47,3 +47,6 @@ doctor-recommendation/**/__pycache__/
 
 # Local external build-directory symlink
 /alloop-SDK/build
+
+# APK release artifacts
+/alloop-SDK/release/

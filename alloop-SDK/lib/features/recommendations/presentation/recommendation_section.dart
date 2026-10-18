@@ -91,7 +91,7 @@ class _RecommendationSectionState extends State<RecommendationSection> {
       if (mounted) {
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(SnackBar(content: Text('任务更新失败：$error')));
+        ).showSnackBar(SnackBar(content: Text('Could not update task: $error')));
       }
     } finally {
       if (mounted) setState(() => _updatingTasks.remove(taskId));
@@ -109,7 +109,7 @@ class _RecommendationSectionState extends State<RecommendationSection> {
     if (_error != null) {
       return _StatusRow(
         icon: Icons.error_outline,
-        text: '本地分析暂时不可用',
+        text: "Local analysis is temporarily unavailable",
         action: _load,
       );
     }
@@ -117,14 +117,14 @@ class _RecommendationSectionState extends State<RecommendationSection> {
     if (plan?.status == 'CARE_ESCALATION') {
       return _StatusRow(
         icon: Icons.health_and_safety_outlined,
-        text: '请优先查看护理提醒',
+        text: "Review your care reminders first",
         action: _load,
       );
     }
     if (plan?.status == 'ABSTAINED') {
       return _StatusRow(
         icon: Icons.fact_check_outlined,
-        text: '暂无可安全推荐的行动',
+        text: "No suitable actions to recommend yet",
         action: _load,
       );
     }
@@ -149,8 +149,8 @@ class _RecommendationSectionState extends State<RecommendationSection> {
           const SizedBox(height: 8),
           Text(
             plan.cloudSyncedAt == null
-                ? '本地分析 ${_shortTime(plan.analyzedAt!)} · 尚未同步'
-                : '本地分析 ${_shortTime(plan.analyzedAt!)} · 云端同步 ${_shortTime(plan.cloudSyncedAt!)}',
+                ? 'Local analysis ${_shortTime(plan.analyzedAt!)} · Not synced'
+                : 'Local analysis ${_shortTime(plan.analyzedAt!)} · Cloud sync ${_shortTime(plan.cloudSyncedAt!)}',
             textAlign: TextAlign.right,
             style: const TextStyle(fontSize: 10, color: VvewellColors.muted),
           ),
@@ -355,7 +355,7 @@ class _StatusRow extends StatelessWidget {
         IconButton(
           onPressed: action,
           icon: const Icon(Icons.refresh),
-          tooltip: '重试',
+          tooltip: '重试'.tr,
         ),
       ],
     ),
@@ -459,10 +459,10 @@ class _RecommendationRow extends StatelessWidget {
                           : Icons.check,
                     ),
               tooltip: item.taskStatus == 'pending'
-                  ? '开始任务'
+                  ? "Start task"
                   : item.taskStatus == 'completed'
-                  ? '已完成'
-                  : '完成任务',
+                  ? '已完成'.tr
+                  : "Complete task",
             ),
           ),
         ],

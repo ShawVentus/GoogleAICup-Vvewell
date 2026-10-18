@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 void main() {
   setUp(() {
     Get.testMode = true;
-    Get.put(AppLanguageController());
+    Get.put(AppLanguageController()..setEnglish(false));
   });
 
   tearDown(Get.reset);

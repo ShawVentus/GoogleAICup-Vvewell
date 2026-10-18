@@ -48,12 +48,12 @@ void main() {
       find.byKey(const Key('referral-complaint')),
       '反复胸闷两周，希望进一步评估',
     );
-    final identity = find.widgetWithText(CheckboxListTile, '确认本次服务对象为 王国良');
+    final identity = find.widgetWithText(CheckboxListTile, 'Confirm the patient is 王国良');
     await tester.ensureVisible(identity);
     await tester.tap(identity);
     final consent = find.widgetWithText(
       CheckboxListTile,
-      '同意将本次最小必要资料用于送诊评估与人工协调',
+      'I consent to the minimum necessary information being used for referral assessment and care coordination',
     );
     await tester.ensureVisible(consent);
     await tester.tap(consent);
@@ -62,8 +62,8 @@ void main() {
     await tester.tap(submit);
     await tester.pumpAndSettle();
 
-    expect(find.text('资料初审'), findsOneWidget);
-    expect(find.textContaining('顾问将在 1 个工作日内初审'), findsOneWidget);
+    expect(find.text('Initial review'), findsOneWidget);
+    expect(find.textContaining('Advisor review expected within one business day'), findsOneWidget);
   });
 
   testWidgets('joining a disease community requires explicit consent', (

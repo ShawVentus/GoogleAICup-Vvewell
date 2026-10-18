@@ -12,10 +12,10 @@ class ThermalCameraPage extends GetView<ThermalCameraController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('USB 红外摄像头'),
+        title: const Text("USB thermal camera"),
         actions: [
           IconButton(
-            tooltip: '重新连接 USB 摄像头',
+            tooltip: "Reconnect USB camera",
             onPressed: controller.isBusy.value ? null : controller.connect,
             icon: const Icon(Icons.refresh),
           ),
@@ -46,7 +46,7 @@ class ThermalCameraPage extends GetView<ThermalCameraController> {
                     ? const AndroidView(viewType: 'alloop/thermal_camera_view')
                     : const Center(
                         child: Text(
-                          'USB 红外摄像头仅支持 Android',
+                          "USB thermal cameras are supported on Android only",
                           style: TextStyle(color: Colors.white70),
                         ),
                       ),
@@ -90,7 +90,7 @@ class ThermalCameraPage extends GetView<ThermalCameraController> {
                           ? null
                           : controller.disconnect,
                       icon: const Icon(Icons.link_off),
-                      label: const Text('断开 USB 摄像头'),
+                      label: const Text("Disconnect USB camera"),
                     )
                   : ElevatedButton.icon(
                       onPressed: controller.isBusy.value
@@ -98,7 +98,7 @@ class ThermalCameraPage extends GetView<ThermalCameraController> {
                           : controller.connect,
                       icon: const Icon(Icons.play_circle_outline),
                       label: Text(
-                        controller.isBusy.value ? '正在连接…' : '连接 USB 摄像头',
+                        controller.isBusy.value ? "Connecting…" : "Connect USB camera",
                       ),
                     ),
             ),
@@ -109,9 +109,9 @@ class ThermalCameraPage extends GetView<ThermalCameraController> {
   }
 
   String _stateLabel(String state) => switch (state) {
-    'connecting' => '正在连接 USB 红外摄像头…',
-    'previewing' => '正在读取 USB 红外实时画面',
-    'error' => 'USB 摄像头连接失败',
-    _ => '等待 USB 红外摄像头',
+    'connecting' => "Connecting to USB thermal camera…",
+    'previewing' => "Streaming USB thermal images",
+    'error' => "Could not connect to USB camera",
+    _ => "Waiting for USB thermal camera",
   };
 }

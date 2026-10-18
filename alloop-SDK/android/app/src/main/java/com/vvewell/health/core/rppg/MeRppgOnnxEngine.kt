@@ -38,7 +38,7 @@ class MeRppgOnnxEngine(
 
     override fun processFrame(rgb: FloatArray, frameDeltaSeconds: Float): Float {
         require(rgb.size == RppgImagePreprocessor.MODEL_SIZE * RppgImagePreprocessor.MODEL_SIZE * 3) {
-            "rPPG 输入必须是 36×36 RGB FloatArray"
+            "rPPG input must be a 36x36 RGB FloatArray"
         }
         val tensors = linkedMapOf<String, OnnxTensor>()
         try {

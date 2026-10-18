@@ -62,7 +62,7 @@ class AdvisorContactResult {
 Future<ReferralIntakeResult?> showReferralIntakeSheet(
   BuildContext context, {
   required String memberName,
-  String initialChannel = '线下门诊',
+  String initialChannel = "In-person visit",
 }) {
   return showModalBottomSheet<ReferralIntakeResult>(
     context: context,
@@ -194,8 +194,8 @@ class _ReferralIntakeSheetState extends State<_ReferralIntakeSheet> {
   @override
   Widget build(BuildContext context) {
     return _SheetScaffold(
-      title: '发起送诊评估',
-      subtitle: '为 ${widget.memberName} 建立独立病例。先排除紧急危险，再收集就诊需求。',
+      title: "Start referral assessment",
+      subtitle: 'Create a separate case for ${widget.memberName}. Rule out emergencies first, then describe the care needed.',
       child: Form(
         key: _formKey,
         child: Column(
@@ -203,7 +203,7 @@ class _ReferralIntakeSheetState extends State<_ReferralIntakeSheet> {
           children: [
             const _SafetyCallout(),
             const SizedBox(height: 20),
-            const _FormSectionTitle('病情与诉求'),
+            const _FormSectionTitle("Symptoms and care needs"),
             const SizedBox(height: 10),
             TextFormField(
               key: const Key('referral-complaint'),
@@ -211,29 +211,29 @@ class _ReferralIntakeSheetState extends State<_ReferralIntakeSheet> {
               minLines: 3,
               maxLines: 5,
               decoration: const InputDecoration(
-                labelText: '主要症状或就诊诉求 *',
-                hintText: '例如：反复胸闷两周，希望预约心内科进一步评估',
+                labelText: "Main symptoms or care needs *",
+                hintText: "For example: recurring chest tightness for two weeks; seeking a cardiology assessment",
                 alignLabelWithHint: true,
               ),
               validator: (value) => value == null || value.trim().length < 6
-                  ? '请至少填写 6 个字，便于顾问理解诉求'
+                  ? "Enter at least 6 characters to explain your care needs"
                   : null,
             ),
             const SizedBox(height: 12),
             TextFormField(
               controller: _diagnosisController,
               decoration: const InputDecoration(
-                labelText: '已有诊断或治疗情况（选填）',
-                helperText: '不确定时可留空，系统不会把未知当作否认。',
+                labelText: "Existing diagnosis or treatment (optional)",
+                helperText: "Leave blank if unsure. Unknown information is not treated as a negative answer.",
               ),
             ),
             const SizedBox(height: 20),
-            const _FormSectionTitle('期望时限'),
+            const _FormSectionTitle("Preferred timeframe"),
             const SizedBox(height: 8),
             Wrap(
               spacing: 8,
               runSpacing: 8,
-              children: ['A1 当日评估', 'A2 24-72 小时', 'A3 计划就诊', 'A4 常规咨询']
+              children: ["A1 Same-day assessment", "A2 Within 24–72 hours", 'A3 计划就诊', "A4 Routine consultation"]
                   .map(
                     (value) => ChoiceChip(
                       label: Text(value),
@@ -247,8 +247,8 @@ class _ReferralIntakeSheetState extends State<_ReferralIntakeSheet> {
             DropdownButtonFormField<String>(
               isExpanded: true,
               initialValue: _channel,
-              decoration: const InputDecoration(labelText: '期望就诊渠道'),
-              items: const ['线下门诊', '线上问诊 / eConsult', '跨境医疗', '检查检验']
+              decoration: const InputDecoration(labelText: "Preferred care setting"),
+              items: const ["In-person visit", "Online consultation / eConsult", '跨境医疗', "Tests and examinations"]
                   .map(
                     (value) =>
                         DropdownMenuItem(value: value, child: Text(value.tr)),
@@ -260,30 +260,30 @@ class _ReferralIntakeSheetState extends State<_ReferralIntakeSheet> {
             SwitchListTile(
               contentPadding: EdgeInsets.zero,
               value: _hasRecords,
-              title: const Text('我有病历、影像或检查资料'),
-              subtitle: const Text('提交后会生成分类上传清单，并保留 OCR 置信度和原文。'),
+              title: const Text("I have medical records, images or test results"),
+              subtitle: const Text("A categorized upload checklist will be created after submission. OCR confidence and original text will be retained."),
               onChanged: (value) => setState(() => _hasRecords = value),
             ),
             CheckboxListTile(
               value: _identityConfirmed,
               contentPadding: EdgeInsets.zero,
               controlAffinity: ListTileControlAffinity.leading,
-              title: Text('确认本次服务对象为 ${widget.memberName}'),
+              title: Text('Confirm the patient is ${widget.memberName}'),
               onChanged: (value) => setState(() => _identityConfirmed = value!),
             ),
             CheckboxListTile(
               value: _consent,
               contentPadding: EdgeInsets.zero,
               controlAffinity: ListTileControlAffinity.leading,
-              title: const Text('同意将本次最小必要资料用于送诊评估与人工协调'),
-              subtitle: const Text('不会自动共享至保险销售、核保或社区。'),
+              title: const Text("I consent to the minimum necessary information being used for referral assessment and care coordination"),
+              subtitle: const Text("Information will not be automatically shared with insurance sales, underwriting or communities."),
               onChanged: (value) => setState(() => _consent = value!),
             ),
             if (!_identityConfirmed || !_consent)
               const Padding(
                 padding: EdgeInsets.only(left: 12, bottom: 8),
                 child: Text(
-                  '提交前需确认服务对象和用途授权',
+                  "Confirm the patient and consent to the stated use before submitting",
                   style: TextStyle(color: VvewellColors.error, fontSize: 12),
                 ),
               ),
@@ -294,7 +294,7 @@ class _ReferralIntakeSheetState extends State<_ReferralIntakeSheet> {
                 key: const Key('submit-referral-intake'),
                 onPressed: _submit,
                 icon: const Icon(Icons.assignment_turned_in_outlined),
-                label: const Text('提交初审'),
+                label: const Text("Submit for review"),
               ),
             ),
           ],
@@ -330,8 +330,8 @@ class _QuoteConfirmationSheetState extends State<_QuoteConfirmationSheet> {
   @override
   Widget build(BuildContext context) {
     return _SheetScaffold(
-      title: '确认服务方案与报价',
-      subtitle: '报价 48 小时内有效。任何变更都会显示新旧差异，并要求重新确认。',
+      title: "Confirm service plan and quote",
+      subtitle: "Quotes are valid for 48 hours. Any changes will be shown and require confirmation again.",
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -359,32 +359,32 @@ class _QuoteConfirmationSheetState extends State<_QuoteConfirmationSheet> {
                   ),
                 ),
                 const SizedBox(height: 6),
-                const Text('平台医疗服务费 · 本次且仅一次支付'),
+                const Text("Platform care service fee · One payment for this service"),
                 const SizedBox(height: 4),
                 const Text(
-                  '预计服务周期 2-6 周 · 含资料整理、资源匹配、预约协调与随访',
+                  "Estimated duration: 2–6 weeks, including records preparation, provider matching, appointment coordination and follow-up",
                   style: TextStyle(color: VvewellColors.muted, fontSize: 12),
                 ),
               ],
             ),
           ),
           const SizedBox(height: 20),
-          const _FormSectionTitle('费用边界确认'),
+          const _FormSectionTitle("Confirm what the fees cover"),
           const SizedBox(height: 6),
           _BoundaryCheckbox(
             value: _platformFee,
-            title: '我确认上方金额仅为平台医疗服务费',
+            title: "I understand the amount above covers platform care services only",
             onChanged: (value) => setState(() => _platformFee = value),
           ),
           _BoundaryCheckbox(
             value: _hospitalFee,
-            title: '我确认医院诊疗费用不包含在本次金额中',
-            subtitle: '挂号、检查、药品、治疗、手术和住院等费用由我直接支付给医院。',
+            title: "I understand hospital medical charges are not included",
+            subtitle: "I pay registration, tests, medication, treatment, surgery and inpatient charges directly to the hospital.",
             onChanged: (value) => setState(() => _hospitalFee = value),
           ),
           _BoundaryCheckbox(
             value: _thirdPartyFee,
-            title: '我确认签证规费、机票、酒店和交通等第三方费用另付',
+            title: "I understand visa, flight, hotel, transport and other third-party costs are separate",
             onChanged: (value) => setState(() => _thirdPartyFee = value),
           ),
           const SizedBox(height: 8),
@@ -401,7 +401,7 @@ class _QuoteConfirmationSheetState extends State<_QuoteConfirmationSheet> {
                 SizedBox(width: 10),
                 Expanded(
                   child: Text(
-                    '医院预算由医院提供，仅供参考，不是本次支付金额。平台不会合并显示“订单总额”。',
+                    "Hospital estimates are provided by the hospital for reference and are not part of this payment. The platform does not combine these into an order total.",
                     style: TextStyle(height: 1.45),
                   ),
                 ),
@@ -413,7 +413,7 @@ class _QuoteConfirmationSheetState extends State<_QuoteConfirmationSheet> {
             value: _agreement,
             contentPadding: EdgeInsets.zero,
             controlAffinity: ListTileControlAffinity.leading,
-            title: const Text('我已阅读服务协议、隐私授权和退款规则'),
+            title: const Text("I have read the service agreement, privacy consent and refund policy"),
             onChanged: (value) => setState(() => _agreement = value!),
           ),
           const SizedBox(height: 12),
@@ -424,7 +424,7 @@ class _QuoteConfirmationSheetState extends State<_QuoteConfirmationSheet> {
               onPressed: _canConfirm
                   ? () => Navigator.pop(context, true)
                   : null,
-              child: const Text('确认方案，进入协议签署'),
+              child: const Text("Confirm plan and continue to agreement"),
             ),
           ),
         ],
@@ -1048,7 +1048,7 @@ class _SafetyCallout extends StatelessWidget {
           SizedBox(width: 10),
           Expanded(
             child: Text(
-              '如有持续胸痛、严重呼吸困难、意识改变、大出血或其他危及生命的情况，请立即联系当地急救服务，不要等待在线评估。',
+              "For persistent chest pain, severe breathing difficulty, altered consciousness, heavy bleeding or any life-threatening condition, contact local emergency services immediately. Do not wait for an online assessment.",
               style: TextStyle(height: 1.45),
             ),
           ),

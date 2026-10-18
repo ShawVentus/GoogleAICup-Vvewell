@@ -9,8 +9,8 @@ data class SyntheticVitals(
 )
 
 enum class SyntheticStressStatus(val displayName: String) {
-    Normal("正常"),
-    Elevated("压力偏大"),
+    Normal("Normal"),
+    Elevated("Elevated stress"),
 }
 
 internal class SyntheticVitalsFactory(

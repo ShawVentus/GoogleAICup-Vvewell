@@ -121,7 +121,7 @@ class RadarDeviceController extends GetxController {
 
   Future<void> exportPointCloudCsv() async {
     if (!hasPointCloudExport) {
-      AlToast.showInfo('请先完成一次雷达采集，再导出原始点云 CSV');
+      AlToast.showInfo("Capture radar data before exporting point cloud CSV");
       return;
     }
     isExportingPointCloud.value = true;
@@ -129,7 +129,7 @@ class RadarDeviceController extends GetxController {
       final export = await _repository.exportPointCloudCsv();
       _applyPointCloudExport(export);
       AlToast.showSuccess(
-        '已导出 ${export.frameCount} 帧、${export.pointCount} 个原始点云点',
+        'Exported ${export.frameCount} frames, ${export.pointCount} raw point cloud points',
       );
       AlLogger.info(
         'Point-cloud CSV exported: ${export.path}, '
@@ -143,7 +143,7 @@ class RadarDeviceController extends GetxController {
         error: error,
         stackTrace: stackTrace,
       );
-      AlToast.showError('导出原始点云 CSV 失败：$error');
+      AlToast.showError('Could not export point cloud CSV: $error');
     } finally {
       isExportingPointCloud.value = false;
     }
@@ -172,7 +172,7 @@ class RadarDeviceController extends GetxController {
         error: error,
         stackTrace: stackTrace,
       );
-      AlToast.showError('分享原始点云 CSV 失败：$error');
+      AlToast.showError('Could not share point cloud CSV: $error');
     } finally {
       isExportingPointCloud.value = false;
     }
@@ -180,14 +180,14 @@ class RadarDeviceController extends GetxController {
 
   Future<void> exportVitalMetricsCsv() async {
     if (!hasVitalMetricsExport) {
-      AlToast.showInfo('请先完成包含生命体征数据的雷达采集');
+      AlToast.showInfo("Capture radar vital signs data first");
       return;
     }
     isExportingVitalMetrics.value = true;
     try {
       final export = await _repository.exportVitalMetricsCsv();
       _applyVitalMetricsExport(export);
-      AlToast.showSuccess('已导出 ${export.recordCount} 条生命体征测量记录');
+      AlToast.showSuccess('Exported ${export.recordCount} vital signs records');
       AlLogger.info(
         'Vital-metrics CSV exported: ${export.path}, records=${export.recordCount}',
         tag: 'RADAR_EXPORT',
@@ -199,7 +199,7 @@ class RadarDeviceController extends GetxController {
         error: error,
         stackTrace: stackTrace,
       );
-      AlToast.showError('导出生命体征 CSV 失败：$error');
+      AlToast.showError('Could not export vital signs CSV: $error');
     } finally {
       isExportingVitalMetrics.value = false;
     }
@@ -228,7 +228,7 @@ class RadarDeviceController extends GetxController {
         error: error,
         stackTrace: stackTrace,
       );
-      AlToast.showError('分享生命体征 CSV 失败：$error');
+      AlToast.showError('Could not share vital signs CSV: $error');
     } finally {
       isExportingVitalMetrics.value = false;
     }
@@ -346,7 +346,7 @@ class RadarDeviceController extends GetxController {
     final resolutionMm = (vitalSample['rangeResolutionMm'] as num?)?.toDouble();
     final distance = nearestPointDistance;
     if (resolutionMm == null || resolutionMm <= 0 || distance == null) {
-      throw StateError('请先启动雷达并等待有效的点云和 I/Q 数据');
+      throw StateError("Start the radar and wait for valid point cloud and I/Q data");
     }
     selectedBin.value = ((distance * 1000) / resolutionMm).round().clamp(
       0,

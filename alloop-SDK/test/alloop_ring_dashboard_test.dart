@@ -55,7 +55,7 @@ void main() {
     expect(find.text('连接其他设备'), findsOneWidget);
     expect(find.text('扫描并添加设备'), findsOneWidget);
     expect(find.text('JDY-23 毫米波雷达'), findsOneWidget);
-    expect(find.text('设备筛选'), findsNothing);
+    expect(find.text('Device filter'), findsNothing);
   });
 
   testWidgets('hardware shop includes the infrared device and cart actions', (
@@ -277,7 +277,7 @@ void main() {
       await tester.tap(find.byKey(const Key('clear-alloop-ring-data')));
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 300));
-      expect(find.text('清除本机数据？'), findsOneWidget);
+      expect(find.text('Clear local data?'), findsOneWidget);
       expect(find.textContaining('无法撤销'), findsOneWidget);
     });
   });

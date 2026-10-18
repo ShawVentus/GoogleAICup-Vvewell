@@ -16,11 +16,11 @@ class ScanPage extends GetView<ScanController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('扫描附近设备'),
+        title: const Text("Scan nearby devices"),
         actions: [
           Obx(
             () => IconButton(
-              tooltip: '重新扫描',
+              tooltip: "Scan again",
               onPressed: controller.isScanning.value
                   ? null
                   : () => controller.startScan(),
@@ -43,15 +43,15 @@ class ScanPage extends GetView<ScanController> {
                   _scanStatus(),
                   if (controller.connectedDevices.isNotEmpty) ...[
                     const SizedBox(height: 18),
-                    const VvewellSectionTitle('已连接设备'),
+                    const VvewellSectionTitle("Connected devices"),
                     const SizedBox(height: 10),
                     ...controller.connectedDevices.map(_connectedCard),
                   ],
                   const SizedBox(height: 20),
                   VvewellSectionTitle(
                     controller.devices.isEmpty
-                        ? '扫描结果'
-                        : '发现 ${controller.devices.length} 台设备',
+                        ? "Scan results"
+                        : 'Found ${controller.devices.length} devices found',
                   ),
                   const SizedBox(height: 10),
                   ..._deviceResults(),
@@ -78,7 +78,7 @@ class ScanPage extends GetView<ScanController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 VvewellStatusPill(
-                  label: isScanning ? '正在扫描' : '扫描已暂停',
+                  label: isScanning ? "Scanning" : "Scan paused",
                   color: isScanning
                       ? VvewellColors.success
                       : VvewellColors.muted,
@@ -88,7 +88,7 @@ class ScanPage extends GetView<ScanController> {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  isScanning ? '正在寻找附近设备' : '准备开始新的扫描',
+                  isScanning ? "Looking for nearby devices" : "Ready to scan again",
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w800,
@@ -97,8 +97,8 @@ class ScanPage extends GetView<ScanController> {
                 const SizedBox(height: 3),
                 Text(
                   isScanning
-                      ? '已发现 ${controller.devices.length} 台匹配设备。'
-                      : '点击下方按钮开始发现支持的蓝牙设备。',
+                      ? 'Found ${controller.devices.length} matching devices found.'
+                      : "Tap below to discover supported Bluetooth devices.",
                   style: const TextStyle(
                     color: VvewellColors.muted,
                     height: 1.35,
@@ -121,7 +121,7 @@ class ScanPage extends GetView<ScanController> {
             children: [
               Icon(Icons.filter_alt_outlined, color: VvewellColors.primaryDark),
               SizedBox(width: 8),
-              Text('设备筛选', style: TextStyle(fontWeight: FontWeight.w800)),
+              Text("Device filter", style: TextStyle(fontWeight: FontWeight.w800)),
             ],
           ),
           const SizedBox(height: 12),
@@ -131,11 +131,11 @@ class ScanPage extends GetView<ScanController> {
             onSubmitted: (_) => controller.startScan(),
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.search),
-              hintText: '名称关键词，以空格或逗号分隔',
+              hintText: "Name keywords, separated by spaces or commas",
               suffixIcon: controller.filterController.text.isEmpty
                   ? null
                   : IconButton(
-                      tooltip: '清空筛选',
+                      tooltip: "Clear filter",
                       onPressed: () {
                         controller.filterController.clear();
                         controller.updateFilter('');
@@ -185,7 +185,7 @@ class ScanPage extends GetView<ScanController> {
           const SizedBox(width: 11),
           Expanded(
             child: Text(
-              active ? '扫描中，设备将实时显示在下方。' : '扫描已停止，可重新扫描或从已连接设备进入详情。',
+              active ? "Scanning. Devices will appear below as they are found." : "Scan stopped. Scan again or open a connected device.",
               style: const TextStyle(color: VvewellColors.muted, height: 1.35),
             ),
           ),
@@ -214,7 +214,7 @@ class ScanPage extends GetView<ScanController> {
                   ),
                   const SizedBox(height: 3),
                   Text(
-                    '已连接 · ${device.type.displayName}',
+                    'Connected · ${device.type.displayName}',
                     style: const TextStyle(
                       color: VvewellColors.success,
                       fontSize: 13,
@@ -258,12 +258,12 @@ class ScanPage extends GetView<ScanController> {
               ),
               const SizedBox(height: 12),
               Text(
-                controller.isScanning.value ? '正在搜索支持的设备…' : '暂未发现设备',
+                controller.isScanning.value ? "Searching for supported devices…" : "No devices found yet",
                 style: const TextStyle(fontWeight: FontWeight.w800),
               ),
               const SizedBox(height: 5),
               const Text(
-                '请确认蓝牙已开启，且设备处于可连接状态。',
+                "Turn on Bluetooth and make sure your device is available to connect.",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: VvewellColors.muted),
               ),
@@ -323,9 +323,9 @@ class ScanPage extends GetView<ScanController> {
       );
     }
 
-    addSection('智能戒指', Icons.ring_volume_outlined, rings);
-    addSection('健康小助手', Icons.smart_toy_outlined, xiaozhi);
-    addSection('毫米波雷达', Icons.radar, radar);
+    addSection("Smart rings", Icons.ring_volume_outlined, rings);
+    addSection("Health Assistant", Icons.smart_toy_outlined, xiaozhi);
+    addSection("mmWave radar", Icons.radar, radar);
     addSection('vvewell Robot', Icons.smart_toy_outlined, robots);
     return result;
   }
@@ -426,12 +426,12 @@ class ScanPage extends GetView<ScanController> {
               ? OutlinedButton.icon(
                   onPressed: () => controller.stopScan(),
                   icon: const Icon(Icons.stop_circle_outlined),
-                  label: const Text('停止扫描'),
+                  label: const Text("Stop scan"),
                 )
               : ElevatedButton.icon(
                   onPressed: () => controller.startScan(),
                   icon: const Icon(Icons.bluetooth_searching),
-                  label: const Text('开始扫描'),
+                  label: const Text("Start scan"),
                 ),
         ),
       ),
@@ -462,7 +462,7 @@ class ScanPage extends GetView<ScanController> {
   }
 
   String _deviceName(SmartRingDevice device) =>
-      device.name.isEmpty ? '未命名设备' : device.name;
+      device.name.isEmpty ? "Unnamed device" : device.name;
 
   Color _typeColor(SmartRingType type) {
     switch (type) {
@@ -487,9 +487,9 @@ class ScanPage extends GetView<ScanController> {
   }
 
   String _signalLabel(int rssi) {
-    if (rssi >= -50) return '信号优秀';
-    if (rssi >= -70) return '信号良好';
-    return '信号较弱';
+    if (rssi >= -50) return "Excellent signal";
+    if (rssi >= -70) return "Good signal";
+    return "Weak signal";
   }
 }
 

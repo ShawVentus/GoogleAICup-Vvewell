@@ -27,7 +27,7 @@ class PandaAvatarWidget extends StatelessWidget {
 
     return Semantics(
       image: true,
-      label: '小熊猫 ${state.name}',
+      label: 'Panda ${state.name}',
       child: SizedBox.square(
         key: const Key('panda-avatar-stable-frame'),
         dimension: size,
@@ -75,7 +75,7 @@ class _PandaFallback extends StatelessWidget {
             : Icons.sentiment_satisfied_alt_rounded,
         size: size * .42,
         color: Theme.of(context).colorScheme.primary,
-        semanticLabel: registryFallback ? '熊猫占位图' : '熊猫资源加载失败',
+        semanticLabel: registryFallback ? "Panda placeholder" : "Panda image could not be loaded",
       ),
     );
   }

@@ -30,40 +30,40 @@ class _WomenHealthPanelState extends State<WomenHealthPanel> {
   }
   Future<void> _saveMode() async { await _repository.saveProfile(mode: _mode, anchorDate: _lastPeriod); await _load(); }
   int get _cycleDay => DateTime.now().difference(_lastPeriod).inDays + 1;
-  String get _phase => _cycleDay <= 5 ? '月经期' : _cycleDay <= 13 ? '卵泡期' : _cycleDay <= 15 ? '排卵期' : '黄体期';
+  String get _phase => _cycleDay <= 5 ? "Menstrual phase" : _cycleDay <= 13 ? "Follicular phase" : _cycleDay <= 15 ? "Ovulatory phase" : "Luteal phase";
 
   @override Widget build(BuildContext context) => Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-    const _DemoNotice('仅面向成年用户 · 本地保存 · 阶段为记录估计，非激素检测或诊断'),
+    const _DemoNotice("Adults only · Saved on this device · Phases are estimates, not hormone tests or a diagnosis"),
     const SizedBox(height: 12),
-    SegmentedButton<String>(segments: const [ButtonSegment(value: '周期追踪', label: Text('周期')), ButtonSegment(value: '备孕支持', label: Text('备孕')), ButtonSegment(value: '孕期管理', label: Text('孕期'))], selected: {_mode}, onSelectionChanged: (v) => setState(() => _mode = v.first)),
+    SegmentedButton<String>(segments: const [ButtonSegment(value: '周期追踪', label: Text("Cycle")), ButtonSegment(value: '备孕支持', label: Text("Fertility")), ButtonSegment(value: '孕期管理', label: Text("Pregnancy"))], selected: {_mode}, onSelectionChanged: (v) => setState(() => _mode = v.first)),
     const SizedBox(height: 14),
     _Card(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text('当前：$_phase · 第 $_cycleDay 天', style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 17)),
-      const SizedBox(height: 8), const Text('雌激素与孕激素曲线为教育性示意，不代表任何化验数值。', style: TextStyle(fontSize: 12, color: VvewellColors.muted)),
+      Text('Current phase: $_phase · Day $_cycleDay', style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 17)),
+      const SizedBox(height: 8), const Text("Estrogen and progesterone curves are illustrations for education, not laboratory results.", style: TextStyle(fontSize: 12, color: VvewellColors.muted)),
       const SizedBox(height: 10), const _HormoneCurve(),
-      const SizedBox(height: 8), Text(_hasDeviceTrend ? '设备趋势：已有本地生理记录，仅供趋势参考。' : '设备趋势：暂无可用体温/睡眠/HRV 数据', style: const TextStyle(fontSize: 12, color: VvewellColors.muted)),
+      const SizedBox(height: 8), Text(_hasDeviceTrend ? "Device trends: local readings are available for trend reference only." : "Device trends: no temperature, sleep or HRV data available", style: const TextStyle(fontSize: 12, color: VvewellColors.muted)),
     ])),
     const SizedBox(height: 12),
     if (_mode == '周期追踪') _periodCard() else if (_mode == '备孕支持') _fertilityCard() else _pregnancyCard(),
-    const SizedBox(height: 10), Text('本机已记录 ${_records.where((r) => r['record_type'] == 'period').length} 次经期；可在“我的”中清除本地健康数据。', style: const TextStyle(fontSize: 11, color: VvewellColors.muted)),
+    const SizedBox(height: 10), Text('On this device: ${_records.where((r) => r['record_type'] == 'period').length} periods recorded. Local health data can be cleared in Profile.', style: const TextStyle(fontSize: 11, color: VvewellColors.muted)),
   ]);
 
   Widget _periodCard() => _Card(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-    const Text('经期记录', style: TextStyle(fontWeight: FontWeight.w800)), const SizedBox(height: 7),
-    Text('上次开始：${_lastPeriod.year}-${_lastPeriod.month.toString().padLeft(2, '0')}-${_lastPeriod.day.toString().padLeft(2, '0')} · 预测下次：${_lastPeriod.add(const Duration(days: 28)).month} 月 ${_lastPeriod.add(const Duration(days: 28)).day} 日'),
-    const SizedBox(height: 10), FilledButton.icon(onPressed: _recordPeriod, icon: const Icon(Icons.add), label: const Text('记录经期开始')),
+    const Text("Period records", style: TextStyle(fontWeight: FontWeight.w800)), const SizedBox(height: 7),
+    Text('Last start: ${_lastPeriod.year}-${_lastPeriod.month.toString().padLeft(2, '0')}-${_lastPeriod.day.toString().padLeft(2, '0')} · Next estimated start: ${_lastPeriod.add(const Duration(days: 28)).month}/${_lastPeriod.add(const Duration(days: 28)).day}'),
+    const SizedBox(height: 10), FilledButton.icon(onPressed: _recordPeriod, icon: const Icon(Icons.add), label: const Text("Record period start")),
   ]));
   Widget _fertilityCard() => _Card(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-    const Text('备孕支持', style: TextStyle(fontWeight: FontWeight.w800)), const SizedBox(height: 7),
-    Text('可能受孕窗口：第 11–16 天（当前第 $_cycleDay 天）'), const SizedBox(height: 6),
-    const Text('仅由周期记录估计，不能用于避孕、保证受孕或判断排卵。', style: TextStyle(fontSize: 12, color: VvewellColors.muted)), const SizedBox(height: 8),
-    OutlinedButton(onPressed: _saveMode, child: const Text('保存备孕模式')),
+    const Text("Fertility support", style: TextStyle(fontWeight: FontWeight.w800)), const SizedBox(height: 7),
+    Text('Estimated fertile window: days 11–16 (current day $_cycleDay)'), const SizedBox(height: 6),
+    const Text("Estimated from cycle records only. Do not use this for contraception, to guarantee conception or to confirm ovulation.", style: TextStyle(fontSize: 12, color: VvewellColors.muted)), const SizedBox(height: 8),
+    OutlinedButton(onPressed: _saveMode, child: const Text("Save fertility mode")),
   ]));
   Widget _pregnancyCard() => _Card(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-    const Text('孕期管理', style: TextStyle(fontWeight: FontWeight.w800)), const SizedBox(height: 7),
-    Text('按末次月经估计：${DateTime.now().difference(_lastPeriod).inDays ~/ 7 + 1} 周'), const SizedBox(height: 6),
-    const Text('可记录产检与感受；如出现异常或担忧，请及时联系医疗专业人员。', style: TextStyle(fontSize: 12, color: VvewellColors.muted)), const SizedBox(height: 8),
-    OutlinedButton(onPressed: _saveMode, child: const Text('保存孕期模式')),
+    const Text("Pregnancy care", style: TextStyle(fontWeight: FontWeight.w800)), const SizedBox(height: 7),
+    Text('Estimated from last menstrual period: ${DateTime.now().difference(_lastPeriod).inDays ~/ 7 + 1} weeks'), const SizedBox(height: 6),
+    const Text("Track prenatal visits and how you feel. Contact a healthcare professional promptly if you have unusual symptoms or concerns.", style: TextStyle(fontSize: 12, color: VvewellColors.muted)), const SizedBox(height: 8),
+    OutlinedButton(onPressed: _saveMode, child: const Text("Save pregnancy mode")),
   ]));
 }
 

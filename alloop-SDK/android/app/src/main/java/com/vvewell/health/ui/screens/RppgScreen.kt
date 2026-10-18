@@ -383,7 +383,7 @@ private fun MeasurementTopOverlay(
             ),
     ) {
         RppgNavigationBar(
-            title = "AI 健康自测",
+            title = "AI health check",
             onBack = onBack,
             trailing = {
                 if (state.measuring) {
@@ -394,7 +394,7 @@ private fun MeasurementTopOverlay(
                             RoundedCornerShape(RppgVisual.CONTROL_RADIUS),
                         ),
                     ) {
-                        Text("取消", color = Color.White)
+                        Text("Cancel", color = Color.White)
                     }
                 }
             },
@@ -402,7 +402,7 @@ private fun MeasurementTopOverlay(
         if (!compact) {
             Spacer(Modifier.height(12.dp))
             Text(
-                "呼吸与心跳测量",
+                "Breathing and heart rate",
                 modifier = Modifier.fillMaxWidth(),
                 color = Color.White,
                 style = MaterialTheme.typography.headlineSmall,
@@ -434,21 +434,21 @@ private fun UnifiedVitalsStrip(state: RppgMeasurementState) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         LiveVital(
-            label = "心率",
+            label = "Heart rate",
             value = heartRate,
             unit = "BPM",
             modifier = Modifier.weight(1f),
         )
         VitalsDivider()
         LiveVital(
-            label = "呼吸率",
+            label = "Respiratory rate",
             value = respiration,
-            unit = "次/分",
+            unit = "breaths/min",
             modifier = Modifier.weight(1f),
         )
         VitalsDivider()
         LiveVital(
-            label = "信号质量",
+            label = "Signal quality",
             value = signalQuality,
             unit = "%",
             modifier = Modifier.weight(1f),
@@ -562,9 +562,9 @@ private fun MeasurementBottomOverlay(
                         state.phase == RppgPhase.PermissionDenied ||
                         state.phase == RppgPhase.Cancelled
                     ) {
-                        "重新测量"
+                        "Measure again"
                     } else {
-                        "开始 20 秒测量"
+                        "Start 20-second measurement"
                     },
                     fontWeight = FontWeight.SemiBold,
                 )
@@ -597,7 +597,7 @@ private fun MeasurementTimer(
 
     Spacer(Modifier.height(14.dp))
     Text(
-        "正在检测 $elapsedSeconds / 20 秒",
+        "Measuring $elapsedSeconds / 20 seconds",
         color = Color.White.copy(alpha = 0.9f),
         style = MaterialTheme.typography.labelLarge,
     )
@@ -627,18 +627,18 @@ private fun RppgResultScreen(
             .padding(horizontal = RppgVisual.RESULT_HORIZONTAL_PADDING),
     ) {
         RppgNavigationBar(
-            title = "检测结果",
+            title = "Measurement results",
             onBack = onBack,
             modifier = Modifier.padding(top = RppgVisual.TOP_PADDING),
         )
         Spacer(Modifier.height(30.dp))
         ResultOverview(state = state, completedAt = completedAt)
         Spacer(Modifier.height(34.dp))
-        ResultSectionTitle("生命体征")
+        ResultSectionTitle("Vital signs")
         ResultMetricRow(
             icon = Icons.Filled.Favorite,
             iconColor = RppgVisual.HEART_COLOR,
-            label = "心率",
+            label = "Heart rate",
             value = state.heartRateEstimate.displayValue(),
             unit = "bpm",
             badge = state.heartRateEstimate.confidenceBadge(),
@@ -647,9 +647,9 @@ private fun RppgResultScreen(
         ResultMetricRow(
             icon = Icons.Outlined.Air,
             iconColor = RppgVisual.RESPIRATION_COLOR,
-            label = "呼吸率",
+            label = "Respiratory rate",
             value = state.respirationEstimate.displayValue(),
-            unit = "次/分",
+            unit = "breaths/min",
             badge = state.respirationEstimate.confidenceBadge(),
             badgeTone = state.respirationEstimate.confidenceBadgeTone(),
         )
@@ -658,23 +658,23 @@ private fun RppgResultScreen(
             ResultMetricRow(
                 icon = Icons.Outlined.Bloodtype,
                 iconColor = RppgVisual.OXYGEN_COLOR,
-                label = "血氧",
+                label = "Blood oxygen",
                 value = demo.demoSpO2.toString(),
                 unit = "%",
-                badge = "内部演示数据",
+                badge = "Demo data",
                 badgeTone = BadgeTone.Neutral,
             )
         }
         Spacer(Modifier.height(28.dp))
-        ResultSectionTitle("压力与信号")
+        ResultSectionTitle("Stress and signal")
         syntheticVitals?.let { demo ->
             ResultMetricRow(
                 icon = Icons.Outlined.Bolt,
                 iconColor = RppgVisual.STRESS_COLOR,
-                label = "压力状态",
+                label = "Stress status",
                 value = demo.demoStressStatus.displayName,
                 unit = "",
-                badge = "内部演示数据",
+                badge = "Demo data",
                 badgeTone = BadgeTone.Neutral,
             )
         }
@@ -685,7 +685,7 @@ private fun RppgResultScreen(
         ResultMetricRow(
             icon = Icons.Outlined.SignalCellularAlt,
             iconColor = RppgVisual.SIGNAL_COLOR,
-            label = "信号质量",
+            label = "Signal quality",
             value = signalQuality.times(100).toInt().toString(),
             unit = "%",
             badge = signalQuality.qualityLabel(),
@@ -696,14 +696,14 @@ private fun RppgResultScreen(
             },
         )
         Spacer(Modifier.height(28.dp))
-        ResultSectionTitle("更多数据")
+        ResultSectionTitle("More data")
         ResultMetricRow(
             icon = Icons.Outlined.Timeline,
             iconColor = RppgVisual.RMSSD_COLOR,
             label = "RMSSD",
             value = state.result?.rmssdMs?.toInt()?.toString() ?: "--",
             unit = "ms",
-            badge = state.result?.rmssdMs?.let { "参考" },
+            badge = state.result?.rmssdMs?.let { "Reference" },
             badgeTone = BadgeTone.Neutral,
             showDivider = false,
         )
@@ -717,7 +717,7 @@ private fun RppgResultScreen(
             shape = RoundedCornerShape(RppgVisual.PRIMARY_BUTTON_RADIUS),
         ) {
             Text(
-                if (state.phase == RppgPhase.Completed) "再次测量" else "重新测量",
+                if (state.phase == RppgPhase.Completed) "Measure again" else "Retry measurement",
                 fontWeight = FontWeight.SemiBold,
             )
         }
@@ -747,7 +747,7 @@ private fun RppgNavigationBar(
         ) {
             Icon(
                 Icons.AutoMirrored.Outlined.ArrowBack,
-                contentDescription = "返回",
+                contentDescription = "Back",
                 tint = Color.White,
             )
         }
@@ -795,7 +795,7 @@ private fun ResultOverview(
             }
             if (state.phase == RppgPhase.Error) {
                 Text(
-                    "请返回或重新测量",
+                    "Go back or measure again",
                     color = RppgVisual.RESULT_SECONDARY_TEXT,
                     style = MaterialTheme.typography.bodyMedium,
                 )
@@ -908,48 +908,48 @@ private fun RppgPhase.isResultPhase(): Boolean =
     this == RppgPhase.Completed || this == RppgPhase.LowQuality || this == RppgPhase.Error
 
 private fun RppgMeasurementState.measurementHeadline(): String = when (phase) {
-    RppgPhase.Ready -> "准备开始测量"
-    RppgPhase.PreviewPreparing -> "正在准备检测…"
-    RppgPhase.PreviewReady -> "准备完成"
-    RppgPhase.StartPending -> "正在准备检测…"
-    RppgPhase.Aligning -> "请将面部置于框内"
-    RppgPhase.Collecting -> "正在采集生命体征信号"
+    RppgPhase.Ready -> "Ready to measure"
+    RppgPhase.PreviewPreparing -> "Preparing measurement…"
+    RppgPhase.PreviewReady -> "Ready"
+    RppgPhase.StartPending -> "Preparing measurement…"
+    RppgPhase.Aligning -> "Position your face inside the frame"
+    RppgPhase.Collecting -> "Collecting vital-sign signals"
     RppgPhase.Estimating ->
-        if (result == null && respiration == null) "正在估计生命体征" else "初步结果持续更新中"
-    RppgPhase.PermissionDenied -> "需要摄像头权限"
-    RppgPhase.Cancelled -> "测量已取消"
-    else -> "请保持稳定"
+        if (result == null && respiration == null) "Estimating vital signs" else "Preliminary results are updating"
+    RppgPhase.PermissionDenied -> "Camera permission required"
+    RppgPhase.Cancelled -> "Measurement cancelled"
+    else -> "Hold still"
 }
 
 private fun RppgMeasurementState.measurementInstruction(): String = when (phase) {
-    RppgPhase.Ready -> "原始画面仅在本机处理，不保存、不上传"
-    RppgPhase.PreviewPreparing -> if (message.startsWith("准备时间较长")) {
+    RppgPhase.Ready -> "Video is processed on this device only. It is not saved or uploaded."
+    RppgPhase.PreviewPreparing -> if (message.startsWith("Preparation is taking longer")) {
         message
     } else {
-        "请将面部置于框内并保持稳定"
+        "Position your face inside the frame and hold still"
     }
-    RppgPhase.PreviewReady -> "点击开始测量"
-    RppgPhase.StartPending -> if (message.startsWith("准备时间较长")) {
+    RppgPhase.PreviewReady -> "Tap Start measurement"
+    RppgPhase.StartPending -> if (message.startsWith("Preparation is taking longer")) {
         message
     } else {
-        "准备完成后将自动开始"
+        "Measurement starts automatically when ready"
     }
-    RppgPhase.Aligning -> "保持正脸、光线均匀和手机稳定"
-    RppgPhase.Collecting -> "保持稳定；前 10 秒用于采集信号"
+    RppgPhase.Aligning -> "Face forward, use even lighting, and keep your phone steady"
+    RppgPhase.Collecting -> "Hold still. The first 10 seconds collect a signal."
     RppgPhase.Estimating ->
         if (result == null && respiration == null) {
-            "暂未获得可靠数值，请继续保持稳定"
+            "No reliable values yet. Keep holding still."
         } else {
-            "当前为初步估计，20 秒结果将覆盖更新"
+            "Preliminary estimates are updating; the 20-second results will replace them."
         }
-    RppgPhase.PermissionDenied -> "请允许摄像头权限后重新测量"
-    RppgPhase.Cancelled -> "本次测量结果未保存"
-    else -> "请改善光线后重试"
+    RppgPhase.PermissionDenied -> "Allow camera access, then measure again"
+    RppgPhase.Cancelled -> "This measurement was not saved"
+    else -> "Improve the lighting and try again"
 }
 
 private fun Double.qualityLabel(): String = when {
-    this >= RppgConfidencePolicy.HIGH_CONFIDENCE_THRESHOLD -> "高"
-    else -> "仅供参考"
+    this >= RppgConfidencePolicy.HIGH_CONFIDENCE_THRESHOLD -> "High"
+    else -> "Reference only"
 }
 
 private fun MetricEstimate?.displayValue(): String =
@@ -961,8 +961,8 @@ private fun MetricEstimate?.displayValue(): String =
         ?: "--"
 
 private fun MetricEstimate?.confidenceBadge(): String? = when (RppgConfidencePolicy.labelFor(this)) {
-    RppgConfidenceLabel.HighConfidence -> "高可信"
-    RppgConfidenceLabel.ReferenceOnly -> "仅供参考"
+    RppgConfidenceLabel.HighConfidence -> "High confidence"
+    RppgConfidenceLabel.ReferenceOnly -> "Reference only"
     null -> null
 }
 
@@ -975,17 +975,17 @@ private fun MetricEstimate?.confidenceBadgeTone(): BadgeTone =
 
 private fun RppgMeasurementState.resultAppearance(): ResultAppearance = when (phase) {
     RppgPhase.Completed -> ResultAppearance(
-        title = "检测完成",
+        title = "Measurement complete",
         icon = Icons.Filled.CheckCircle,
         color = RppgVisual.SUCCESS,
     )
     RppgPhase.LowQuality -> ResultAppearance(
-        title = "信号质量不足",
+        title = "Insufficient signal quality",
         icon = Icons.Outlined.SignalCellularAlt,
         color = RppgVisual.WARNING,
     )
     else -> ResultAppearance(
-        title = "检测未完成",
+        title = "Measurement incomplete",
         icon = Icons.Outlined.ErrorOutline,
         color = RppgVisual.ERROR,
     )

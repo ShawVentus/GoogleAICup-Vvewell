@@ -64,7 +64,9 @@ android {
 
     buildTypes {
         getByName("release") {
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = signingConfigs.getByName(
+                if (providers.gradleProperty("demoSigning").orNull == "true") "debug" else "release",
+            )
         }
     }
 

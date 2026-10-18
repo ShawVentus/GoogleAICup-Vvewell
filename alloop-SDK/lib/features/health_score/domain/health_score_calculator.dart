@@ -45,20 +45,20 @@ abstract final class HealthScoreCalculator {
   static const interventions = <HealthIntervention>[
     HealthIntervention(
       id: 'sleep_routine',
-      title: '固定今晚的入睡时间',
-      detail: '睡前 30 分钟减少屏幕使用',
+      title: "Set a bedtime for tonight",
+      detail: "Reduce screen use for 30 minutes before bed",
       estimatedContribution: 2,
     ),
     HealthIntervention(
       id: 'walk_break',
-      title: '完成 10 分钟轻松步行',
-      detail: '久坐后起身活动，量力而行',
+      title: "Take a gentle 10-minute walk",
+      detail: "Move after sitting for a while, at a comfortable pace",
       estimatedContribution: 2,
     ),
     HealthIntervention(
       id: 'calm_break',
-      title: '进行 3 分钟放松练习',
-      detail: '呼吸或短暂休息都可以',
+      title: "Relax for 3 minutes",
+      detail: "Try breathing exercises or a short rest",
       estimatedContribution: 2,
     ),
   ];

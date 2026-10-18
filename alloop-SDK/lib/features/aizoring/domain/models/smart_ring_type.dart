@@ -26,13 +26,13 @@ enum SmartRingType {
       case SmartRingType.aizoring:
         return 'AIZORING';
       case SmartRingType.xiaozhi:
-        return '健康小助手';
+        return "Health Assistant";
       case SmartRingType.radar:
-        return '毫米波雷达';
+        return "mmWave radar";
       case SmartRingType.robot:
         return 'vvewell Robot';
       case SmartRingType.glasses:
-        return 'AI 眼镜';
+        return "AI glasses";
     }
   }
 }

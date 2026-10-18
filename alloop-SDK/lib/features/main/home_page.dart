@@ -266,7 +266,7 @@ class _VvewellHeader extends StatelessWidget {
         children: [
           Semantics(
             button: true,
-            label: '展开或收起 Coach 建议',
+            label: "Expand or collapse coach advice",
             child: Material(
               color: Colors.transparent,
               borderRadius: BorderRadius.circular(14),
@@ -556,7 +556,7 @@ class _HomeTab extends StatelessWidget {
             const SizedBox(height: 12),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
-              child: _PageSectionTitle(title: '基本健康状况'),
+              child: _PageSectionTitle(title: 'Basic health overview'),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
@@ -1269,7 +1269,7 @@ class _HealthTabState extends State<_HealthTab> {
             child: Column(
               children: [
                 _SectionTabs(
-                  labels: const ['生理总览', '睡眠', '运动', '女性健康'],
+                  labels: const ['Vitals', 'Sleep', 'Exercise', 'Women’s health'],
                   index: _tabIndex,
                   onChanged: (value) => setState(() => _tabIndex = value),
                 ),
@@ -1452,7 +1452,7 @@ class _TodayExerciseCard extends StatelessWidget {
                 child: _OverviewValue(
                   icon: Icons.directions_walk_outlined,
                   value: '11.5k',
-                  label: '步数',
+                  label: 'Steps',
                 ),
               ),
               SizedBox(width: 9),
@@ -1460,7 +1460,7 @@ class _TodayExerciseCard extends StatelessWidget {
                 child: _OverviewValue(
                   icon: Icons.local_fire_department_outlined,
                   value: '1400',
-                  label: '千卡',
+                  label: 'kcal',
                 ),
               ),
               SizedBox(width: 9),
@@ -1468,7 +1468,7 @@ class _TodayExerciseCard extends StatelessWidget {
                 child: _OverviewValue(
                   icon: Icons.schedule_outlined,
                   value: '166',
-                  label: '分钟',
+                  label: 'min',
                 ),
               ),
             ],
@@ -1525,29 +1525,29 @@ class _PhysiologyDataCard extends StatelessWidget {
     const items = <_VitalItem>[
       _VitalItem(
         Icons.monitor_heart_outlined,
-        '当前心率',
+        'Current heart rate',
         '50 BPM',
         VvewellColors.error,
       ),
       _VitalItem(
         Icons.water_drop_outlined,
-        '当前血氧饱和度',
+        'Current blood oxygen',
         '98 %',
         Color(0xFF249CE0),
       ),
       _VitalItem(
         Icons.thermostat_outlined,
-        '当前体温',
+        'Current temperature',
         '35 ℃',
         VvewellColors.warning,
       ),
       _VitalItem(
         Icons.graphic_eq_outlined,
-        '心率变异性',
+        'Heart rate variability',
         '40 ms',
         VvewellColors.primary,
       ),
-      _VitalItem(Icons.nightlight_round, '静息心率', '72 BPM', Color(0xFF9B6CDD)),
+      _VitalItem(Icons.nightlight_round, 'Resting heart rate', '72 BPM', Color(0xFF9B6CDD)),
     ];
     return _InsetCard(
       child: Column(
@@ -1696,10 +1696,10 @@ class _SleepOverview extends StatelessWidget {
                 style: const TextStyle(fontWeight: FontWeight.w700),
               ),
               const SizedBox(height: 12),
-              const _KeyValueRow(label: '总睡眠时长', value: '6小时20分钟'),
-              const _KeyValueRow(label: '快速眼动睡眠', value: '4小时18分钟'),
-              const _KeyValueRow(label: '核心睡眠', value: '1小时20分钟'),
-              const _KeyValueRow(label: '深睡', value: '47分钟'),
+              const _KeyValueRow(label: 'Total sleep', value: '6 h 20 min'),
+              const _KeyValueRow(label: 'REM sleep', value: '4 h 18 min'),
+              const _KeyValueRow(label: 'Core sleep', value: '1 h 20 min'),
+              const _KeyValueRow(label: 'Deep sleep', value: '47 min'),
             ],
           ),
         ),
@@ -1728,20 +1728,20 @@ class _ExerciseOverview extends StatelessWidget {
               const SizedBox(height: 12),
               const _ExerciseRecord(
                 time: '2026-07-27 08:30',
-                duration: '20分钟',
-                distance: '5.2公里',
+                duration: '20 min',
+                distance: '5.2 km',
               ),
               const SizedBox(height: 9),
               const _ExerciseRecord(
                 time: '2026-07-27 12:15',
-                duration: '35分钟',
-                distance: '3.8公里',
+                duration: '35 min',
+                distance: '3.8 km',
               ),
               const SizedBox(height: 9),
               const _ExerciseRecord(
                 time: '2026-07-26 18:00',
-                duration: '45分钟',
-                distance: '4.5公里',
+                duration: '45 min',
+                distance: '4.5 km',
               ),
             ],
           ),
@@ -1974,9 +1974,9 @@ class _MedicalReportSectionState extends State<_MedicalReportSection> {
                       key: const Key('medical-report-upload-entry'),
                       icon: Icons.description_outlined,
                       color: const Color(0xFF3A8DD9),
-                      title: '医疗报告上传',
-                      subtitle: '体检、检验、影像或出院资料',
-                      action: '上传报告',
+                      title: 'Medical report upload',
+                      subtitle: 'Checkups, lab tests, imaging or discharge records',
+                      action: 'Upload report',
                       onTap: _uploadReport,
                     ),
                   ),
@@ -1986,9 +1986,9 @@ class _MedicalReportSectionState extends State<_MedicalReportSection> {
                       key: const Key('meal-upload-entry'),
                       icon: Icons.restaurant_outlined,
                       color: VvewellColors.warning,
-                      title: '今日餐食上传',
-                      subtitle: '早餐、午餐、晚餐或加餐',
-                      action: '识别营养',
+                      title: 'Today’s meals',
+                      subtitle: 'Breakfast, lunch, dinner or snacks',
+                      action: 'Analyze nutrition',
                       onTap: _uploadMeal,
                     ),
                   ),
@@ -2000,7 +2000,7 @@ class _MedicalReportSectionState extends State<_MedicalReportSection> {
           if (reports.isEmpty)
             const _EmptyUploadRow(
               icon: Icons.folder_open_outlined,
-              text: '暂无医疗报告，上传后会在这里显示识别摘要',
+              text: 'No medical reports yet. Upload a report to see its summary here.',
             )
           else ...[
             Text(
@@ -2049,7 +2049,7 @@ class _MedicalReportSectionState extends State<_MedicalReportSection> {
               if (intakes.isEmpty) {
                 return const _EmptyUploadRow(
                   icon: Icons.no_meals_outlined,
-                  text: '今日暂无饮食摄入，上传餐食后自动汇总营养成分',
+                  text: 'No food intake recorded today. Upload a meal to see nutrition totals.',
                 );
               }
               return Column(
@@ -2247,7 +2247,7 @@ class _RecommendationSection extends StatelessWidget {
             style: const TextStyle(color: VvewellColors.muted, fontSize: 13),
           ),
           const SizedBox(height: 7),
-          const _SuggestionTile(title: '改善睡眠作息', description: '保持固定的入睡和起床时间'),
+          const _SuggestionTile(title: 'Improve your sleep routine', description: 'Keep consistent bedtimes and wake times'),
           const SizedBox(height: 13),
           Text(
             '营养'.tr,
@@ -2255,8 +2255,8 @@ class _RecommendationSection extends StatelessWidget {
           ),
           const SizedBox(height: 7),
           const _SuggestionTile(
-            title: '增加维生素 D',
-            description: '可考虑每日补充 2000 IU',
+            title: 'Increase vitamin D',
+            description: 'Consider 2,000 IU daily',
           ),
           const SizedBox(height: 13),
           Text(
@@ -2264,7 +2264,7 @@ class _RecommendationSection extends StatelessWidget {
             style: const TextStyle(color: VvewellColors.muted, fontSize: 13),
           ),
           const SizedBox(height: 7),
-          const _SuggestionTile(title: '加入力量训练', description: '建议每周进行 2–3 次训练'),
+          const _SuggestionTile(title: 'Add strength training', description: 'Aim for 2–3 sessions per week'),
         ],
       ),
     );
@@ -2478,7 +2478,7 @@ class _ChatTabState extends State<_ChatTab> {
         memberName: member.name.tr,
         profileContext: _profileContext(includeStoredReport: topic == 0),
         report: report?.ocrResult,
-        responseLanguage: Get.locale?.languageCode ?? 'zh',
+        responseLanguage: Get.locale?.languageCode ?? 'en',
         profileIsSample: kIsWeb && member.id.startsWith('member-'),
       );
       if (!mounted) return;
@@ -2501,17 +2501,17 @@ class _ChatTabState extends State<_ChatTab> {
         .where((tag) => !tag.hiddenFromPersonalization)
         .map(
           (tag) =>
-              '${tag.category}/${tag.label}：${tag.value}；状态=${tag.status.name}；来源=${tag.source}',
+              '${tag.category.tr}/${tag.label.tr}: ${tag.value.tr}; status=${tag.status.name}; source=${tag.source.tr}',
         )
         .join('\n');
     final latestReport = includeStoredReport
         ? widget.medicalReportStore.latestFor(member.id)
         : null;
     final reportSummary = latestReport == null
-        ? '无已归档报告'
-        : '${latestReport.reportType}：${latestReport.summary}';
-    return '成员：${member.relationship}，${member.gender}，${member.birthYear}年出生\n'
-        '$tags\n最近报告：$reportSummary';
+        ? "No archived reports"
+        : '${latestReport.reportType.tr}: ${latestReport.summary}';
+    return 'Member: ${member.relationship.tr}, ${member.gender.tr}, born ${member.birthYear}\n'
+        '$tags\nLatest report: $reportSummary';
   }
 
   String _responseForTopic() => (switch (_topicIndex) {
@@ -2534,7 +2534,7 @@ class _ChatTabState extends State<_ChatTab> {
         _ChatMessage(
           Get.locale?.languageCode == 'en'
               ? 'Saved the Mock nutrition assessment for ${result.mealType.tr}: ${result.totals.kcal.round()} kcal · Protein ${result.totals.protein.toStringAsFixed(1)} g. You can ask how to complete today\'s remaining nutrition.'
-              : '已保存${result.mealType}的 Mock 营养评估：${result.summary}。你可以继续问我如何补齐今天剩余的营养。',
+              : 'Saved ${result.mealType} demo nutrition assessment: ${result.summary}. Ask how to meet your remaining nutrition needs today.',
           false,
         ),
       ),
@@ -2558,7 +2558,7 @@ class _ChatTabState extends State<_ChatTab> {
               ? '已载入脱敏演示报告。若要进行真实报告咨询，请上传实际报告图片。'.tr
               : Get.locale?.languageCode == 'en'
               ? 'Report OCR completed: ${result.summary}\nYou can now ask questions about this report.'
-              : '报告 OCR 已完成：${result.summary}\n现在可以针对这份报告继续提问。',
+              : 'Report OCR complete: ${result.summary}\nYou can now ask about this report.',
           false,
         ),
       ),
@@ -3028,7 +3028,7 @@ class _MedicalTabState extends State<_MedicalTab> {
             children: [
               Expanded(
                 child: _ActionButton(
-                  label: '紧急救援',
+                  label: "Emergency help",
                   icon: Icons.warning_amber_rounded,
                   color: VvewellColors.error,
                   onTap: () => _notice(context, '紧急救援服务入口已准备就绪'),
@@ -3049,7 +3049,7 @@ class _MedicalTabState extends State<_MedicalTab> {
         const SizedBox(height: 20),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
-          child: _PageSectionTitle(title: '专家服务'),
+          child: _PageSectionTitle(title: "Specialist services"),
         ),
         const Padding(
           padding: EdgeInsets.fromLTRB(16, 10, 16, 0),
@@ -3152,15 +3152,15 @@ class _RecommendedServiceCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _SmallBadge(label: '系统推荐'),
+                _SmallBadge(label: "Recommended"),
                 SizedBox(height: 9),
                 Text(
-                  '专家会诊服务',
+                  "Specialist consultation",
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
                 ),
                 SizedBox(height: 4),
                 Text(
-                  '根据当前健康评估，为你推荐更适合的专家服务。',
+                  "Specialist services matched to your current health assessment.",
                   style: TextStyle(color: VvewellColors.muted, fontSize: 12),
                 ),
               ],
@@ -3189,30 +3189,30 @@ class _ServiceTierList extends StatelessWidget {
   Widget build(BuildContext context) {
     const tiers = <_ServiceTier>[
       _ServiceTier(
-        '基础咨询',
-        '基础健康咨询与常见问题解答',
-        '¥199 / 次',
+        "Basic consultation",
+        "General health advice and common questions",
+        "CNY 199 / visit",
         Icons.medical_services_outlined,
         VvewellColors.primary,
       ),
       _ServiceTier(
-        '专家会诊',
-        '三甲医院专科医生线上会诊服务',
-        '¥699 / 次',
+        "Specialist consultation",
+        "Online consultation with specialists from leading hospitals",
+        "CNY 699 / visit",
         Icons.star_outline,
         Color(0xFF3A8DD9),
       ),
       _ServiceTier(
-        '重症守护',
-        '重大疾病全程就医协调与陪诊',
-        '¥1,699 / 次',
+        "Complex care support",
+        "Care coordination and appointment support for serious conditions",
+        "CNY 1,699 / visit",
         Icons.shield_outlined,
         Color(0xFF8759CF),
       ),
       _ServiceTier(
         '全球医疗',
-        '国际医疗资源与跨境转诊服务',
-        '¥2,999 / 次',
+        "International care and cross-border referral services",
+        "CNY 2,999 / visit",
         Icons.public,
         VvewellColors.success,
       ),
@@ -3281,16 +3281,16 @@ class _ServiceTierCard extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        tier.title,
+                        tier.title.tr,
                         style: const TextStyle(fontWeight: FontWeight.w800),
                       ),
                     ),
-                    if (selected) const _SmallBadge(label: '推荐'),
+                    if (selected) _SmallBadge(label: '推荐'.tr),
                   ],
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  tier.subtitle,
+                  tier.subtitle.tr,
                   style: const TextStyle(
                     color: VvewellColors.muted,
                     fontSize: 12,
@@ -3307,7 +3307,7 @@ class _ServiceTierCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 7),
                 const Text(
-                  '✓ 专业医生  ·  ✓ 健康档案  ·  ✓ 服务保障',
+                  "✓ Qualified doctors · ✓ Health records · ✓ Service support",
                   style: TextStyle(color: VvewellColors.muted, fontSize: 11),
                 ),
                 const SizedBox(height: 10),
@@ -3318,11 +3318,11 @@ class _ServiceTierCard extends StatelessWidget {
                     child: selected
                         ? ElevatedButton(
                             onPressed: onTap,
-                            child: const Text('已选择'),
+                            child: Text('已选择'.tr),
                           )
                         : OutlinedButton(
                             onPressed: onTap,
-                            child: const Text('选择服务'),
+                            child: Text('选择服务'.tr),
                           ),
                   ),
                 ),
@@ -3343,7 +3343,7 @@ class _GlobalReferralSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _PageSectionTitle(title: '全球转诊服务'),
+        const _PageSectionTitle(title: "Global referrals"),
         const SizedBox(height: 10),
         _SurfaceCard(
           color: VvewellColors.softTeal,
@@ -3360,12 +3360,12 @@ class _GlobalReferralSection extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '跨境就医服务',
+                          "Cross-border care",
                           style: TextStyle(fontWeight: FontWeight.w800),
                         ),
                         SizedBox(height: 4),
                         Text(
-                          '提供海外医院匹配、病历翻译、预约协调与全程支持。',
+                          "Overseas hospital matching, medical record translation, appointment coordination and ongoing support.",
                           style: TextStyle(
                             color: VvewellColors.muted,
                             fontSize: 12,
@@ -3384,7 +3384,7 @@ class _GlobalReferralSection extends StatelessWidget {
                   child: ElevatedButton.icon(
                     onPressed: () {},
                     icon: Icon(Icons.chevron_right),
-                    label: Text('快速评估'),
+                    label: Text("Quick assessment"),
                   ),
                 ),
               ),
@@ -3407,11 +3407,11 @@ class _MedicalOrdersSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const labels = ['全部', '待处理', '进行中', '已完成'];
+    const labels = ['All', 'Pending', 'In progress', 'Completed'];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _PageSectionTitle(title: '我的订单'),
+        const _PageSectionTitle(title: 'My orders'),
         const SizedBox(height: 10),
         _SectionTabs(labels: labels, index: tabIndex, onChanged: onChanged),
         const SizedBox(height: 10),
@@ -3426,7 +3426,7 @@ class _MedicalOrdersSection extends StatelessWidget {
               ),
               SizedBox(height: 8),
               Text(
-                '暂无医疗服务订单',
+                "No care service orders yet",
                 style: TextStyle(color: VvewellColors.muted, fontSize: 13),
               ),
             ],
@@ -3445,14 +3445,14 @@ class _MedicalResourcesSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _PageSectionTitle(title: '医疗资源'),
+        const _PageSectionTitle(title: "Care providers"),
         const SizedBox(height: 10),
         Row(
           children: [
             const Expanded(
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: '搜索医院、医生、病症…',
+                  hintText: "Search hospitals, doctors or conditions…",
                   prefixIcon: Icon(Icons.search),
                   isDense: true,
                 ),
@@ -3474,8 +3474,8 @@ class _MedicalResourcesSection extends StatelessWidget {
         const Wrap(
           spacing: 8,
           children: [
-            _FilterPill(label: '全部地区'),
-            _FilterPill(label: '全部科室'),
+            _FilterPill(label: "All locations"),
+            _FilterPill(label: "All departments"),
           ],
         ),
         const SizedBox(height: 10),
@@ -3607,18 +3607,18 @@ class _InsuranceSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const plans = <_InsurancePlan>[
-      _InsurancePlan('Premium Health Shield', '95%', '¥380 / 月', '健康险'),
-      _InsurancePlan('Family Care Plus', '87%', '¥256 / 月', '医疗险'),
-      _InsurancePlan('Critical Illness Guard', '82%', '¥168 / 月', '重疾险'),
-      _InsurancePlan('Global Medical Elite', '78%', '¥1280 / 年', '全球医疗'),
+      _InsurancePlan('Premium Health Shield', '95%', "CNY 380 / month", "Health insurance"),
+      _InsurancePlan('Family Care Plus', '87%', "CNY 256 / month", '医疗险'),
+      _InsurancePlan('Critical Illness Guard', '82%', "CNY 168 / month", "Critical illness insurance"),
+      _InsurancePlan('Global Medical Elite', '78%', "CNY 1,280 / year", '全球医疗'),
     ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _PageSectionTitle(title: '保险服务'),
+        _PageSectionTitle(title: '保险服务'.tr),
         const SizedBox(height: 5),
         const Text(
-          '根据你的健康数据，为你匹配合适的保障方案。',
+          "Coverage options matched to your health needs.",
           style: TextStyle(color: VvewellColors.muted, fontSize: 12),
         ),
         const SizedBox(height: 10),
@@ -3644,12 +3644,12 @@ class _InsuranceSection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '智能保险匹配',
+                      "Coverage matching",
                       style: TextStyle(fontWeight: FontWeight.w800),
                     ),
                     SizedBox(height: 3),
                     Text(
-                      'AI 根据健康档案和风险画像推荐方案。',
+                      "AI suggests options using your health profile and risk information.",
                       style: TextStyle(
                         color: VvewellColors.muted,
                         fontSize: 11,
@@ -3658,7 +3658,7 @@ class _InsuranceSection extends StatelessWidget {
                   ],
                 ),
               ),
-              _SmallBadge(label: '开始匹配'),
+              _SmallBadge(label: "Find options"),
             ],
           ),
         ),
@@ -3709,7 +3709,7 @@ class _InsurancePlanCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  plan.title,
+                  plan.title.tr,
                   style: const TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
@@ -3717,7 +3717,7 @@ class _InsurancePlanCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 3),
                 Text(
-                  plan.type,
+                  plan.type.tr,
                   style: const TextStyle(
                     color: VvewellColors.muted,
                     fontSize: 11,
@@ -3726,9 +3726,9 @@ class _InsurancePlanCard extends StatelessWidget {
                 const SizedBox(height: 6),
                 Row(
                   children: const [
-                    _SmallBadge(label: '医疗保障', muted: true),
+                    _SmallBadge(label: "Medical coverage", muted: true),
                     SizedBox(width: 5),
-                    _SmallBadge(label: '重疾保障', muted: true),
+                    _SmallBadge(label: "Critical illness coverage", muted: true),
                   ],
                 ),
               ],
@@ -3749,7 +3749,7 @@ class _InsurancePlanCard extends StatelessWidget {
                 height: 30,
                 child: ElevatedButton(
                   onPressed: () {},
-                  child: const Text('立即投保'),
+                  child: const Text("Apply now"),
                 ),
               ),
             ],
@@ -3768,7 +3768,7 @@ class _ExclusiveServiceSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _PageSectionTitle(title: '专享医疗服务'),
+        const _PageSectionTitle(title: "Personal care services"),
         const SizedBox(height: 10),
         _SurfaceCard(
           color: VvewellColors.softTeal,
@@ -3785,12 +3785,12 @@ class _ExclusiveServiceSection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '专属健康管家',
+                      "Personal care coordinator",
                       style: TextStyle(fontWeight: FontWeight.w800),
                     ),
                     SizedBox(height: 3),
                     Text(
-                      '全程服务、预约协助与健康随访。',
+                      "Ongoing support, appointment assistance and health follow-up.",
                       style: TextStyle(
                         color: VvewellColors.muted,
                         fontSize: 12,
@@ -3799,26 +3799,26 @@ class _ExclusiveServiceSection extends StatelessWidget {
                   ],
                 ),
               ),
-              _SmallBadge(label: '去咨询'),
+              _SmallBadge(label: "Ask about care"),
             ],
           ),
         ),
         const SizedBox(height: 9),
         const _ServiceHistoryRow(
-          title: '家庭医生服务',
-          subtitle: '2026-08-05 · 已安排就诊',
+          title: "Family doctor service",
+          subtitle: "2026-08-05 · Visit arranged",
           price: '¥3,500',
         ),
         const SizedBox(height: 8),
         const _ServiceHistoryRow(
-          title: '专家会诊',
-          subtitle: '2026-08-03 · 预约成功',
+          title: "Specialist consultation",
+          subtitle: "2026-08-03 · Appointment confirmed",
           price: '¥12,000',
         ),
         const SizedBox(height: 8),
         const _ServiceHistoryRow(
-          title: '转诊服务',
-          subtitle: '2026-07-28 · 紧急转诊',
+          title: "Referral service",
+          subtitle: "2026-07-28 · Urgent referral",
           price: '¥8,800',
         ),
       ],
@@ -4083,7 +4083,7 @@ class _ProfileMemberSummary extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      tooltip: '切换家庭成员',
+                      tooltip: "Switch family member",
                       onPressed: () =>
                           showFamilyMemberSwitcher(context, controller),
                       icon: const Icon(Icons.swap_horiz),

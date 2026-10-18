@@ -57,7 +57,7 @@ class DeviceDetailController extends BaseController {
   final Rx<AlloopMeasurementPhase> measurementPhase =
       AlloopMeasurementPhase.idle.obs;
   final RxDouble measurementProgress = 0.0.obs;
-  final RxString measurementStatus = '设备已就绪，可以开始一键检测'.obs;
+  final RxString measurementStatus = "Device ready. You can start a health check.".obs;
   final RxnInt displaySpo2 = RxnInt();
   final RxnInt displayHeartRate = RxnInt();
   final RxnDouble displayTemperature = RxnDouble();
@@ -133,13 +133,13 @@ class DeviceDetailController extends BaseController {
     _awaitingConnectResult = true;
     _startConnectTimeoutTimer();
     try {
-      AlToast.showInfo('正在连接 Alloop Ring…');
+      AlToast.showInfo("Connecting to Alloop Ring…");
       await _repository.connect();
     } catch (error) {
       _awaitingConnectResult = false;
       _cancelConnectTimeoutTimer();
       isConnecting.value = false;
-      AlToast.showError('连接失败：${_describeError(error)}');
+      AlToast.showError('Connection failed: ${_describeError(error)}');
       logError('Failed to connect', error);
     }
   }
@@ -163,18 +163,18 @@ class DeviceDetailController extends BaseController {
     _measurementStartedAt = DateTime.now().toUtc();
     latestMeasuredAt.value = _measurementStartedAt;
     measurementPhase.value = AlloopMeasurementPhase.measuring;
-    measurementStatus.value = '正在读取血氧、心率、PPG 与运动波形';
+    measurementStatus.value = "Reading oxygen, heart rate, PPG and motion signals";
     measurementProgress.value = 0.04;
     _subscribeToMeasurementStreams();
 
     try {
       await _repository.startAllMeasurements();
       _startMeasurementTimers();
-      AlToast.showSuccess('Alloop SDK 一键检测已开始');
+      AlToast.showSuccess("Alloop SDK health check started");
     } catch (error) {
       await _cancelMeasurementSubscriptions();
       measurementPhase.value = AlloopMeasurementPhase.error;
-      measurementStatus.value = '检测启动失败：${_describeError(error)}';
+      measurementStatus.value = 'Could not start health check: ${_describeError(error)}';
       AlToast.showError(measurementStatus.value);
       logError('Failed to start Alloop measurement', error);
     }
@@ -262,9 +262,9 @@ class DeviceDetailController extends BaseController {
       displayTemperature.value = null;
       latestMeasuredAt.value = null;
       final total = counts.values.fold<int>(0, (sum, value) => sum + value);
-      AlToast.showSuccess('已清除 $total 条本机戒指数据');
+      AlToast.showSuccess('Cleared $total local ring records');
     } catch (error) {
-      AlToast.showError('清除失败：${_describeError(error)}');
+      AlToast.showError('Could not clear data: ${_describeError(error)}');
     }
   }
 
@@ -275,23 +275,23 @@ class DeviceDetailController extends BaseController {
     await disconnect();
     try {
       await LocalHealthDatabase.instance.forgetAlloopDevice(deviceId: deviceId);
-      AlToast.showSuccess('已解除 Alloop Ring 的应用内绑定');
+      AlToast.showSuccess("Alloop Ring has been unlinked from this app");
       if (Get.key.currentState?.canPop() ?? false) Get.back<void>();
     } catch (error) {
-      AlToast.showError('解绑失败：${_describeError(error)}');
+      AlToast.showError('Could not unlink: ${_describeError(error)}');
     }
   }
 
   Future<void> exportWaveData() async {
     if (isExporting.value) return;
     if (ppgLedG.isEmpty && accX.isEmpty) {
-      AlToast.showInfo('当前没有可导出的波形');
+      AlToast.showInfo("No waveforms available to export");
       return;
     }
     isExporting.value = true;
     try {
       final directory = await AlFileUtils.getUserAccessibleDirectory();
-      if (directory == null) throw StateError('无法访问导出目录');
+      if (directory == null) throw StateError("Cannot access the export folder");
       final folder = path.join(directory.path, 'alloop_ring');
       final stamp = DateFormat(
         'yyyy-MM-dd_HH-mm-ss',
@@ -339,9 +339,9 @@ class DeviceDetailController extends BaseController {
         await writer.close();
         saved++;
       }
-      AlToast.showSuccess('已导出 $saved 个波形文件至 $folder');
+      AlToast.showSuccess('Exported $saved waveform files to $folder');
     } catch (error) {
-      AlToast.showError('导出失败：${_describeError(error)}');
+      AlToast.showError('Export failed: ${_describeError(error)}');
     } finally {
       isExporting.value = false;
     }
@@ -557,7 +557,7 @@ class DeviceDetailController extends BaseController {
     _measurementTimer?.cancel();
     _progressTimer?.cancel();
     measurementPhase.value = AlloopMeasurementPhase.stopping;
-    measurementStatus.value = '正在结束实时检测';
+    measurementStatus.value = "Finishing live measurements";
     measurementProgress.value = 0.7;
     if (sendStopCommand) {
       try {
@@ -571,7 +571,7 @@ class DeviceDetailController extends BaseController {
 
   Future<void> _syncHistoryAndComplete({bool manual = false}) async {
     measurementPhase.value = AlloopMeasurementPhase.syncingHistory;
-    measurementStatus.value = '正在同步历史数据并更新体温与趋势';
+    measurementStatus.value = "Syncing history and updating temperature and trends";
     measurementProgress.value = 0.74;
     var historyWarning = '';
     try {
@@ -599,7 +599,7 @@ class DeviceDetailController extends BaseController {
         }
       }
     } catch (error) {
-      historyWarning = '；历史同步暂未完成：${_describeError(error)}';
+      historyWarning = '; history sync incomplete: ${_describeError(error)}';
       logWarning('History sync after measurement did not complete: $error');
     }
     await LocalHealthDatabase.notifyMeasurementBlockCompleted();
@@ -616,9 +616,9 @@ class DeviceDetailController extends BaseController {
     measurementPhase.value = AlloopMeasurementPhase.completed;
     measurementProgress.value = 1;
     measurementStatus.value = manual
-        ? '历史数据已更新$historyWarning'
-        : '一键检测完成，结果与趋势已更新$historyWarning';
-    AlToast.showSuccess(manual ? '历史同步流程已结束' : '一键检测完成');
+        ? 'History updated$historyWarning'
+        : 'Health check complete. Results and trends updated$historyWarning';
+    AlToast.showSuccess(manual ? "History sync finished" : "Health check complete");
   }
 
   Future<void> _persistMeasurementResult(
@@ -757,7 +757,7 @@ class DeviceDetailController extends BaseController {
         connected: true,
       );
     } catch (error) {
-      if (!silent) AlToast.showError('设备信息读取失败：${_describeError(error)}');
+      if (!silent) AlToast.showError('Could not read device information: ${_describeError(error)}');
       logError('Failed to fetch device info', error);
     }
   }
@@ -768,7 +768,7 @@ class DeviceDetailController extends BaseController {
       if (!_awaitingConnectResult) return;
       _awaitingConnectResult = false;
       isConnecting.value = false;
-      AlToast.showError('连接超时，请重试');
+      AlToast.showError("Connection timed out. Please try again");
     });
   }
 
@@ -779,7 +779,7 @@ class DeviceDetailController extends BaseController {
 
   bool _ensureConnected() {
     if (isConnected.value) return true;
-    AlToast.showError('请先连接 Alloop Ring');
+    AlToast.showError("Connect Alloop Ring first");
     return false;
   }
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppLanguageController extends GetxController {
-  final Rx<Locale> currentLocale = const Locale('zh', 'CN').obs;
+  final Rx<Locale> currentLocale = const Locale('en', 'US').obs;
 
   bool get isEnglish => currentLocale.value.languageCode == 'en';
 

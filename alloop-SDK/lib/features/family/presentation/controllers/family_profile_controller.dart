@@ -103,7 +103,7 @@ class FamilyProfileController extends ChangeNotifier {
           id: 'profile-${DateTime.now().microsecondsSinceEpoch}',
           category: '身份与人口学',
           label: '基础档案',
-          value: '$relationship · $gender · $birthYear 年出生',
+          value: '$relationship · $gender · Born $birthYear',
           status: HealthTagStatus.confirmed,
           source: '家庭管理员录入',
           updatedAt: DateTime.now(),
