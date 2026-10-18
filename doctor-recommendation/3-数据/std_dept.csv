@@ -1,0 +1,32 @@
+std_dept_id,name_zh,name_en,group,includes,excludes_to,confusable
+CARD,心血管内科,Cardiology,内科,高血压、冠心病、心律失常、心衰、心悸、非急性胸闷胸痛的评估；胸痛中心,需要开胸/搭桥/瓣膜手术 → CTS；静脉曲张 → GS,CTS、RESP
+RESP,呼吸内科,Pulmonology,内科,慢性咳嗽、哮喘、慢阻肺、肺部感染、肺结节随访、睡眠呼吸暂停,肺结核 → INF；肺部手术 → CTS；肺癌确诊 → ONC + CTS,INF、CTS、ONC
+GI,消化内科,Gastroenterology,内科,胃痛、反酸、腹泻便秘、肠胃镜、息肉、慢性胃炎、肝功能异常的初查,需要手术的胃肠肝胆病 → GS；病毒性肝炎 → INF；痔疮肛瘘 → GS,GS、INF
+NEPH,肾内科,Nephrology,内科,肾炎、蛋白尿、肾功能不全、透析,肾结石、前列腺 → URO,URO
+ENDO,内分泌科,Endocrinology,内科,糖尿病、甲状腺功能异常、骨质疏松、肥胖代谢、垂体肾上腺,甲状腺结节需手术 → GS；孕期糖尿病 → OB 首选、ENDO 也合理,GS、OB
+HEME,血液科,Hematology,内科,贫血、出凝血异常、白细胞血小板异常,白血病、淋巴瘤确诊 → ONC 首选、HEME 也合理,ONC
+NEURO,神经内科,Neurology,内科,头痛、头晕、癫痫、帕金森、记忆减退、周围神经病、卒中后随访,需开颅/脊髓手术 → NSURG；突发偏瘫言语不清 → 安全层（急症）,NSURG、PSY、ORTHO
+INF,感染科,Infectious Disease,内科,发热待查、病毒性肝炎、结核、HIV、热带病、寄生虫,普通感冒咳嗽 → RESP 或 GP,RESP、GI
+RHEUM,风湿免疫科,Rheumatology,内科,类风湿、红斑狼疮、强直性脊柱炎、痛风、多关节肿痛,外伤或退变关节病 → ORTHO,ORTHO
+GERI,老年医学科,Geriatrics,内科,高龄多病共存、多药管理、衰弱跌倒、认知功能综合评估,单一器官问题 → 对应专科,GP
+GP,全科医学科,General Practice,内科,症状模糊或多系统、体检后综合解读、慢病综合管理、首诊不知看哪科,有明确器官指向的 → 对应专科,GERI
+GS,普通外科,General Surgery,外科,胃肠、肝胆胰、甲状腺乳腺、疝、肛肠（痔疮肛瘘）、减重手术,乳腺癌、胃肠癌确诊 → ONC 首选、GS 也合理,GI、ONC、ENDO
+NSURG,神经外科,Neurosurgery,外科,脑肿瘤、脑出血术后、脑积水、颅内动脉瘤、功能神经外科（帕金森手术）,颈腰椎间盘 → ORTHO 首选、NSURG 也合理,NEURO、ORTHO
+ORTHO,骨科,Orthopedics,外科,骨折、关节痛、颈椎腰椎间盘、脊柱侧弯、运动损伤、关节置换、手外科,类风湿等免疫性关节炎 → RHEUM；中医骨伤 → TCM 也合理,RHEUM、NSURG、REHAB
+URO,泌尿外科/男科,Urology / Andrology,外科,肾结石、前列腺、排尿异常、男性性功能与不育的泌尿问题,男性不育做辅助生殖 → REPRO,NEPH、REPRO
+CTS,心胸外科,Cardiothoracic Surgery,外科,心脏搭桥、瓣膜、先心病手术、肺部和纵隔手术、食管手术,内科可处理的心肺病 → CARD / RESP,CARD、RESP
+PLAST,烧伤整形科,Burns & Plastic Surgery,外科,烧伤、瘢痕、创面修复、先天畸形整形,纯医美 → 不在范围,DERM
+TRANS,器官移植,Organ Transplant,外科,肝、肾等器官移植评估与随访,移植前原发病的诊治 → 对应专科,GS、NEPH
+ONC,肿瘤科,Oncology,肿瘤,已确诊或高度怀疑的恶性肿瘤；放化疗、靶向、免疫治疗；多学科会诊,良性肿物 → 对应器官科室,各器官科室
+GYN,妇科,Gynecology,妇产,月经异常、子宫肌瘤、卵巢囊肿、宫颈病变、更年期、盆底问题,怀孕相关 → OB；不孕 → REPRO；妇科恶性肿瘤 → ONC 首选、GYN 也合理,OB、REPRO
+OB,产科,Obstetrics,妇产,产检、高危妊娠、产前诊断、分娩,孕期出血、腹痛剧烈 → 安全层（急症）,GYN
+REPRO,生殖医学科,Reproductive Medicine,妇产,不孕不育、试管婴儿、冻卵、复发流产,一般妇科病 → GYN,GYN、URO
+PED,儿科,Pediatrics,儿科,14 岁以下的一般疾病：发热、咳嗽、腹泻、生长发育、新生儿问题,儿童的眼、牙、皮肤、精神问题 → 对应专科首选、PED 也合理,各专科
+OPH,眼科,Ophthalmology,五官,视力下降、近视、白内障、青光眼、眼底病、干眼、斜弱视,—,NEURO
+ENT,耳鼻咽喉科,Otolaryngology (ENT),五官,耳鸣听力下降、鼻炎鼻窦炎、咽喉问题、打鼾、眩晕的耳源评估,甲状腺 → GS / ENDO,NEURO、RESP
+DENT,口腔科,Dentistry,五官,牙痛、种植、正畸、牙周、口腔黏膜病、颌面问题,—,ENT
+DERM,皮肤科,Dermatology,皮肤,皮疹、湿疹、痤疮、银屑病、皮肤肿物、性传播疾病的皮肤表现,烧伤、瘢痕 → PLAST,PLAST、INF
+PSY,精神心理科,Psychiatry / Psychology,精神,焦虑、抑郁、失眠、双相、儿童青少年心理问题,自伤或伤人想法 → 安全层（急症）；器质性神经病 → NEURO,NEURO
+REHAB,康复医学科,Rehabilitation,康复,卒中后康复、术后康复、脊髓损伤、运动康复、吞咽障碍,未经诊断的新发症状 → 对应专科,ORTHO、NEURO
+TCM,中医科,Traditional Chinese Medicine,中医,患者明确要求中医、针灸、推拿、中医调理,未明确要求中医的 → 按器官选西医科室，TCM 不主动给,各科
+PAIN,疼痛科,Pain Medicine,其他,慢性顽固性疼痛、神经痛、带状疱疹后神经痛、癌痛,急性外伤疼痛 → ORTHO,ORTHO、NEURO

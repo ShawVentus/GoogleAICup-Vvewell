@@ -1,0 +1,23 @@
+name: aizoring_blue_lite
+description: Flutter plugin for AIZORING smart ring via ServiceSdkCommandV2.
+version: 1.0.0
+homepage:
+
+environment:
+  sdk: ">=3.8.0 <4.0.0"
+  flutter: ">=3.8.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.alloop.aizoring_blue_lite
+        pluginClass: AizoringBlueLitePlugin

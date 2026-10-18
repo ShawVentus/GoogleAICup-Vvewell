@@ -1,0 +1,16 @@
+**
+!Dockerfile
+!.web-dist/
+!.web-dist/**
+!web_backend/
+!web_backend/**
+!doctor-recommendation/
+!doctor-recommendation/2-推荐逻辑/
+!doctor-recommendation/2-推荐逻辑/**
+!doctor-recommendation/3-数据/
+!doctor-recommendation/3-数据/**
+**/.env
+**/logs/
+**/__pycache__/
+**/tests/
+**/raw/

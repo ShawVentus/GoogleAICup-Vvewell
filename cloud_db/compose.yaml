@@ -1,0 +1,28 @@
+name: vvewell-cloud-db
+
+services:
+  db:
+    image: supabase/postgres:15.8.1.085
+    container_name: vvewell-cloud-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${CLOUD_DB_NAME:-vvewell}
+      POSTGRES_USER: ${CLOUD_DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${CLOUD_DB_PASSWORD:-vvewell_local_only}
+    ports:
+      - "127.0.0.1:${CLOUD_DB_PORT:-55432}:5432"
+    volumes:
+      - vvewell_cloud_db_data:/var/lib/postgresql/data
+      - ./migrations:/workspace/migrations:ro
+      - ./tests:/workspace/tests:ro
+      - ./live_tests:/workspace/live_tests:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${CLOUD_DB_USER:-postgres} -d ${CLOUD_DB_NAME:-vvewell}"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+      start_period: 30s
+
+volumes:
+  vvewell_cloud_db_data:
+    name: vvewell_cloud_db_data

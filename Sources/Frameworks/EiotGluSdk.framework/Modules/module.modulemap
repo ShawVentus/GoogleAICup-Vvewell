@@ -1,6 +1,0 @@
-framework module EiotGluSdk {
-  umbrella header "EiotGluSdk.h"
-  export *
-
-  module * { export * }
-}

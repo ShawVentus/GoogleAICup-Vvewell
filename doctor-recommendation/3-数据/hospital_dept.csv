@@ -1,0 +1,419 @@
+hospital_id,local_dept_name,local_dept_type,std_dept_id,relation,tier,evidence_level,evidence_detail,focus_tags,source_url,verified_date
+SZ001,呼吸与危重症医学科,临床科室,RESP,等同,top,国家级,呼吸内科：国家临床重点专科建设项目,呼吸与危重症医学科,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,消化内科,临床科室,GI,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,神经内科,临床科室,NEURO,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,心血管内科,临床科室,CARD,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,血液内科,临床科室,HEME,等同,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,肾内科,临床科室,NEPH,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,内分泌科,临床科室,ENDO,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,风湿免疫科,临床科室,RHEUM,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,老年医学科,临床科室,GERI,属于,top,国家级,老年医学科：国家临床重点专科建设项目,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,肝胆胰外科,临床科室,GS,属于,top,国家级,普通外科：国家临床重点专科建设项目,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,甲状腺外科,临床科室,GS,属于,top,国家级,普通外科：国家临床重点专科建设项目,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,乳腺外科,临床科室,GS,属于,top,国家级,普通外科：国家临床重点专科建设项目,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,胃肠外科,临床科室,GS,属于,top,国家级,普通外科：国家临床重点专科建设项目,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,肛肠外科,临床科室,GS,属于,top,国家级,普通外科：国家临床重点专科建设项目,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,泌尿外科,临床科室,URO,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,神经外科,临床科室,NSURG,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,胸外科,临床科室,CTS,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,心脏大血管外科,临床科室,CTS,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,骨关节外科,临床科室,ORTHO,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,创伤骨科,临床科室,ORTHO,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,脊柱外科,临床科室,ORTHO,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,手足显微血管外科,临床科室,ORTHO,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,整形美容外科,临床科室,PLAST,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,妇科,临床科室,GYN,等同,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,产科,临床科室,OB,等同,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,生殖医学科,临床科室,REPRO,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,儿科（含儿内科、新生儿科）,临床科室,PED,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,肿瘤内科,临床科室,ONC,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,肿瘤放疗科,临床科室,ONC,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,眼科,临床科室,OPH,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,耳鼻咽喉科,临床科室,ENT,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,感染内科,临床科室,INF,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,全科医学科,临床科室,GP,等同,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,康复医学科,临床科室,REHAB,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,疼痛科,临床科室,PAIN,等同,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,皮肤科,临床科室,DERM,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,中医科,临床科室,TCM,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,口腔医学中心,中心,DENT,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,烧伤与创面修复外科/烧伤与创面修复科研究所,未公开,PLAST,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ001,宁养院,未公开,ONC,属于,capable,官网开设,,,https://www.szhospital.com/?fid=A003,2026-10-17
+SZ002,手足与血管外科,临床科室,ORTHO,属于,top,国家级,骨科：国家临床重点专科建设项目,,https://www.pkuszh.com/hzb_ksdh_sxwwk_ksjj,2026-10-17
+SZ002,骨关节科,临床科室,ORTHO,属于,top,国家级,骨科：国家临床重点专科建设项目,,https://www.pkuszh.com.cn/hzb_ksdh_ggjwk_ksjj,2026-10-17
+SZ002,心血管外科,临床科室,CTS,属于,capable,官网开设,,,https://www.pkuszh.com.cn/hzb_ksdh_xzxgwk_ksjj,2026-10-17
+SZ002,心内科一病区,临床科室,CARD,属于,capable,官网开设,,心内科专家门诊；普通门诊；冠心病介入治疗后随访门诊；起搏器门诊；高血压门诊；高脂血症门诊；心律失常门诊,https://www.pkuszh.com/hzb_ksdh_xxgnk_ksjj,2026-10-17
+SZ002,神经内科,临床科室,NEURO,属于,capable,官网开设,,,https://www.pkuszh.com/hzb_ksdh_sjnk_zjjs,2026-10-17
+SZ002,男科,临床科室,URO,属于,capable,官网开设,,,https://www.pkuszh.com/hzb_ksdh_nfmk_zjjs,2026-10-17
+SZ003,心血管医学中心,中心,CARD,涵盖,capable,医院自述特色,心血管医学中心：医院重点建设医学中心,心血管医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,心血管医学中心,中心,CTS,涵盖,capable,医院自述特色,心血管医学中心：医院重点建设医学中心,,https://www.hku-szh.org/,2026-10-17
+SZ003,神经医学中心,中心,NEURO,涵盖,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,神经医学中心,中心,NSURG,涵盖,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,肿瘤医学中心,中心,ONC,属于,capable,医院自述特色,肿瘤医学中心：医院重点建设医学中心,肿瘤医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,骨科医学中心,中心,ORTHO,属于,top,国家级,骨科（骨科医学中心）：国家临床重点专科建设项目,骨科医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,生殖与产前诊断医学中心,中心,REPRO,涵盖,capable,官网开设,,生殖及产前诊断医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,生殖与产前诊断医学中心,中心,OB,涵盖,capable,医院自述特色,生殖及产前诊断医学中心：医院重点建设医学中心,生殖及产前诊断医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,康复中心,中心,REHAB,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,内镜中心,中心,GI,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,心血管综合内科（含胸痛中心）,临床科室,CARD,属于,capable,医院自述特色,心血管医学中心：医院重点建设医学中心,心血管医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,心脏大血管外科（含体外辅助循环）,临床科室,CTS,属于,capable,医院自述特色,心血管医学中心：医院重点建设医学中心,,https://www.hku-szh.org/,2026-10-17
+SZ003,心律失常科,临床科室,CARD,属于,capable,医院自述特色,心血管医学中心：医院重点建设医学中心,心血管医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,神经外科,临床科室,NSURG,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,疼痛科,临床科室,PAIN,等同,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,神经内科（含卒中中心）,临床科室,NEURO,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,放射治疗科,临床科室,ONC,属于,capable,医院自述特色,肿瘤医学中心：医院重点建设医学中心,肿瘤医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,综合肿瘤科,临床科室,ONC,属于,capable,医院自述特色,肿瘤医学中心：医院重点建设医学中心,肿瘤医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,胸部肿瘤科,临床科室,ONC,属于,capable,医院自述特色,肿瘤医学中心：医院重点建设医学中心,肿瘤医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,头颈与消化肿瘤科,临床科室,ONC,属于,capable,医院自述特色,肿瘤医学中心：医院重点建设医学中心,肿瘤医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,脊柱外科,临床科室,ORTHO,属于,top,国家级,骨科（骨科医学中心）：国家临床重点专科建设项目,骨科医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,小儿骨科,临床科室,ORTHO,属于,top,国家级,骨科（骨科医学中心）：国家临床重点专科建设项目,骨科医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,小儿骨科,临床科室,PED,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,骨关节与运动医学科,临床科室,ORTHO,属于,top,国家级,骨科（骨科医学中心）：国家临床重点专科建设项目,骨科医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,创伤及综合骨科（含肿瘤、足踝）,临床科室,ORTHO,属于,top,国家级,骨科（骨科医学中心）：国家临床重点专科建设项目,骨科医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,生殖医学科,临床科室,REPRO,属于,capable,官网开设,,生殖及产前诊断医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,产前诊断科,临床科室,OB,属于,capable,医院自述特色,生殖及产前诊断医学中心：医院重点建设医学中心,生殖及产前诊断医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,呼吸内科,临床科室,RESP,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,消化内科,临床科室,GI,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,肾内科,临床科室,NEPH,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,血液内科,临床科室,HEME,等同,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,内分泌内科,临床科室,ENDO,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,风湿免疫科,临床科室,RHEUM,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,皮肤科,临床科室,DERM,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,肝胆胰外科,临床科室,GS,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,胃肠外科,临床科室,GS,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,甲状腺血管与头颈外科,临床科室,GS,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,甲状腺血管与头颈外科,临床科室,ENT,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,乳腺与整形外科,临床科室,GS,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,乳腺与整形外科,临床科室,PLAST,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,泌尿外科,临床科室,URO,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,胸外科,临床科室,CTS,属于,capable,医院自述特色,心血管医学中心：医院重点建设医学中心,,https://www.hku-szh.org/,2026-10-17
+SZ003,耳鼻咽喉科,临床科室,ENT,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,妇科,临床科室,GYN,等同,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,产科,临床科室,OB,等同,capable,医院自述特色,生殖及产前诊断医学中心：医院重点建设医学中心,生殖及产前诊断医学中心,https://www.hku-szh.org/,2026-10-17
+SZ003,儿科,临床科室,PED,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,新生儿科,临床科室,PED,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,全科,临床科室,GP,等同,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,物理治疗科,临床科室,REHAB,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,言语治疗科,临床科室,REHAB,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,作业治疗科,临床科室,REHAB,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,中医部,未公开,TCM,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,眼科医学部,未公开,OPH,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,口腔医学部,未公开,DENT,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,全科医学部,未公开,GP,等同,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,感染性疾病医学部,未公开,INF,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ003,康复医学部,未公开,REHAB,属于,capable,官网开设,,,https://www.hku-szh.org/,2026-10-17
+SZ004,骨关节/骨肿瘤科,临床科室,ORTHO,属于,top,国家级,骨科：国家临床重点专科,运动医学科,https://www.szrch.com.cn/ylfw/zzjj/,2026-10-17
+SZ004,骨关节/骨肿瘤科,临床科室,ONC,属于,capable,官网开设,,,https://www.szrch.com.cn/ylfw/zzjj/,2026-10-17
+SZ004,脊柱外科,临床科室,ORTHO,属于,top,国家级,骨科：国家临床重点专科,运动医学科,https://www.szrch.com.cn/ylfw/zzjj/,2026-10-17
+SZ004,创伤骨科,临床科室,ORTHO,属于,top,国家级,骨科：国家临床重点专科,运动医学科,https://www.szrch.com.cn/ylfw/zzjj/,2026-10-17
+SZ004,运动医学科,临床科室,ORTHO,属于,top,国家级,骨科：国家临床重点专科,运动医学科,https://www.szrch.com.cn/ylfw/zzjj/,2026-10-17
+SZ004,足踝外科手外科,临床科室,ORTHO,属于,top,国家级,骨科：国家临床重点专科,运动医学科,https://www.szrch.com.cn/ylfw/zzjj/,2026-10-17
+SZ004,神经外科,临床科室,NSURG,属于,top,国家级,神经外科：国家临床重点专科,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,烧伤整形科,临床科室,PLAST,属于,top,国家级,烧伤科：国家临床重点专科,烧伤科,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,泌尿外科,临床科室,URO,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,甲乳外科,临床科室,GS,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,肝胆胰外科,临床科室,GS,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,胃肠外科,临床科室,GS,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,胸外科,临床科室,CTS,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,结直肠肛门外科,临床科室,GS,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,耳鼻咽喉科,临床科室,ENT,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,口腔科,临床科室,DENT,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,眼科,临床科室,OPH,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,血管外科,临床科室,GS,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,妇科,临床科室,GYN,等同,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,产科,临床科室,OB,等同,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,血液内科,临床科室,HEME,等同,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,肾内科,临床科室,NEPH,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,神经内科,临床科室,NEURO,属于,top,国家级,神经内科：国家临床重点专科,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,康复医学科,临床科室,REHAB,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,儿科,临床科室,PED,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,内分泌科,临床科室,ENDO,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,肿瘤科,临床科室,ONC,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,心血管内科,临床科室,CARD,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,消化内科,临床科室,GI,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,呼吸与危重症医学科,临床科室,RESP,等同,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,风湿免疫科,临床科室,RHEUM,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,老年医学综合科,临床科室,GERI,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,生殖医学科,临床科室,REPRO,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,皮肤科,临床科室,DERM,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,全科医学科,临床科室,GP,等同,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,感染性疾病科,临床科室,INF,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,临床心理科,临床科室,PSY,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,中医科（中西医结合老年科）,临床科室,TCM,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,中医科（中西医结合老年科）,临床科室,GERI,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,中西医结合科,临床科室,TCM,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,针灸推拿科,临床科室,TCM,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,神外神经肿瘤病区,临床科室,NSURG,属于,top,国家级,神经外科：国家临床重点专科,,https://www.szrch.com.cn/ylfw/zzjj/,2026-10-17
+SZ004,神外脑血管病区,临床科室,NSURG,属于,top,国家级,神经外科：国家临床重点专科,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,神外功能神经病区,临床科室,NSURG,属于,top,国家级,神经外科：国家临床重点专科,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,脊柱健康中心,中心,ORTHO,属于,top,国家级,骨科：国家临床重点专科,运动医学科,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,治未病中心,中心,TCM,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ004,心脏电生理科,医技平台,CARD,属于,capable,官网开设,,,https://www.szrch.com.cn/ksdh/ksjs/qt/,2026-10-17
+SZ005,呼吸与危重症医学科,临床科室,RESP,等同,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,消化内科,临床科室,GI,属于,top,省级,消化内科：广东省临床重点专科,消化内镜,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,神经内科,临床科室,NEURO,属于,capable,市级,神经内科：深圳市医学重点学科,卒中介入,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,心血管内科,临床科室,CARD,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,血液内科,临床科室,HEME,等同,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,肾内科,临床科室,NEPH,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,内分泌科,临床科室,ENDO,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,肝胆胰腹壁外科,临床科室,GS,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,甲状腺和乳腺外科,临床科室,GS,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,神经外科,临床科室,NSURG,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,运动医学科,临床科室,ORTHO,属于,capable,市级,骨科：深圳市医学重点学科,创伤修复重建；数字骨科,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,关节外科,临床科室,ORTHO,属于,capable,市级,骨科：深圳市医学重点学科,创伤修复重建；数字骨科,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,创伤骨科,临床科室,ORTHO,属于,capable,市级,骨科：深圳市医学重点学科,创伤修复重建；数字骨科,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,泌尿外科,临床科室,URO,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,胸心外科,临床科室,CTS,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,整形美容烧伤外科,临床科室,PLAST,属于,capable,政府资料开设（2024 部门决算机构名单）,,创伤修复重建,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,胃肠肛肠外科,临床科室,GS,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,妇产科,临床科室,GYN,涵盖,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,妇产科,临床科室,OB,涵盖,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,儿科,临床科室,PED,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,新生儿科,临床科室,PED,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,眼科,临床科室,OPH,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,耳鼻喉科,临床科室,ENT,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,儿童耳鼻喉科,临床科室,ENT,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,儿童耳鼻喉科,临床科室,PED,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,口腔科,临床科室,DENT,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,颌面外科,临床科室,DENT,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,皮肤美容与性病科,临床科室,DERM,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,肿瘤科,临床科室,ONC,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,康复医学科,临床科室,REHAB,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,中医科,临床科室,TCM,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,全科医学科,临床科室,GP,等同,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,骨科中心,中心,ORTHO,属于,capable,市级,骨科：深圳市医学重点学科,创伤修复重建；数字骨科,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ005,肝病中心,中心,INF,属于,capable,政府资料开设（2024 部门决算机构名单）,,,https://www.sz.gov.cn/attachment/1/1632/1632199/12428461.pdf,2026-10-17
+SZ006,消化医学中心,中心,GI,属于,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,神经医学中心,中心,NEURO,涵盖,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,神经医学中心,中心,NSURG,涵盖,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,心血管中心,中心,CARD,涵盖,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,心血管中心,中心,CTS,涵盖,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,产前诊断中心,中心,OB,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,胃肠外科,临床科室,GS,属于,top,省级,普通外科（胃肠、肝胆胰、甲乳）：广东省临床重点专科,甲乳外科；肝胆胰外科；胃肠外科,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,普通外科,临床科室,GS,属于,top,省级,普通外科（胃肠、肝胆胰、甲乳）：广东省临床重点专科,甲乳外科；肝胆胰外科；胃肠外科,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,骨科,临床科室,ORTHO,属于,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,神经外科,临床科室,NSURG,属于,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,心血管外科,临床科室,CTS,属于,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,妇产科,临床科室,GYN,涵盖,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,妇产科,临床科室,OB,涵盖,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,泌尿外科,临床科室,URO,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,眼科,临床科室,OPH,属于,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,男科,临床科室,URO,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,胸外科,临床科室,CTS,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,口腔科,临床科室,DENT,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,耳鼻咽喉头颈外科,临床科室,ENT,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,皮肤科,临床科室,DERM,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,烧伤整形科,临床科室,PLAST,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,器官移植科,临床科室,TRANS,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,甲状腺乳腺外科,临床科室,GS,属于,top,省级,普通外科（胃肠、肝胆胰、甲乳）：广东省临床重点专科,甲乳外科；肝胆胰外科；胃肠外科,https://www.sysush.com/departments,2026-10-17
+SZ006,肝胆胰外科,临床科室,GS,属于,top,省级,普通外科（胃肠、肝胆胰、甲乳）：广东省临床重点专科,甲乳外科；肝胆胰外科；胃肠外科,https://www.sysush.com/departments,2026-10-17
+SZ006,消化内科,临床科室,GI,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,儿科,临床科室,PED,属于,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,新生儿科,临床科室,PED,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,肿瘤科,临床科室,ONC,属于,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,血液内科,临床科室,HEME,等同,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,内分泌科,临床科室,ENDO,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,风湿免疫科,临床科室,RHEUM,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,神经内科,临床科室,NEURO,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,心血管内科,临床科室,CARD,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,中医科,临床科室,TCM,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,感染性疾病科,临床科室,INF,属于,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,呼吸与危重症医学科,临床科室,RESP,等同,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,康复医学科,临床科室,REHAB,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,老年医学科,临床科室,GERI,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,全科医学科,临床科室,GP,等同,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,精神心理科,临床科室,PSY,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ006,肾脏病中心,中心,NEPH,属于,capable,市级,肾病科：深圳市医学重点培育学科,肾病科,https://www.sysush.com/departments,2026-10-17
+SZ006,生殖医学中心,中心,REPRO,属于,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,放疗科,医技平台,ONC,属于,capable,官网开设,,,https://www.sysush.com/index.php/doctors,2026-10-17
+SZ006,内镜中心,中心,GI,属于,capable,官网开设,,,https://www.sysush.com/departments,2026-10-17
+SZ013,感染与免疫科,临床科室,INF,属于,top,国家级,感染性疾病科：国家临床重点专科,感染性疾病科；结核病科；肝病,https://www.szsdsrmyy.com/,2026-10-17
+SZ013,感染科,临床科室,INF,属于,top,国家级,感染性疾病科：国家临床重点专科,感染性疾病科；结核病科；肝病,https://www.szsdsrmyy.com/,2026-10-17
+SZ013,肝炎肝硬化科,临床科室,INF,属于,top,国家级,感染性疾病科：国家临床重点专科,感染性疾病科；结核病科；肝病,https://www.szsdsrmyy.com/,2026-10-17
+SZ013,疑难重症肝病科,临床科室,INF,属于,top,国家级,感染性疾病科：国家临床重点专科,感染性疾病科；结核病科；肝病,https://www.szsdsrmyy.com/,2026-10-17
+SZ013,肝病门诊,临床科室,INF,属于,top,国家级,感染性疾病科：国家临床重点专科,感染性疾病科；结核病科；肝病,https://www.szsdsrmyy.com/,2026-10-17
+SZ013,传染病筛查门诊,临床科室,INF,属于,top,国家级,感染性疾病科：国家临床重点专科,感染性疾病科；结核病科；肝病,https://www.szsdsrmyy.com/,2026-10-17
+SZ014,肝病科,临床科室,INF,属于,top,国家级,肝病科：国家中医临床重点专科,肝病科,https://www.szszyy.cn/SectionNavigation/list.aspx,2026-10-17
+SZ014,肾病科,临床科室,NEPH,属于,top,国家级,肾病科：国家中医临床重点专科,肾病科,https://www.szszyy.cn/SectionNavigation/list.aspx,2026-10-17
+SZ014,脑病与心理病科,临床科室,TCM,属于,capable,国家级（待核实）,针灸科：国家中医临床重点专科,脾胃病科；针灸科,https://www.szszyy.cn/SectionNavigation/list.aspx,2026-10-17
+SZ014,脾胃病科,临床科室,TCM,属于,capable,国家级（待核实）,针灸科：国家中医临床重点专科,脾胃病科；针灸科,https://www.szszyy.cn/SectionNavigation/list.aspx,2026-10-17
+SZ014,针灸科,临床科室,TCM,属于,capable,国家级（待核实）,针灸科：国家中医临床重点专科,脾胃病科；针灸科,https://www.szszyy.cn/SectionNavigation/list.aspx,2026-10-17
+SZ014,推拿科,临床科室,TCM,属于,capable,国家级（待核实）,针灸科：国家中医临床重点专科,脾胃病科；针灸科,https://www.szszyy.cn/SectionNavigation/list.aspx,2026-10-17
+SZ014,筋伤科,临床科室,TCM,属于,capable,国家级（待核实）,针灸科：国家中医临床重点专科,脾胃病科；针灸科,https://www.szszyy.cn/SectionNavigation/list.aspx,2026-10-17
+SZ014,感染性疾病科,临床科室,INF,属于,capable,官网开设,,肝病科,https://www.szszyy.cn/SectionNavigation/list.aspx,2026-10-17
+SZ014,骨伤科,临床科室,TCM,属于,capable,国家级（待核实）,针灸科：国家中医临床重点专科,脾胃病科；针灸科,https://www.szszyy.cn/SectionNavigation/list.aspx,2026-10-17
+SZ014,治未病中心,未公开,TCM,属于,capable,国家级（待核实）,针灸科：国家中医临床重点专科,脾胃病科；针灸科,https://www.szszyy.cn/SectionNavigation/list.aspx,2026-10-17
+SZ014,中医综合治疗区,未公开,TCM,属于,capable,国家级（待核实）,针灸科：国家中医临床重点专科,脾胃病科；针灸科,https://www.szszyy.cn/SectionNavigation/list.aspx,2026-10-17
+SZ015,妇科,临床科室,GYN,等同,capable,官网开设,,更年期保健,https://www.szmch.net.cn/ylts/zjjs/fk/,2026-10-17
+SZ015,产科,临床科室,OB,等同,capable,国家级（待核实）,产科：国家临床重点专科,,https://www.szmch.net.cn/ylts/zjjs/ck/index.html,2026-10-17
+SZ015,儿科,临床科室,PED,属于,capable,官网开设,,新生儿科,https://www.szmch.net.cn/ylts/zjjs/ek/index.html,2026-10-17
+SZ015,新生儿科,临床科室,PED,属于,top,国家级,新生儿科：国家临床重点专科,新生儿科,https://www.szmch.net.cn/ylts/ksjs/index.html,2026-10-17
+SZ015,生殖免疫综合科,临床科室,REPRO,属于,capable,官网开设,,生殖,https://www.szmch.net.cn/ylts/zjjs/szmyzhk/index.html,2026-10-17
+SZ015,儿童健康科,临床科室,PED,属于,capable,官网开设,,新生儿科,https://www.szmch.net.cn/ylts/ksjs/index.html,2026-10-17
+SZ015,儿童心理与康复科,临床科室,PED,属于,capable,官网开设,,新生儿科,https://www.szmch.net.cn/ylts/ksjs/index.html,2026-10-17
+SZ015,儿外科,临床科室,PED,属于,capable,官网开设,,新生儿科,https://www.szmch.net.cn/ylts/ksjs/index.html,2026-10-17
+SZ015,生殖医学中心,中心,REPRO,属于,capable,官网开设,,生殖,https://www.szmch.net.cn/ylts/ksjs/index.html,2026-10-17
+SZ015,妇女健康中心,中心,GYN,涵盖,capable,官网开设,,更年期保健,https://www.szmch.net.cn/ylts/ksjs/index.html,2026-10-17
+SZ016,血液肿瘤科,未公开,ONC,涵盖,capable,市级,儿童血液肿瘤科：深圳市重点学科,血液肿瘤科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,血液肿瘤科,未公开,HEME,涵盖,capable,市级,儿童血液肿瘤科：深圳市重点学科,血液肿瘤科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,血液肿瘤科,未公开,PED,属于,top,省级,儿科：广东省重点学科,儿童重症医学科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,呼吸科,未公开,RESP,属于,capable,政府资料开设（2025 住培亚专业名单）,,呼吸感染科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,呼吸科,未公开,PED,属于,top,省级,儿科：广东省重点学科,儿童重症医学科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,风湿免疫科,未公开,RHEUM,属于,capable,政府资料开设（2025 住培亚专业名单）,,,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,风湿免疫科,未公开,PED,属于,top,省级,儿科：广东省重点学科,儿童重症医学科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,神经内科,未公开,NEURO,属于,capable,政府资料开设（2025 住培亚专业名单）,,癫痫中心,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,神经内科,未公开,PED,属于,top,省级,儿科：广东省重点学科,儿童重症医学科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,心血管内科,未公开,CARD,属于,capable,政府资料开设（2025 住培亚专业名单）,,,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,心血管内科,未公开,PED,属于,top,省级,儿科：广东省重点学科,儿童重症医学科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,感染科,未公开,INF,属于,capable,政府资料开设（2025 住培亚专业名单）,,呼吸感染科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,感染科,未公开,PED,属于,top,省级,儿科：广东省重点学科,儿童重症医学科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,内分泌科,未公开,ENDO,属于,capable,政府资料开设（2025 住培亚专业名单）,,,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,内分泌科,未公开,PED,属于,top,省级,儿科：广东省重点学科,儿童重症医学科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,消化科,未公开,GI,属于,capable,政府资料开设（2025 住培亚专业名单）,,,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,消化科,未公开,PED,属于,top,省级,儿科：广东省重点学科,儿童重症医学科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,肾脏科,未公开,NEPH,属于,capable,政府资料开设（2025 住培亚专业名单）,,,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,肾脏科,未公开,PED,属于,top,省级,儿科：广东省重点学科,儿童重症医学科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,新生儿科,未公开,PED,属于,top,省级,儿科：广东省重点学科,儿童重症医学科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,儿童保健科,未公开,PED,属于,top,省级,儿科：广东省重点学科,儿童重症医学科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,内科门诊,未公开,GP,涵盖,capable,政府资料开设（2025 住培亚专业名单）,,,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ016,内科门诊,未公开,PED,属于,top,省级,儿科：广东省重点学科,儿童重症医学科,https://wjw.sz.gov.cn/attachment/1/1590/1590790/12214435.pdf,2026-10-17
+SZ020,头颈外科,临床科室,ENT,属于,capable,官网开设,,,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,头颈外科,临床科室,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,神经外科,临床科室,NSURG,属于,capable,官网开设,,,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,神经外科,临床科室,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,胸外科,临床科室,CTS,属于,capable,官网开设,,,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,胸外科,临床科室,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,乳腺外科,临床科室,GS,属于,capable,官网开设,,,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,乳腺外科,临床科室,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,肝胆外科,临床科室,GS,属于,capable,官网开设,,,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,肝胆外科,临床科室,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,胃肠外科,临床科室,GS,属于,capable,官网开设,,,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,胃肠外科,临床科室,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,泌尿外科,临床科室,URO,属于,capable,官网开设,,,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,泌尿外科,临床科室,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,综合科,临床科室,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,中医科,临床科室,TCM,属于,capable,官网开设,,,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,中医科,临床科室,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,肿瘤内科,临床科室,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,妇科,临床科室,GYN,等同,capable,官网开设,,,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,妇科,临床科室,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,乳腺内科,临床科室,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,放射治疗科,临床科室,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,骨科,临床科室,ORTHO,属于,capable,官网开设,,,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,骨科,临床科室,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,内镜中心,医技平台,GI,属于,capable,官网开设,,,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ020,内镜中心,医技平台,ONC,属于,top,三甲专科医院本专科（规则，Shaw 已确认）,中国医学科学院肿瘤医院深圳医院：肿瘤专科三甲,放射治疗；肿瘤内科；肿瘤外科,https://www.cicams-sz.org.cn/ksjs/,2026-10-17
+SZ021,成人外科中心,中心,CTS,等同,top,省级,心脏大血管外科：广东省临床重点专科,心脏大血管外科,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,先天性心脏病中心,中心,CTS,属于,top,省级,心脏大血管外科：广东省临床重点专科,心脏大血管外科,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,先天性心脏病中心,中心,CARD,属于,top,省级,心血管内科：广东省临床重点专科,心室辅助；心脏大血管外科,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,血管外科中心,中心,GS,属于,capable,官网开设,,,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,结构性心脏病中心,中心,CARD,属于,top,省级,心血管内科：广东省临床重点专科,心室辅助；心脏大血管外科,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,冠心病中心,中心,CARD,属于,top,省级,心血管内科：广东省临床重点专科,心室辅助；心脏大血管外科,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,心律失常中心,中心,CARD,属于,top,省级,心血管内科：广东省临床重点专科,心室辅助；心脏大血管外科,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,高血压中心,中心,CARD,属于,top,省级,心血管内科：广东省临床重点专科,心室辅助；心脏大血管外科,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,心衰与心肌病中心,中心,CARD,属于,top,省级,心血管内科：广东省临床重点专科,心室辅助；心脏大血管外科,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,心脏康复病房,临床科室,REHAB,属于,capable,官网开设,,,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,心脏康复病房,临床科室,CARD,属于,top,省级,心血管内科：广东省临床重点专科,心室辅助；心脏大血管外科,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,内分泌病房,临床科室,ENDO,属于,capable,官网开设,,,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,肺血管病房,临床科室,RESP,属于,capable,官网开设,,,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,肺血管病房,临床科室,CARD,属于,top,省级,心血管内科：广东省临床重点专科,心室辅助；心脏大血管外科,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,消化内科,临床科室,GI,属于,capable,官网开设,,,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ021,中医科,临床科室,TCM,属于,capable,官网开设,,,https://www.fuwaisz.cn/public/yhtd/ksjs/index.html,2026-10-17
+SZ022,眼底病科,临床科室,OPH,属于,top,国家级,眼科：国家临床重点专科建设项目,斜视与小儿眼科；白内障科；眼底病科；角膜病与眼表疾病科；近视防控科；青光眼与神经眼科,https://www.sz.gov.cn/hospital/ssyy/szykyy/content/post_9370503.html,2026-10-17
+SZ022,青光眼与神经眼科,临床科室,OPH,属于,top,国家级,眼科：国家临床重点专科建设项目,斜视与小儿眼科；白内障科；眼底病科；角膜病与眼表疾病科；近视防控科；青光眼与神经眼科,https://www.sz.gov.cn/hospital/ssyy/szykyy/content/post_9370503.html,2026-10-17
+SZ022,白内障科,临床科室,OPH,属于,top,国家级,眼科：国家临床重点专科建设项目,斜视与小儿眼科；白内障科；眼底病科；角膜病与眼表疾病科；近视防控科；青光眼与神经眼科,https://www.sz.gov.cn/hospital/ssyy/szykyy/content/post_9370503.html,2026-10-17
+SZ022,斜视与小儿眼科,临床科室,OPH,属于,top,国家级,眼科：国家临床重点专科建设项目,斜视与小儿眼科；白内障科；眼底病科；角膜病与眼表疾病科；近视防控科；青光眼与神经眼科,https://www.sz.gov.cn/hospital/ssyy/szykyy/content/post_9370503.html,2026-10-17
+SZ022,斜视与小儿眼科,临床科室,PED,属于,capable,官网开设,,斜视与小儿眼科,https://www.sz.gov.cn/hospital/ssyy/szykyy/content/post_9370503.html,2026-10-17
+SZ022,眼整形与泪器病科,临床科室,OPH,属于,top,国家级,眼科：国家临床重点专科建设项目,斜视与小儿眼科；白内障科；眼底病科；角膜病与眼表疾病科；近视防控科；青光眼与神经眼科,https://www.sz.gov.cn/hospital/ssyy/szykyy/content/post_9370503.html,2026-10-17
+SZ022,角膜病与眼表疾病科,临床科室,OPH,属于,top,国家级,眼科：国家临床重点专科建设项目,斜视与小儿眼科；白内障科；眼底病科；角膜病与眼表疾病科；近视防控科；青光眼与神经眼科,https://www.sz.gov.cn/hospital/ssyy/szykyy/content/post_9370503.html,2026-10-17
+SZ022,眼外伤科,临床科室,OPH,属于,top,国家级,眼科：国家临床重点专科建设项目,斜视与小儿眼科；白内障科；眼底病科；角膜病与眼表疾病科；近视防控科；青光眼与神经眼科,https://www.sz-eyes.com.cn/myzj/ywsk/kszj/,2026-10-17
+SZ022,眼眶病与眼肿瘤科,临床科室,OPH,属于,top,国家级,眼科：国家临床重点专科建设项目,斜视与小儿眼科；白内障科；眼底病科；角膜病与眼表疾病科；近视防控科；青光眼与神经眼科,https://www.sz.gov.cn/hospital/ssyy/szykyy/content/post_9370503.html,2026-10-17
+SZ022,中医眼科,临床科室,OPH,属于,top,国家级,眼科：国家临床重点专科建设项目,斜视与小儿眼科；白内障科；眼底病科；角膜病与眼表疾病科；近视防控科；青光眼与神经眼科,https://www.sz.gov.cn/hospital/ssyy/szykyy/content/post_9370503.html,2026-10-17
+SZ022,中医眼科,临床科室,TCM,属于,capable,官网开设,,,https://www.sz.gov.cn/hospital/ssyy/szykyy/content/post_9370503.html,2026-10-17
+SZ022,视光学科,临床科室,OPH,属于,top,国家级,眼科：国家临床重点专科建设项目,斜视与小儿眼科；白内障科；眼底病科；角膜病与眼表疾病科；近视防控科；青光眼与神经眼科,https://www.sz.gov.cn/hospital/ssyy/szykyy/content/post_9370503.html,2026-10-17
+SZ022,近视防控科,临床科室,OPH,属于,top,国家级,眼科：国家临床重点专科建设项目,斜视与小儿眼科；白内障科；眼底病科；角膜病与眼表疾病科；近视防控科；青光眼与神经眼科,https://www.sz.gov.cn/hospital/ssyy/szykyy/content/post_9370503.html,2026-10-17
+SZ023,综合精神科门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,焦虑障碍门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,抑郁障碍门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,心境障碍门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,儿少精神科门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,儿少精神科门诊,临床科室,PED,属于,capable,市级,儿少精神科：深圳市医学重点学科,儿少精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,老年精神科门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,老年精神科门诊,临床科室,GERI,属于,capable,官网开设,,,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,睡眠障碍门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,特需心理健康门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,早期干预门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,成瘾医学门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,成人多动症门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,临床心理科门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,精神康复门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,综合精神科门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,焦虑障碍门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,抑郁障碍门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,心境障碍门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,儿少精神科门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,儿少精神科门诊,临床科室,PED,属于,capable,市级,儿少精神科：深圳市医学重点学科,儿少精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,老年精神科门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,老年精神科门诊,临床科室,GERI,属于,capable,官网开设,,,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,睡眠障碍门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,特需心理健康门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,早期干预门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,成瘾医学门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,成人多动症门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,临床心理科门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,精神康复门诊,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/mzjsk/ksjj/,2026-10-17
+SZ023,门诊精神科,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/lhfy/ywks/mzjsk/,2026-10-17
+SZ023,儿少精神科,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/lhfy/zdzk/esjsk/ksjj/content/post_976652.html,2026-10-17
+SZ023,儿少精神科,临床科室,PED,属于,capable,市级,儿少精神科：深圳市医学重点学科,儿少精神科,https://www.szknyy.com/gz/ylfw/ksdh/lhfy/zdzk/esjsk/ksjj/content/post_976652.html,2026-10-17
+SZ023,抑郁障碍科（一区）,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/lhfy/zdks/yyzakyq/ksjj/,2026-10-17
+SZ023,抑郁障碍科二区,临床科室,PSY,属于,top,国家级,精神科：国家临床重点专科建设项目,临床心理科；儿少精神科；双相情感障碍科；精神科,https://www.szknyy.com/gz/ylfw/ksdh/pszy/zdks/yyzakeq/,2026-10-17
+SZ023,慢性康复科二区,临床科室,REHAB,属于,capable,官网开设,,,https://www.szknyy.com/jy/ksdh/pszy/ywks/mxkfkeq/ksjj/content/post_981833.html,2026-10-17
+SZ026,肛肠门诊,临床科室,GS,属于,capable,官网开设,,,https://luohu.woman91.com/,2026-10-17
+SZ026,内科,临床科室,GP,涵盖,capable,官网开设,,,https://luohu.woman91.com/,2026-10-17
+SZ026,儿外科,临床科室,PED,属于,capable,官网开设,,,https://luohu.woman91.com/,2026-10-17
+SZ026,儿外科,临床科室,GS,属于,capable,官网开设,,,https://luohu.woman91.com/,2026-10-17
+SZ026,甲状腺乳腺外科,临床科室,GS,属于,capable,官网开设,,,https://luohu.woman91.com/,2026-10-17
+SZ026,中医科,临床科室,TCM,属于,capable,官网开设,,,https://luohu.woman91.com/,2026-10-17
+SZ026,耳鼻喉科,临床科室,ENT,属于,capable,官网开设,,,https://luohu.woman91.com/,2026-10-17
+SZ026,产科,临床科室,OB,等同,capable,医院自述特色,产科：医院开设科室,早孕关爱门诊；早产流产防治门诊；前置胎盘专科门诊；妊娠期糖尿病门诊；妊娠期高血压疾病门诊；麻醉咨询门诊；瘢痕子宫门诊；二胎门诊；母乳喂养门诊；助产士门诊；营养门诊,https://luohu.woman91.com/chanke/,2026-10-17
+SZ026,妇科,临床科室,GYN,等同,capable,医院自述特色,妇科：医院开设科室,围绝经期门诊；妇科普通门诊；生育规划门诊；宫颈疾病门诊；妇科肿瘤门诊；月经病门诊；不孕不育专科；妇科内分泌门诊；围绝经期门诊；聚焦超声消融(海扶刀)门诊；生殖整复门诊；妇科盆底及产后康复门诊；宫颈疾病,https://luohu.woman91.com/fuke/,2026-10-17
+SZ026,儿内科,临床科室,PED,属于,capable,官网开设,,,https://luohu.woman91.com/,2026-10-17
+SZ026,新生儿科,临床科室,PED,属于,capable,官网开设,,,https://luohu.woman91.com/,2026-10-17
+SZ026,儿童保健科,临床科室,PED,属于,capable,官网开设,,,https://luohu.woman91.com/,2026-10-17
+SZ026,消化内科,临床科室,GI,属于,capable,官网开设,,,https://luohu.woman91.com/,2026-10-17
+SZ026,产后/盆底康复门诊,临床科室,GYN,属于,capable,医院自述特色,妇科：医院开设科室,围绝经期门诊；宫颈疾病,https://luohu.woman91.com/,2026-10-17
+SZ026,口腔科,临床科室,DENT,属于,capable,官网开设,,,https://luohu.woman91.com/,2026-10-17
+SZ026,皮肤科,临床科室,DERM,属于,capable,官网开设,,,https://luohu.woman91.com/,2026-10-17
+SZ029,妇科,临床科室,GYN,等同,capable,医院自述特色,妇科微创：医院官网开设专科,,https://amcaresz.com/,2026-10-17
+SZ029,产科,临床科室,OB,等同,capable,医院自述特色,产科：医院官网开设专科,,https://amcaresz.com/,2026-10-17
+SZ029,儿保科,临床科室,PED,属于,capable,医院自述特色,儿科：医院官网开设专科,,https://amcaresz.com/,2026-10-17
+SZ030,妇产科,临床科室,GYN,涵盖,capable,医院自述特色,妇产科：医院官网开设专科,,https://szu.ufh.com.cn/,2026-10-17
+SZ030,妇产科,临床科室,OB,涵盖,capable,医院自述特色,妇产科：医院官网开设专科,,https://szu.ufh.com.cn/,2026-10-17
+SZ030,全科,临床科室,GP,等同,capable,医院自述特色,全科医疗：医院官网开设专科,,https://szu.ufh.com.cn/locations/深圳新风和睦家医院,2026-10-17
+SZ030,产后康复,临床科室,GYN,属于,capable,医院自述特色,妇产科：医院官网开设专科,,https://szu.ufh.com.cn/,2026-10-17
+SZ030,内科,临床科室,GP,涵盖,capable,医院自述特色,全科医疗：医院官网开设专科,,https://szu.ufh.com.cn/locations/深圳新风和睦家医院,2026-10-17
+SZ030,耳鼻喉科,临床科室,ENT,属于,capable,官网开设,,,https://szu.ufh.com.cn/,2026-10-17
+SZ030,眼科,临床科室,OPH,属于,capable,官网开设,,,https://szu.ufh.com.cn/,2026-10-17
+SZ030,儿科,临床科室,PED,属于,capable,医院自述特色,儿科：医院官网开设专科,,https://szu.ufh.com.cn/locations/深圳新风和睦家医院,2026-10-17
+SZ030,心理科,临床科室,PSY,属于,capable,官网开设,,,https://szu.ufh.com.cn/,2026-10-17
+SZ030,外科,临床科室,GS,涵盖,capable,官网开设,,,https://szu.ufh.com.cn/,2026-10-17
+SZ030,中医科,临床科室,TCM,属于,capable,官网开设,,,https://szu.ufh.com.cn/locations/深圳新风和睦家医院,2026-10-17
+SZ030,口腔科,临床科室,DENT,属于,capable,官网开设,,,https://szu.ufh.com.cn/,2026-10-17
+SZ030,皮肤科,临床科室,DERM,属于,capable,官网开设,,,https://szu.ufh.com.cn/locations/深圳新风和睦家医院,2026-10-17
+SZ030,疼痛科,临床科室,PAIN,等同,capable,官网开设,,,https://szu.ufh.com.cn/,2026-10-17
+SZ030,肿瘤科,临床科室,ONC,属于,capable,官网开设,,胃肠早癌及息肉内镜治疗,https://szu.ufh.com.cn/,2026-10-17
+SZ030,骨科及运动医学科,临床科室,ORTHO,属于,capable,官网开设,,,https://szu.ufh.com.cn/,2026-10-17
+SZ002,（推定开设，官网未列出）,—,RESP,—,capable,推定开设,,,,
+SZ002,（推定开设，官网未列出）,—,GI,—,capable,推定开设,,,,
+SZ002,（推定开设，官网未列出）,—,NEPH,—,capable,推定开设,,,,
+SZ002,（推定开设，官网未列出）,—,ENDO,—,capable,推定开设,,,,
+SZ002,（推定开设，官网未列出）,—,GS,—,capable,推定开设,,,,
+SZ002,（推定开设，官网未列出）,—,GYN,—,top,省级,妇科：广东省临床重点专科,,,
+SZ002,（推定开设，官网未列出）,—,OB,—,capable,推定开设,,,,
+SZ002,（推定开设，官网未列出）,—,PED,—,capable,推定开设,,,,
+SZ002,（推定开设，官网未列出）,—,OPH,—,capable,推定开设,,,,
+SZ002,（推定开设，官网未列出）,—,ENT,—,capable,推定开设,,,,
+SZ002,（推定开设，官网未列出）,—,DENT,—,capable,推定开设,,,,
+SZ002,（推定开设，官网未列出）,—,DERM,—,capable,推定开设,,,,
+SZ002,（推定开设，官网未列出）,—,ONC,—,capable,推定开设,,,,
+SZ002,（推定开设，官网未列出）,—,REHAB,—,capable,推定开设,,,,
