@@ -64,9 +64,13 @@ android {
 
     buildTypes {
         getByName("release") {
-            signingConfig = signingConfigs.getByName(
-                if (providers.gradleProperty("demoSigning").orNull == "true") "debug" else "release",
-            )
+            val demoSigning = providers.gradleProperty("demoSigning").orNull == "true"
+            signingConfig = signingConfigs.getByName(if (demoSigning) "debug" else "release")
+            if (demoSigning) {
+                // shortcut: vendor SDKs reference optional modules; enable R8 after supplying those modules and keep rules.
+                isMinifyEnabled = false
+                isShrinkResources = false
+            }
         }
     }
 

@@ -93,7 +93,7 @@ jobs:
 
           - English is the default language, including native rPPG measurement screens.
           - Universal APK for ARM, ARM64 and x86_64; Android 9 or newer.
-          - Built in release mode and signed with an Android debug certificate for demo installation.
+          - Built in release mode and signed with an Android debug certificate for demo installation. Code shrinking is disabled because vendor SDKs reference optional hardware modules.
           - Automated English UI checks, doctor integration tests and Android startup check passed.
           - Bluetooth rings, radar, thermal camera and other real hardware were not validated in CI. Cloud account sync requires separate configuration.
           NOTES
